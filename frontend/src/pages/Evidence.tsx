@@ -106,7 +106,7 @@ export function EvidencePage() {
         <Field label="Sort"><Select value={sort} onChange={(event) => setSort(event.target.value)}><option value="timestamp">Timestamp</option><option value="quality">Quality score</option></Select></Field>
         <Field label="Filter"><Select value={filter} onChange={(event) => setFilter(event.target.value)}><option value="all">All frames</option><option value="warnings">With warnings</option><option value="selected">Selected only</option><option value="fine">Fine samples</option><option value="manual">Manual captures</option></Select></Field>
         <Field label="Search" className="min-w-[180px]"><div className="relative"><Search className="absolute left-2.5 top-2.5 h-3.5 w-3.5 text-muted" /><Input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Frame ID / time" className="pl-8" /></div></Field>
-        <Button onClick={openCompare} disabled={selected.length < 2}><Columns2 className="h-3.5 w-3.5" /> Compare {selected.length || ""}</Button>
+        <Button onClick={openCompare} disabled={selected.length < 2}><Columns2 className="h-3.5 w-3.5" /> Compare {selected.length ? Math.min(selected.length, 4) : ""}</Button>
         <Link to={`/export${qs({ case: caseId })}`}><Button variant="primary">Export report</Button></Link>
       </div>
 
@@ -124,8 +124,8 @@ export function EvidencePage() {
               <div className="relative bg-black">
                 <img src={api.url(`/api/frames/${frame.id}/image`)} alt={`Evidence frame at ${frame.timestamp} seconds`} className="aspect-video w-full object-contain" />
                 <div className="absolute right-2 top-2 flex gap-1">
-                  <button onClick={() => setViewFrame(frame)} className="rounded border border-line bg-ink-950/80 p-1.5 text-slate-200 hover:text-accent" title="View original"><Eye className="h-3.5 w-3.5" /></button>
-                  <button onClick={() => { setNoteFrame(frame); setNote(frame.selection_note || frame.frame_notes[0]?.body || ""); setReason(frame.selection_reason || ""); }} className="rounded border border-line bg-ink-950/80 p-1.5 text-slate-200 hover:text-accent" title="Add note"><MessageSquarePlus className="h-3.5 w-3.5" /></button>
+                  <button onClick={() => setViewFrame(frame)} className="rounded border border-line bg-ink-950/80 p-1.5 text-slate-200 hover:text-accent" title="View original" aria-label={`View original frame ${frame.id}`}><Eye className="h-3.5 w-3.5" /></button>
+                  <button onClick={() => { setNoteFrame(frame); setNote(frame.selection_note || frame.frame_notes[0]?.body || ""); setReason(frame.selection_reason || ""); }} className="rounded border border-line bg-ink-950/80 p-1.5 text-slate-200 hover:text-accent" title="Add note" aria-label={`Add note for frame ${frame.id}`}><MessageSquarePlus className="h-3.5 w-3.5" /></button>
                 </div>
                 {frame.selected ? <div className="absolute left-2 top-2 rounded bg-accent px-1.5 py-0.5 text-[10px] font-bold text-ink-950">SELECTED</div> : null}
               </div>

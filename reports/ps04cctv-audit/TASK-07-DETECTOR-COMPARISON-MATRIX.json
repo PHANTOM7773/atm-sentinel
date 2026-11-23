@@ -1,0 +1,96 @@
+{
+  "task": "TASK-07",
+  "generated_at": "2026-11-23T12:35:00Z",
+  "scope": "local feasibility/readiness only; no model downloads; no production changes",
+  "evidence_legend": {
+    "observed_local": "Directly observed in workspace/runtime",
+    "published_upstream": "Upstream/vendor/community claim, not locally measured",
+    "not_assessable": "Cannot be concluded from available evidence"
+  },
+  "candidates": [
+    {
+      "name": "YuNet (baseline)",
+      "variant": "face_detection_yunet_2026may.onnx",
+      "status": "local_baseline",
+      "local_available": true,
+      "observed_local": {
+        "model_file": "data/models/face_detection_yunet_2026may.onnx",
+        "sha256": "ebafce4e3c118d6554634be5c27ab333b4c047a9a8c3faf1d7cf93101c22f0f0",
+        "size_bytes": 229738,
+        "integration": "backend/app/cv/detection.py YuNetFaceDetector via cv2.FaceDetectorYN",
+        "runtime_dependency": "opencv-python-headless 5.1.0"
+      },
+      "published_upstream": {
+        "small_face": "moderate; designed for efficient face detection",
+        "pose_robustness": "moderate",
+        "occlusion_robustness": "limited"
+      },
+      "local_experiment_evidence": {
+        "task03_side_pose_recovery_with_1_5x": "measured +0.40 recall on subject_a_side",
+        "task03_occluded_challenges_recovery": "0/10 recovered",
+        "task06_note": "face detector not YOLOX; YOLOX threshold unrelated"
+      },
+      "cpu_feasibility_m1": "good_observed",
+      "gpu_feasibility_rtx4050": "not_needed_current_path",
+      "integration_complexity": "none_existing",
+      "production_recommendation": "retain_as_baseline"
+    },
+    {
+      "name": "SCRFD",
+      "variant": "500M/2.5G/10G/34G (not local)",
+      "status": "candidate_not_local",
+      "local_available": false,
+      "published_upstream": {
+        "small_face": "strong on WIDERFace in upstream reports",
+        "pose_robustness": "good",
+        "occlusion_robustness": "improved over older detectors but still limited"
+      },
+      "cpu_feasibility_m1": "likely_for_500M_with_optimized_runtime_not_installed",
+      "gpu_feasibility_rtx4050": "likely_with_onnxruntime_cuda_not_installed",
+      "dependencies": ["onnxruntime or opencv-dnn-onnx support validation", "exact licensed weight file"],
+      "integration_complexity": "medium",
+      "license_risk": "high_unclear_for_official_insightface_weights",
+      "production_recommendation": "do_not_integrate_before_weight_license_approval_and_benchmark"
+    },
+    {
+      "name": "RetinaFace",
+      "variant": "MobileNet0.25/ResNet50 (not local)",
+      "status": "candidate_not_local",
+      "local_available": false,
+      "published_upstream": {
+        "small_face": "strong in upstream reports",
+        "pose_robustness": "good",
+        "occlusion_robustness": "moderate"
+      },
+      "cpu_feasibility_m1": "mobile_net_maybe_cpu_heavy_for_r50",
+      "gpu_feasibility_rtx4050": "likely_with_gpu_runtime_not_installed",
+      "dependencies": ["onnxruntime/torch/opencv-dnn depending packaging", "exact licensed weight file"],
+      "integration_complexity": "medium",
+      "license_risk": "high_unclear_for_official_insightface_weights",
+      "production_recommendation": "do_not_integrate_before_weight_license_approval_and_benchmark"
+    },
+    {
+      "name": "YOLOv8-face (community/Ultralytics-derived)",
+      "variant": "n/s/m (not local)",
+      "status": "candidate_not_local",
+      "local_available": false,
+      "published_upstream": {
+        "small_face": "variant/training dependent",
+        "pose_robustness": "variant/training dependent",
+        "occlusion_robustness": "variant/training dependent"
+      },
+      "cpu_feasibility_m1": "possible_for_small_onnx_variant",
+      "gpu_feasibility_rtx4050": "likely_with_gpu_runtime",
+      "dependencies": ["onnxruntime or ultralytics stack"],
+      "integration_complexity": "medium",
+      "license_risk": "high_agpl_and_weight_provenance",
+      "production_recommendation": "avoid_for_now"
+    }
+  ],
+  "not_assessable": [
+    "bbox mAP/localization for all candidates",
+    "real CCTV/R4C performance",
+    "RTX 4050 actual latency without approved runtime/model",
+    "M1 actual latency for non-local models"
+  ]
+}

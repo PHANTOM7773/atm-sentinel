@@ -12,6 +12,7 @@ import {
   CvRunHistoryView,
   buildCvRunPayload,
   candidateSearchErrorMessage,
+  cvRunFieldsValid,
   initialCvRunFormValues,
   reviewErrorMessage,
 } from "./CvRuns";
@@ -408,6 +409,77 @@ describe("CV run presentational views", () => {
     expect(html).toContain(CV_ASSOCIATION_LIMITATION);
   });
 
+  it("renders an unknown transaction video time as unavailable rather than zero", () => {
+    const html = render(createElement(CvRunDetailView, {
+      caseId: "case-1",
+      runId: "run-1",
+      run: makeRun({
+        timestamp_provenance: {
+          cv_run_id: "run-1",
+          analysis_run_id: "analysis-1",
+          video_provenance: { source_video_id: "video-1", source_video_sha256: "a".repeat(64), derivative_kind: "none" },
+          transaction_video_seconds: null,
+          window_start_seconds: 10,
+          window_end_seconds: 20,
+          timebase: "source_video_seconds",
+          warnings: [],
+        },
+      }),
+      observations: [],
+      reviews: [],
+      totalObservations: 0,
+      offset: 0,
+    }));
+    expect(html).toContain("Timestamp provenance");
+    expect(html).toMatch(/Transaction video time[\s\S]{0,180}—/);
+    expect(html).not.toMatch(/Transaction video time[\s\S]{0,180}00:00\.00/);
+  });
+
+  it("exposes best-face ranking detail and association pagination controls", () => {
+    const association = makeAssociation({
+      best_face: {
+        status: "selected",
+        selected_observation_id: "face-obs-1",
+        selected_frame_number: 42,
+        selected_timestamp_seconds: 12.5,
+        selected_selection_score: 0.8123,
+        selected_reliability_status: "limited",
+        selected_reliability_summary: "Usable with limitations.",
+        ranked_frame_count: 3,
+        rejected_frame_count: 2,
+        other_person_frame_count: 1,
+        score_meaning: "Quality-ranking heuristic score; not identity confidence.",
+        limitation: "Frame-to-person linkage is bbox evidence, not identity.",
+      },
+    });
+    const card = render(createElement(CvAssociationCard, {
+      caseId: "case-1",
+      runId: "run-1",
+      association,
+    }));
+    expect(card).toContain("Inspect ranking");
+
+    const detail = render(createElement(CvRunDetailView, {
+      caseId: "case-1",
+      runId: "run-1",
+      run: makeRun(),
+      observations: [],
+      reviews: [],
+      associations: {
+        items: [association],
+        total: 40,
+        limit: 25,
+        offset: 0,
+        status: "proposed",
+        disclaimer: CV_ASSOCIATION_LIMITATION,
+      },
+      totalObservations: 0,
+      offset: 0,
+    }));
+    expect(detail).toContain("Showing 1–1 of 40 associations");
+    expect(detail).toContain("Next");
+  });
+
   it("renders observation pagination controls for one bounded page", () => {
     const observations = Array.from({ length: 25 }, (_, index) => makeObservation({ observation_id: `obs-${index}` }));
     const html = render(createElement(CvRunDetailView, {
@@ -555,6 +627,38 @@ describe("CV run presentational views", () => {
       video_start_ts: null,
       cctv_reference_video_time: 0,
     });
+  });
+
+  it("keeps CV run budgets within local analysis limits", () => {
+    expect(cvRunFieldsValid(initialCvRunFormValues)).toBe(true);
+    expect(cvRunFieldsValid({ ...initialCvRunFormValues, maxFrames: "301" })).toBe(false);
+    expect(cvRunFieldsValid({ ...initialCvRunFormValues, maxFrames: "" })).toBe(false);
+    expect(cvRunFieldsValid({ ...initialCvRunFormValues, frameStride: "21" })).toBe(false);
+    expect(cvRunFieldsValid({
+      ...initialCvRunFormValues,
+      windowMode: "transaction_aligned",
+      cctvReferenceVideoTime: "-1",
+    })).toBe(false);
+    expect(cvRunFieldsValid({
+      ...initialCvRunFormValues,
+      windowMode: "transaction_aligned",
+      cctvReferenceVideoTime: "7.5",
+    })).toBe(true);
+  });
+
+  it("sends the configured CCTV reference point in aligned run payloads", () => {
+    const payload = buildCvRunPayload(
+      "case-1",
+      {
+        ...initialCvRunFormValues,
+        videoId: "video-1",
+        windowMode: "transaction_aligned",
+        transactionId: "tx-1",
+        cctvReferenceVideoTime: "7.5",
+      },
+      [makeTransaction()],
+    );
+    expect(payload.cctv_reference_video_time).toBe(7.5);
   });
 
   it("builds a normalized ATM zone payload for transaction-aligned runs", () => {

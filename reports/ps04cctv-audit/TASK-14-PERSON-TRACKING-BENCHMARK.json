@@ -1,0 +1,167 @@
+{
+  "task": "TASK-14",
+  "generated_at_utc": "2026-11-23T13:54:35Z",
+  "deterministic_sequences": {
+    "linear_single_person": {
+      "simple": {
+        "tracker": "simple",
+        "frames": 12,
+        "id_switches_proxy": 0,
+        "fragmentations": 0,
+        "unique_track_ids": 1,
+        "duplicate_active_ids": 0
+      },
+      "bytetrack": {
+        "tracker": "bytetrack",
+        "frames": 12,
+        "id_switches_proxy": 0,
+        "fragmentations": 0,
+        "unique_track_ids": 1,
+        "duplicate_active_ids": 0
+      }
+    },
+    "occlusion_low_conf": {
+      "simple": {
+        "tracker": "simple",
+        "frames": 12,
+        "id_switches_proxy": 0,
+        "fragmentations": 0,
+        "unique_track_ids": 1,
+        "duplicate_active_ids": 0
+      },
+      "bytetrack": {
+        "tracker": "bytetrack",
+        "frames": 12,
+        "id_switches_proxy": 0,
+        "fragmentations": 0,
+        "unique_track_ids": 1,
+        "duplicate_active_ids": 0
+      }
+    },
+    "crossing_two_persons": {
+      "simple": {
+        "tracker": "simple",
+        "frames": 12,
+        "id_switches_proxy": 2,
+        "fragmentations": 0,
+        "unique_track_ids": 2,
+        "duplicate_active_ids": 0
+      },
+      "bytetrack": {
+        "tracker": "bytetrack",
+        "frames": 12,
+        "id_switches_proxy": 2,
+        "fragmentations": 0,
+        "unique_track_ids": 2,
+        "duplicate_active_ids": 0
+      }
+    },
+    "temporary_absence": {
+      "simple": {
+        "tracker": "simple",
+        "frames": 11,
+        "id_switches_proxy": 0,
+        "fragmentations": 1,
+        "unique_track_ids": 1,
+        "duplicate_active_ids": 0
+      },
+      "bytetrack": {
+        "tracker": "bytetrack",
+        "frames": 11,
+        "id_switches_proxy": 0,
+        "fragmentations": 1,
+        "unique_track_ids": 1,
+        "duplicate_active_ids": 0
+      }
+    }
+  },
+  "synthetic_clip_benchmark": {
+    "manifest": "datasets/synthetic/cv/manifest.json",
+    "max_frames": 30,
+    "frame_stride": 1,
+    "clips": [
+      {
+        "clip": "subject_a_front",
+        "path": "datasets/synthetic/cv/subject_a_front.mp4",
+        "analyzed_frames": 30,
+        "fps": 10.0,
+        "trackers": {
+          "simple": {
+            "frames": 30,
+            "detections": 0,
+            "unique_track_ids": 0,
+            "id_switches_proxy": 0,
+            "fragmentations": 0,
+            "tracker_runtime_ms": 0.332
+          },
+          "bytetrack": {
+            "frames": 30,
+            "detections": 0,
+            "unique_track_ids": 0,
+            "id_switches_proxy": 0,
+            "fragmentations": 0,
+            "tracker_runtime_ms": 0.222
+          }
+        }
+      },
+      {
+        "clip": "subject_a_side",
+        "path": "datasets/synthetic/cv/subject_a_side.mp4",
+        "analyzed_frames": 30,
+        "fps": 10.0,
+        "trackers": {
+          "simple": {
+            "frames": 30,
+            "detections": 0,
+            "unique_track_ids": 0,
+            "id_switches_proxy": 0,
+            "fragmentations": 0,
+            "tracker_runtime_ms": 0.326
+          },
+          "bytetrack": {
+            "frames": 30,
+            "detections": 0,
+            "unique_track_ids": 0,
+            "id_switches_proxy": 0,
+            "fragmentations": 0,
+            "tracker_runtime_ms": 0.224
+          }
+        }
+      },
+      {
+        "clip": "subject_b_front",
+        "path": "datasets/synthetic/cv/subject_b_front.mp4",
+        "analyzed_frames": 30,
+        "fps": 10.0,
+        "trackers": {
+          "simple": {
+            "frames": 30,
+            "detections": 0,
+            "unique_track_ids": 0,
+            "id_switches_proxy": 0,
+            "fragmentations": 0,
+            "tracker_runtime_ms": 0.323
+          },
+          "bytetrack": {
+            "frames": 30,
+            "detections": 0,
+            "unique_track_ids": 0,
+            "id_switches_proxy": 0,
+            "fragmentations": 0,
+            "tracker_runtime_ms": 0.222
+          }
+        }
+      }
+    ],
+    "notes": [
+      "Synthetic clip benchmark; no person/track ground truth.",
+      "id_switches_proxy and fragmentations are proxy metrics based on spatial bins and track continuity, not annotated ID switches.",
+      "YOLOX person detector reused from existing local model/runtime."
+    ]
+  },
+  "limitations": [
+    "No person bounding-box or identity ground truth exists; IDF1/MOTA/HOTA are NOT_ASSESSABLE.",
+    "Synthetic clips are not representative of real CCTV; no real-world generalization claim.",
+    "Crossing identity preservation on synthetic detections is a stress proxy, not annotated ground truth."
+  ]
+}

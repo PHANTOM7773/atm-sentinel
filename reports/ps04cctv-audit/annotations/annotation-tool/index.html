@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TASK 09 Offline BBox Annotator</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>TASK 09 Offline Face BBox Annotator</h1>
+    <p class="warn">Human annotation only. No detector auto-labels. No uploads. Coordinates saved in original frame pixels (<code>xywh_pixels_top_left</code>).</p>
+  </header>
+  <main>
+    <section class="panel controls">
+      <div class="row">
+        <label>Selection manifest <input id="selectionInput" type="file" accept="application/json" /></label>
+        <label>Load annotation JSON <input id="loadInput" type="file" accept="application/json" /></label>
+        <button id="exportBtn">Export JSON</button>
+        <button id="exportQaBtn">Export QA Summary</button>
+      </div>
+      <div class="row">
+        <button id="prevBtn">Prev</button>
+        <button id="nextBtn">Next</button>
+        <span id="frameInfo">No manifest loaded</span>
+        <span id="statusBadge" class="badge">NOT ANNOTATED</span>
+      </div>
+      <div class="row small" id="pathInfo"></div>
+    </section>
+
+    <section class="workspace">
+      <div class="canvasWrap">
+        <canvas id="imageCanvas"></canvas>
+        <canvas id="overlayCanvas"></canvas>
+      </div>
+      <aside class="panel side">
+        <h2>Frame</h2>
+        <label>Annotation status
+          <select id="frameStatus">
+            <option value="not_annotated">not_annotated</option>
+            <option value="annotated">annotated</option>
+            <option value="needs_review">needs_review</option>
+          </select>
+        </label>
+        <label><input id="noFace" type="checkbox" /> No visible face in frame</label>
+        <label>Frame notes <textarea id="frameNotes" rows="3"></textarea></label>
+        <h2>Selected Box</h2>
+        <div id="boxInfo">No box selected. Drag on image to draw.</div>
+        <label>Visibility
+          <select id="visibility"><option>visible</option><option>partially_occluded</option><option>heavily_occluded</option></select>
+        </label>
+        <label>Pose
+          <select id="pose"><option>front</option><option>slight_profile</option><option>profile</option><option>unknown</option></select>
+        </label>
+        <label>Face size
+          <select id="faceSize"><option>small</option><option>medium</option><option>large</option></select>
+        </label>
+        <label>Blur
+          <select id="blur"><option>none</option><option>mild</option><option>severe</option></select>
+        </label>
+        <label>Illumination
+          <select id="illumination"><option>normal</option><option>dark</option><option>overexposed</option></select>
+        </label>
+        <label>Annotation confidence
+          <select id="confidence"><option>high</option><option>medium</option><option>low</option></select>
+        </label>
+        <label><input id="ignoreDifficult" type="checkbox" /> Ignore/difficult</label>
+        <label>Box notes <textarea id="boxNotes" rows="2"></textarea></label>
+        <div class="row">
+          <button id="deleteBoxBtn">Delete selected box</button>
+        </div>
+        <h2>Frame Boxes</h2>
+        <ul id="boxList"></ul>
+      </aside>
+    </section>
+  </main>
+  <script src="logic.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

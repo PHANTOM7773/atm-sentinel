@@ -1,0 +1,74 @@
+{
+  "task": "TASK-07",
+  "generated_at": "2026-11-23T12:35:00Z",
+  "policy": "No model downloads. Distinguish code license vs weight license. Reject unclear/incompatible weights for production recommendation.",
+  "observed_local_models": [
+    {
+      "key": "yunet",
+      "file": "data/models/face_detection_yunet_2026may.onnx",
+      "sha256": "ebafce4e3c118d6554634be5c27ab333b4c047a9a8c3faf1d7cf93101c22f0f0",
+      "source_url_recorded": "https://huggingface.co/pollen-robotics/face_detection_yunet_2026may/resolve/2b8e922362946a0db67e861bae0f77826980effd/face_detection_yunet_2026may.onnx",
+      "code_license_observed_record": "OpenCV Zoo Apache-2.0 repository",
+      "weight_license_observed_record": "MIT weights",
+      "status": "acceptable_as_existing_pinned_baseline_pending_normal_legal_review"
+    },
+    {
+      "key": "sface",
+      "file": "data/models/face_recognition_sface_2021dec.onnx",
+      "sha256": "0ba9fbfa01b5270c96627c4ef784da859931e02f04419c829e83484087c34e79",
+      "license_observed_record": "Apache-2.0",
+      "status": "existing_pinned"
+    },
+    {
+      "key": "yolox",
+      "file": "data/models/object_detection_yolox_2022nov.onnx",
+      "sha256": "c5c2d13e59ae883e6af3b45daea64af4833a4951c92d116ec270d9ddbe998063",
+      "license_observed_record": "Apache-2.0",
+      "status": "existing_pinned"
+    }
+  ],
+  "candidate_assessments": [
+    {
+      "candidate": "SCRFD (InsightFace official packs)",
+      "code_license": "MIT (upstream InsightFace repository, published)",
+      "weight_license": "UNCLEAR/RESTRICTED_RISK - exact checkpoint license must be verified; many InsightFace model packs carry non-commercial/research restrictions",
+      "provenance_risk": "high if downloaded from third-party mirrors without pinned revision/SHA256",
+      "redistribution_commercial": "NOT_APPROVED",
+      "production_recommendation": "reject_until_exact_weight_license_and_provenance_approved"
+    },
+    {
+      "candidate": "RetinaFace (InsightFace official packs)",
+      "code_license": "MIT (published)",
+      "weight_license": "UNCLEAR/RESTRICTED_RISK",
+      "provenance_risk": "high",
+      "redistribution_commercial": "NOT_APPROVED",
+      "production_recommendation": "reject_until_exact_weight_license_and_provenance_approved"
+    },
+    {
+      "candidate": "OpenCV Zoo / permissively licensed alternate face detector",
+      "code_license": "expected Apache-2.0 if OpenCV Zoo",
+      "weight_license": "must verify exact file",
+      "provenance_risk": "medium",
+      "redistribution_commercial": "possible_only_after_exact_verification",
+      "production_recommendation": "evaluate_first_if_exact_license_and_sha256_confirmed"
+    },
+    {
+      "candidate": "YOLOv8-face / Ultralytics-derived",
+      "code_license": "AGPL-3.0 risk for Ultralytics stack (published)",
+      "weight_license": "often unclear/community provenance",
+      "provenance_risk": "high",
+      "redistribution_commercial": "high_risk",
+      "production_recommendation": "avoid"
+    }
+  ],
+  "required_before_any_download": [
+    "Exact model variant name and file",
+    "Source URL and immutable revision/commit/tag",
+    "SHA256 checksum",
+    "Code license URL/text",
+    "Weight/license terms URL/text for intended use",
+    "Redistribution/commercial-use confirmation",
+    "Security/provenance review",
+    "Explicit user approval"
+  ]
+}

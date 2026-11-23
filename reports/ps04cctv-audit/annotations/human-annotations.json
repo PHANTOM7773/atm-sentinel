@@ -1,0 +1,1605 @@
+{
+  "schema_version": "1.0-pilot",
+  "annotation_type": "face_bbox_ground_truth_pilot",
+  "dataset_id": "synthetic-cv",
+  "source_manifest": "data/datasets/synthetic/cv/manifest.json",
+  "selection_manifest": "reports/ps04cctv-audit/annotations/selected-frames-manifest.json",
+  "bbox_format": "xywh_pixels_top_left",
+  "coordinate_space": "original_frame_pixels",
+  "created_at": "2026-11-23T12:54:27.194Z",
+  "updated_at": "2026-11-23T13:08:32.198Z",
+  "annotator": "",
+  "annotation_tool": "task09-offline-annotator/1.0",
+  "notes": "HUMAN ANNOTATION REQUIRED. No auto ground truth.",
+  "frames": [
+    {
+      "clip_id": "subject_a_front",
+      "clip_file": "subject_a_front.mp4",
+      "frame_index": 0,
+      "timestamp_ms": 0,
+      "image_width": 640,
+      "image_height": 480,
+      "derived_image_path": "reports/ps04cctv-audit/annotations/frames/subject_a_front__frame_000000.png",
+      "derived_image_sha256": "fadeeefd32827eab9b9636c2109568c353011df04ee061c86eda6ce7d583e6bc",
+      "source_video_path": "data/datasets/synthetic/cv/subject_a_front.mp4",
+      "annotation_status": "annotated",
+      "no_face": false,
+      "needs_review": false,
+      "frame_notes": "",
+      "faces": [
+        {
+          "annotation_id": "ann_ccpcviaj_mwt9prwf",
+          "bbox": [
+            254.48,
+            131.57,
+            123.16,
+            123.89
+          ],
+          "visibility": "visible",
+          "pose": "unknown",
+          "face_size": "medium",
+          "blur": "none",
+          "illumination": "normal",
+          "annotation_confidence": "medium",
+          "ignore_difficult": false,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "clip_id": "subject_a_front",
+      "clip_file": "subject_a_front.mp4",
+      "frame_index": 5,
+      "timestamp_ms": 500,
+      "image_width": 640,
+      "image_height": 480,
+      "derived_image_path": "reports/ps04cctv-audit/annotations/frames/subject_a_front__frame_000005.png",
+      "derived_image_sha256": "4809948f8db0ea2ab45908f28775515fc89267546c5ed319010ce7af32fdaaa4",
+      "source_video_path": "data/datasets/synthetic/cv/subject_a_front.mp4",
+      "annotation_status": "annotated",
+      "no_face": false,
+      "needs_review": false,
+      "frame_notes": "",
+      "faces": [
+        {
+          "annotation_id": "ann_9sf7ehsz_mwt9pyqa",
+          "bbox": [
+            259.62,
+            128.32,
+            118.03,
+            129.76
+          ],
+          "visibility": "visible",
+          "pose": "unknown",
+          "face_size": "medium",
+          "blur": "none",
+          "illumination": "normal",
+          "annotation_confidence": "medium",
+          "ignore_difficult": false,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "clip_id": "subject_a_front",
+      "clip_file": "subject_a_front.mp4",
+      "frame_index": 10,
+      "timestamp_ms": 1000,
+      "image_width": 640,
+      "image_height": 480,
+      "derived_image_path": "reports/ps04cctv-audit/annotations/frames/subject_a_front__frame_000010.png",
+      "derived_image_sha256": "2d712f3c3e90735d1b80da04d76493795c55108110b77a3dc3e68af86e0e6e59",
+      "source_video_path": "data/datasets/synthetic/cv/subject_a_front.mp4",
+      "annotation_status": "annotated",
+      "no_face": false,
+      "needs_review": false,
+      "frame_notes": "",
+      "faces": [
+        {
+          "annotation_id": "ann_m9f40h3i_mwt9q2yp",
+          "bbox": [
+            250.82,
+            129.05,
+            138.56,
+            126.09
+          ],
+          "visibility": "visible",
+          "pose": "unknown",
+          "face_size": "medium",
+          "blur": "none",
+          "illumination": "normal",
+          "annotation_confidence": "medium",
+          "ignore_difficult": false,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "clip_id": "subject_a_front",
+      "clip_file": "subject_a_front.mp4",
+      "frame_index": 15,
+      "timestamp_ms": 1500,
+      "image_width": 640,
+      "image_height": 480,
+      "derived_image_path": "reports/ps04cctv-audit/annotations/frames/subject_a_front__frame_000015.png",
+      "derived_image_sha256": "5b1879bd7016778ada1960ec9f83993ce36a60cf647355be8943babbcc8b4cba",
+      "source_video_path": "data/datasets/synthetic/cv/subject_a_front.mp4",
+      "annotation_status": "annotated",
+      "no_face": false,
+      "needs_review": false,
+      "frame_notes": "",
+      "faces": [
+        {
+          "annotation_id": "ann_jsant3kl_mwt9q7i0",
+          "bbox": [
+            250.09,
+            130.52,
+            137.82,
+            131.23
+          ],
+          "visibility": "visible",
+          "pose": "unknown",
+          "face_size": "medium",
+          "blur": "none",
+          "illumination": "normal",
+          "annotation_confidence": "medium",
+          "ignore_difficult": false,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "clip_id": "subject_a_front",
+      "clip_file": "subject_a_front.mp4",
+      "frame_index": 20,
+      "timestamp_ms": 2000,
+      "image_width": 640,
+      "image_height": 480,
+      "derived_image_path": "reports/ps04cctv-audit/annotations/frames/subject_a_front__frame_000020.png",
+      "derived_image_sha256": "0b95f6abe3e6e8a2af7e505a2294191102282bb5f48a6e96915ffd0ed8347ade",
+      "source_video_path": "data/datasets/synthetic/cv/subject_a_front.mp4",
+      "annotation_status": "annotated",
+      "no_face": false,
+      "needs_review": false,
+      "frame_notes": "",
+      "faces": [
+        {
+          "annotation_id": "ann_5z6wqn73_mwt9qbzj",
+          "bbox": [
+            247.89,
+            130.52,
+            142.96,
+            128.29
+          ],
+          "visibility": "visible",
+          "pose": "unknown",
+          "face_size": "medium",
+          "blur": "none",
+          "illumination": "normal",
+          "annotation_confidence": "medium",
+          "ignore_difficult": false,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "clip_id": "subject_a_front",
+      "clip_file": "subject_a_front.mp4",
+      "frame_index": 25,
+      "timestamp_ms": 2500,
+      "image_width": 640,
+      "image_height": 480,
+      "derived_image_path": "reports/ps04cctv-audit/annotations/frames/subject_a_front__frame_000025.png",
+      "derived_image_sha256": "45486d2d9ed39a714ef93f396be7f9ba7f3ea5a87c438d6425bee89ddf26458f",
+      "source_video_path": "data/datasets/synthetic/cv/subject_a_front.mp4",
+      "annotation_status": "annotated",
+      "no_face": false,
+      "needs_review": false,
+      "frame_notes": "",
+      "faces": [
+        {
+          "annotation_id": "ann_8dqaxuwt_mwt9qhbp",
+          "bbox": [
+            251.55,
+            130.52,
+            138.56,
+            129.76
+          ],
+          "visibility": "visible",
+          "pose": "unknown",
+          "face_size": "medium",
+          "blur": "none",
+          "illumination": "normal",
+          "annotation_confidence": "medium",
+          "ignore_difficult": false,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "clip_id": "subject_a_front",
+      "clip_file": "subject_a_front.mp4",
+      "frame_index": 30,
+      "timestamp_ms": 3000,
+      "image_width": 640,
+      "image_height": 480,
+      "derived_image_path": "reports/ps04cctv-audit/annotations/frames/subject_a_front__frame_000030.png",
+      "derived_image_sha256": "7707dbe71e3e57c7f56515355b48d3b5638344744542409967ee03f7e399d819",
+      "source_video_path": "data/datasets/synthetic/cv/subject_a_front.mp4",
+      "annotation_status": "annotated",
+      "no_face": false,
+      "needs_review": false,
+      "frame_notes": "",
+      "faces": [
+        {
+          "annotation_id": "ann_4csiwwv2_mwt9qlst",
+          "bbox": [
+            251.55,
+            127.59,
+            136.36,
+            130.49
+          ],
+          "visibility": "visible",
+          "pose": "unknown",
+          "face_size": "medium",
+          "blur": "none",
+          "illumination": "normal",
+          "annotation_confidence": "medium",
+          "ignore_difficult": false,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "clip_id": "subject_a_front",
+      "clip_file": "subject_a_front.mp4",
+      "frame_index": 39,
+      "timestamp_ms": 3900,
+      "image_width": 640,
+      "image_height": 480,
+      "derived_image_path": "reports/ps04cctv-audit/annotations/frames/subject_a_front__frame_000039.png",
+      "derived_image_sha256": "d0c105302c1b284a5b87c7519128625977535826ad07e25fa7dcdd4e8599b4d5",
+      "source_video_path": "data/datasets/synthetic/cv/subject_a_front.mp4",
+      "annotation_status": "annotated",
+      "no_face": false,
+      "needs_review": false,
+      "frame_notes": "",
+      "faces": [
+        {
+          "annotation_id": "ann_flma6js1_mwt9qpys",
+          "bbox": [
+            250.82,
+            130.52,
+            138.56,
+            128.29
+          ],
+          "visibility": "visible",
+          "pose": "unknown",
+          "face_size": "medium",
+          "blur": "none",
+          "illumination": "normal",
+          "annotation_confidence": "medium",
+          "ignore_difficult": false,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "clip_id": "subject_a_side",
+      "clip_file": "subject_a_side.mp4",
+      "frame_index": 0,
+      "timestamp_ms": 0,
+      "image_width": 640,
+      "image_height": 480,
+      "derived_image_path": "reports/ps04cctv-audit/annotations/frames/subject_a_side__frame_000000.png",
+      "derived_image_sha256": "12b3977232abedc4da9cd5a77822ae0b05d5f60d0c911a99561bf01155612e31",
+      "source_video_path": "data/datasets/synthetic/cv/subject_a_side.mp4",
+      "annotation_status": "annotated",
+      "no_face": false,
+      "needs_review": false,
+      "frame_notes": "",
+      "faces": [
+        {
+          "annotation_id": "ann_fgia8q2k_mwt9qur0",
+          "bbox": [
+            255.95,
+            134.92,
+            129.03,
+            118.76
+          ],
+          "visibility": "visible",
+          "pose": "unknown",
+          "face_size": "medium",
+          "blur": "none",
+          "illumination": "normal",
+          "annotation_confidence": "medium",
+          "ignore_difficult": false,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "clip_id": "subject_a_side",
+      "clip_file": "subject_a_side.mp4",
+      "frame_index": 5,
+      "timestamp_ms": 500,
+      "image_width": 640,
+      "image_height": 480,
+      "derived_image_path": "reports/ps04cctv-audit/annotations/frames/subject_a_side__frame_000005.png",
+      "derived_image_sha256": "92a5d882e8a8af99b4746e7fc4faa07f70210d77158a065dbbbcc2a3c00d1316",
+      "source_video_path": "data/datasets/synthetic/cv/subject_a_side.mp4",
+      "annotation_status": "annotated",
+      "no_face": false,
+      "needs_review": false,
+      "frame_notes": "",
+      "faces": [
+        {
+          "annotation_id": "ann_rlwpgolu_mwt9qyfv",
+          "bbox": [
+            253.02,
+            134.92,
+            134.16,
+            118.03
+          ],
+          "visibility": "visible",
+          "pose": "unknown",
+          "face_size": "medium",
+          "blur": "none",
+          "illumination": "normal",
+          "annotation_confidence": "medium",
+          "ignore_difficult": false,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "clip_id": "subject_a_side",
+      "clip_file": "subject_a_side.mp4",
+      "frame_index": 10,
+      "timestamp_ms": 1000,
+      "image_width": 640,
+      "image_height": 480,
+      "derived_image_path": "reports/ps04cctv-audit/annotations/frames/subject_a_side__frame_000010.png",
+      "derived_image_sha256": "3307dae4730ac74e6b50d4d6be616e17190b50157c87b5e921a7c2a97867d884",
+      "source_video_path": "data/datasets/synthetic/cv/subject_a_side.mp4",
+      "annotation_status": "annotated",
+      "no_face": false,
+      "needs_review": false,
+      "frame_notes": "",
+      "faces": [
+        {
+          "annotation_id": "ann_z7q3ddgc_mwt9r1zg",
+          "bbox": [
+            253.75,
+            136.39,
+            131.96,
+            115.83
+          ],
+          "visibility": "visible",
+          "pose": "unknown",
+          "face_size": "medium",
+          "blur": "none",
+          "illumination": "normal",
+          "annotation_confidence": "medium",
+          "ignore_difficult": false,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "clip_id": "subject_a_side",
+      "clip_file": "subject_a_side.mp4",
+      "frame_index": 15,
+      "timestamp_ms": 1500,
+      "image_width": 640,
+      "image_height": 480,
+      "derived_image_path": "reports/ps04cctv-audit/annotations/frames/subject_a_side__frame_000015.png",
+      "derived_image_sha256": "2adeffb0c660a40879a1cf7145db569d176fa1e6bd910bc17f750613aaf59426",
+      "source_video_path": "data/datasets/synthetic/cv/subject_a_side.mp4",
+      "annotation_status": "annotated",
+      "no_face": false,
+      "needs_review": false,
+      "frame_notes": "",
+      "faces": [
+        {
+          "annotation_id": "ann_587vyhcp_mwt9r5jg",
+          "bbox": [
+            255.22,
+            133.45,
+            131.96,
+            124.63
+          ],
+          "visibility": "visible",
+          "pose": "unknown",
+          "face_size": "medium",
+          "blur": "none",
+          "illumination": "normal",
+          "annotation_confidence": "medium",
+          "ignore_difficult": false,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "clip_id": "subject_a_side",
+      "clip_file": "subject_a_side.mp4",
+      "frame_index": 20,
+      "timestamp_ms": 2000,
+      "image_width": 640,
+      "image_height": 480,
+      "derived_image_path": "reports/ps04cctv-audit/annotations/frames/subject_a_side__frame_000020.png",
+      "derived_image_sha256": "d13901c5cb29d8418b767957152e2710d0cd4d7e60cee67f9e5ded8f3520f90b",
+      "source_video_path": "data/datasets/synthetic/cv/subject_a_side.mp4",
+      "annotation_status": "annotated",
+      "no_face": false,
+      "needs_review": false,
+      "frame_notes": "",
+      "faces": [
+        {
+          "annotation_id": "ann_mhff6d57_mwt9r92r",
+          "bbox": [
+            252.29,
+            135.65,
+            133.42,
+            117.3
+          ],
+          "visibility": "visible",
+          "pose": "unknown",
+          "face_size": "medium",
+          "blur": "none",
+          "illumination": "normal",
+          "annotation_confidence": "medium",
+          "ignore_difficult": false,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "clip_id": "subject_a_side",
+      "clip_file": "subject_a_side.mp4",
+      "frame_index": 29,
+      "timestamp_ms": 2900,
+      "image_width": 640,
+      "image_height": 480,
+      "derived_image_path": "reports/ps04cctv-audit/annotations/frames/subject_a_side__frame_000029.png",
+      "derived_image_sha256": "d4537bc29bf5d4d6d176cbb1291e4b6076f61f6536684a7000e4b03dce8431f1",
+      "source_video_path": "data/datasets/synthetic/cv/subject_a_side.mp4",
+      "annotation_status": "annotated",
+      "no_face": false,
+      "needs_review": false,
+      "frame_notes": "",
+      "faces": [
+        {
+          "annotation_id": "ann_k0n2fiw0_mwt9rf7l",
+          "bbox": [
+            253.02,
+            137.02,
+            138.56,
+            121.7
+          ],
+          "visibility": "visible",
+          "pose": "unknown",
+          "face_size": "medium",
+          "blur": "none",
+          "illumination": "normal",
+          "annotation_confidence": "medium",
+          "ignore_difficult": false,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "clip_id": "subject_b_front",
+      "clip_file": "subject_b_front.mp4",
+      "frame_index": 0,
+      "timestamp_ms": 0,
+      "image_width": 640,
+      "image_height": 480,
+      "derived_image_path": "reports/ps04cctv-audit/annotations/frames/subject_b_front__frame_000000.png",
+      "derived_image_sha256": "bc996a364de973b702c0c7259245df1987b8b476cafbc505a636cd4fb84ecc9d",
+      "source_video_path": "data/datasets/synthetic/cv/subject_b_front.mp4",
+      "annotation_status": "annotated",
+      "no_face": false,
+      "needs_review": false,
+      "frame_notes": "",
+      "faces": [
+        {
+          "annotation_id": "ann_02lvmq4e_mwt9rih7",
+          "bbox": [
+            252.29,
+            131.89,
+            137.09,
+            126.09
+          ],
+          "visibility": "visible",
+          "pose": "unknown",
+          "face_size": "medium",
+          "blur": "none",
+          "illumination": "normal",
+          "annotation_confidence": "medium",
+          "ignore_difficult": false,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "clip_id": "subject_b_front",
+      "clip_file": "subject_b_front.mp4",
+      "frame_index": 5,
+      "timestamp_ms": 500,
+      "image_width": 640,
+      "image_height": 480,
+      "derived_image_path": "reports/ps04cctv-audit/annotations/frames/subject_b_front__frame_000005.png",
+      "derived_image_sha256": "5839b4efd2b8b6ccca1518c324d4bdbeb6688534b6d68284731a750cbdd6bc08",
+      "source_video_path": "data/datasets/synthetic/cv/subject_b_front.mp4",
+      "annotation_status": "annotated",
+      "no_face": false,
+      "needs_review": false,
+      "frame_notes": "",
+      "faces": [
+        {
+          "annotation_id": "ann_6ywi6k9s_mwt9rl4k",
+          "bbox": [
+            252.29,
+            129.69,
+            135.62,
+            123.16
+          ],
+          "visibility": "visible",
+          "pose": "unknown",
+          "face_size": "medium",
+          "blur": "none",
+          "illumination": "normal",
+          "annotation_confidence": "medium",
+          "ignore_difficult": false,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "clip_id": "subject_b_front",
+      "clip_file": "subject_b_front.mp4",
+      "frame_index": 10,
+      "timestamp_ms": 1000,
+      "image_width": 640,
+      "image_height": 480,
+      "derived_image_path": "reports/ps04cctv-audit/annotations/frames/subject_b_front__frame_000010.png",
+      "derived_image_sha256": "40eb11fa3639179283483f7b78c7505a372c57d1813a1bb347100271368c64a8",
+      "source_video_path": "data/datasets/synthetic/cv/subject_b_front.mp4",
+      "annotation_status": "annotated",
+      "no_face": false,
+      "needs_review": false,
+      "frame_notes": "",
+      "faces": [
+        {
+          "annotation_id": "ann_pws4h1jo_mwt9rnvn",
+          "bbox": [
+            247.15,
+            126.76,
+            143.69,
+            131.23
+          ],
+          "visibility": "visible",
+          "pose": "unknown",
+          "face_size": "medium",
+          "blur": "none",
+          "illumination": "normal",
+          "annotation_confidence": "medium",
+          "ignore_difficult": false,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "clip_id": "subject_b_front",
+      "clip_file": "subject_b_front.mp4",
+      "frame_index": 15,
+      "timestamp_ms": 1500,
+      "image_width": 640,
+      "image_height": 480,
+      "derived_image_path": "reports/ps04cctv-audit/annotations/frames/subject_b_front__frame_000015.png",
+      "derived_image_sha256": "2eadf416b66ab84f8d6c2fdd19b9b2fe9b8a794f2111adac338f2726265b52e4",
+      "source_video_path": "data/datasets/synthetic/cv/subject_b_front.mp4",
+      "annotation_status": "annotated",
+      "no_face": false,
+      "needs_review": false,
+      "frame_notes": "",
+      "faces": [
+        {
+          "annotation_id": "ann_wb1fhk6a_mwt9rrgt",
+          "bbox": [
+            252.29,
+            128.96,
+            136.36,
+            127.56
+          ],
+          "visibility": "visible",
+          "pose": "unknown",
+          "face_size": "medium",
+          "blur": "none",
+          "illumination": "normal",
+          "annotation_confidence": "medium",
+          "ignore_difficult": false,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "clip_id": "subject_b_front",
+      "clip_file": "subject_b_front.mp4",
+      "frame_index": 20,
+      "timestamp_ms": 2000,
+      "image_width": 640,
+      "image_height": 480,
+      "derived_image_path": "reports/ps04cctv-audit/annotations/frames/subject_b_front__frame_000020.png",
+      "derived_image_sha256": "a6b95693a72112fa6c08d8f0452526fec7e06d6e1ed390d7523b79be2e74f87f",
+      "source_video_path": "data/datasets/synthetic/cv/subject_b_front.mp4",
+      "annotation_status": "annotated",
+      "no_face": false,
+      "needs_review": false,
+      "frame_notes": "",
+      "faces": [
+        {
+          "annotation_id": "ann_6i8vay5b_mwt9rv5r",
+          "bbox": [
+            250.09,
+            132.62,
+            137.82,
+            128.29
+          ],
+          "visibility": "visible",
+          "pose": "unknown",
+          "face_size": "medium",
+          "blur": "none",
+          "illumination": "normal",
+          "annotation_confidence": "medium",
+          "ignore_difficult": false,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "clip_id": "subject_b_front",
+      "clip_file": "subject_b_front.mp4",
+      "frame_index": 25,
+      "timestamp_ms": 2500,
+      "image_width": 640,
+      "image_height": 480,
+      "derived_image_path": "reports/ps04cctv-audit/annotations/frames/subject_b_front__frame_000025.png",
+      "derived_image_sha256": "5654067efae1af117e025c05838a844e04270a2e0509b84fe679a2d94dfadd19",
+      "source_video_path": "data/datasets/synthetic/cv/subject_b_front.mp4",
+      "annotation_status": "annotated",
+      "no_face": false,
+      "needs_review": false,
+      "frame_notes": "",
+      "faces": [
+        {
+          "annotation_id": "ann_fj84xe7i_mwt9rzat",
+          "bbox": [
+            251.55,
+            133.36,
+            135.62,
+            120.96
+          ],
+          "visibility": "visible",
+          "pose": "unknown",
+          "face_size": "medium",
+          "blur": "none",
+          "illumination": "normal",
+          "annotation_confidence": "medium",
+          "ignore_difficult": false,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "clip_id": "subject_b_front",
+      "clip_file": "subject_b_front.mp4",
+      "frame_index": 30,
+      "timestamp_ms": 3000,
+      "image_width": 640,
+      "image_height": 480,
+      "derived_image_path": "reports/ps04cctv-audit/annotations/frames/subject_b_front__frame_000030.png",
+      "derived_image_sha256": "84e2525b431b763c914e84619c4cc15eccb6649bf5b3d214fc4b8e97dd755081",
+      "source_video_path": "data/datasets/synthetic/cv/subject_b_front.mp4",
+      "annotation_status": "annotated",
+      "no_face": false,
+      "needs_review": false,
+      "frame_notes": "",
+      "faces": [
+        {
+          "annotation_id": "ann_qymodeex_mwt9s2u2",
+          "bbox": [
+            250.82,
+            134.09,
+            139.29,
+            121.7
+          ],
+          "visibility": "visible",
+          "pose": "unknown",
+          "face_size": "medium",
+          "blur": "none",
+          "illumination": "normal",
+          "annotation_confidence": "medium",
+          "ignore_difficult": false,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "clip_id": "subject_b_front",
+      "clip_file": "subject_b_front.mp4",
+      "frame_index": 39,
+      "timestamp_ms": 3900,
+      "image_width": 640,
+      "image_height": 480,
+      "derived_image_path": "reports/ps04cctv-audit/annotations/frames/subject_b_front__frame_000039.png",
+      "derived_image_sha256": "6b371c2e5495f82e6005032a827e35e234aba806d41bf352699c0074c9f82e2d",
+      "source_video_path": "data/datasets/synthetic/cv/subject_b_front.mp4",
+      "annotation_status": "annotated",
+      "no_face": false,
+      "needs_review": false,
+      "frame_notes": "",
+      "faces": [
+        {
+          "annotation_id": "ann_dcldgwvv_mwt9s6m6",
+          "bbox": [
+            253.02,
+            132.62,
+            134.89,
+            123.89
+          ],
+          "visibility": "visible",
+          "pose": "unknown",
+          "face_size": "medium",
+          "blur": "none",
+          "illumination": "normal",
+          "annotation_confidence": "medium",
+          "ignore_difficult": false,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "clip_id": "multi_subject",
+      "clip_file": "multi_subject.mp4",
+      "frame_index": 0,
+      "timestamp_ms": 0,
+      "image_width": 640,
+      "image_height": 480,
+      "derived_image_path": "reports/ps04cctv-audit/annotations/frames/multi_subject__frame_000000.png",
+      "derived_image_sha256": "841b0733c80b97d501d12192919f0101cec08f21450785198390900e5959bcc7",
+      "source_video_path": "data/datasets/synthetic/cv/multi_subject.mp4",
+      "annotation_status": "annotated",
+      "no_face": false,
+      "needs_review": false,
+      "frame_notes": "",
+      "faces": [
+        {
+          "annotation_id": "ann_ztsq0vj0_mwt9scb9",
+          "bbox": [
+            142.32,
+            131.89,
+            126.83,
+            117.3
+          ],
+          "visibility": "visible",
+          "pose": "unknown",
+          "face_size": "medium",
+          "blur": "none",
+          "illumination": "normal",
+          "annotation_confidence": "medium",
+          "ignore_difficult": false,
+          "notes": ""
+        },
+        {
+          "annotation_id": "ann_r7g12lbw_mwt9sfdj",
+          "bbox": [
+            387.18,
+            134.82,
+            126.83,
+            118.03
+          ],
+          "visibility": "visible",
+          "pose": "unknown",
+          "face_size": "medium",
+          "blur": "none",
+          "illumination": "normal",
+          "annotation_confidence": "medium",
+          "ignore_difficult": false,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "clip_id": "multi_subject",
+      "clip_file": "multi_subject.mp4",
+      "frame_index": 5,
+      "timestamp_ms": 500,
+      "image_width": 640,
+      "image_height": 480,
+      "derived_image_path": "reports/ps04cctv-audit/annotations/frames/multi_subject__frame_000005.png",
+      "derived_image_sha256": "ab640b5e066106bab40e50bf8dbc392298d343e1724278131514cfe13bb8a502",
+      "source_video_path": "data/datasets/synthetic/cv/multi_subject.mp4",
+      "annotation_status": "annotated",
+      "no_face": false,
+      "needs_review": false,
+      "frame_notes": "",
+      "faces": [
+        {
+          "annotation_id": "ann_rs8frk13_mwt9sjlq",
+          "bbox": [
+            142.32,
+            136.29,
+            127.56,
+            115.1
+          ],
+          "visibility": "visible",
+          "pose": "unknown",
+          "face_size": "medium",
+          "blur": "none",
+          "illumination": "normal",
+          "annotation_confidence": "medium",
+          "ignore_difficult": false,
+          "notes": ""
+        },
+        {
+          "annotation_id": "ann_hkvxiib1_mwt9smrn",
+          "bbox": [
+            387.18,
+            133.36,
+            126.83,
+            122.43
+          ],
+          "visibility": "visible",
+          "pose": "unknown",
+          "face_size": "medium",
+          "blur": "none",
+          "illumination": "normal",
+          "annotation_confidence": "medium",
+          "ignore_difficult": false,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "clip_id": "multi_subject",
+      "clip_file": "multi_subject.mp4",
+      "frame_index": 10,
+      "timestamp_ms": 1000,
+      "image_width": 640,
+      "image_height": 480,
+      "derived_image_path": "reports/ps04cctv-audit/annotations/frames/multi_subject__frame_000010.png",
+      "derived_image_sha256": "1300b66b4f5bd0653d040161f4f1c4cf797d735e43819e55f75ff49c7c7bb1d8",
+      "source_video_path": "data/datasets/synthetic/cv/multi_subject.mp4",
+      "annotation_status": "annotated",
+      "no_face": false,
+      "needs_review": false,
+      "frame_notes": "",
+      "faces": [
+        {
+          "annotation_id": "ann_91te684v_mwt9sr5y",
+          "bbox": [
+            140.12,
+            134.82,
+            129.76,
+            118.76
+          ],
+          "visibility": "visible",
+          "pose": "unknown",
+          "face_size": "medium",
+          "blur": "none",
+          "illumination": "normal",
+          "annotation_confidence": "medium",
+          "ignore_difficult": false,
+          "notes": ""
+        },
+        {
+          "annotation_id": "ann_qmjjzuv8_mwt9stgp",
+          "bbox": [
+            387.91,
+            133.36,
+            126.09,
+            117.3
+          ],
+          "visibility": "visible",
+          "pose": "unknown",
+          "face_size": "medium",
+          "blur": "none",
+          "illumination": "normal",
+          "annotation_confidence": "medium",
+          "ignore_difficult": false,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "clip_id": "multi_subject",
+      "clip_file": "multi_subject.mp4",
+      "frame_index": 15,
+      "timestamp_ms": 1500,
+      "image_width": 640,
+      "image_height": 480,
+      "derived_image_path": "reports/ps04cctv-audit/annotations/frames/multi_subject__frame_000015.png",
+      "derived_image_sha256": "805a477523aab8f49643a26da8f106e63483dba1aeb07cd125735b70f2ffe3e9",
+      "source_video_path": "data/datasets/synthetic/cv/multi_subject.mp4",
+      "annotation_status": "annotated",
+      "no_face": false,
+      "needs_review": false,
+      "frame_notes": "",
+      "faces": [
+        {
+          "annotation_id": "ann_ftnmq9q7_mwt9sym0",
+          "bbox": [
+            143.79,
+            132.91,
+            129.03,
+            119.5
+          ],
+          "visibility": "visible",
+          "pose": "unknown",
+          "face_size": "medium",
+          "blur": "none",
+          "illumination": "normal",
+          "annotation_confidence": "medium",
+          "ignore_difficult": false,
+          "notes": ""
+        },
+        {
+          "annotation_id": "ann_zu17ifo5_mwt9t2a8",
+          "bbox": [
+            387.18,
+            135.84,
+            128.29,
+            115.83
+          ],
+          "visibility": "visible",
+          "pose": "unknown",
+          "face_size": "medium",
+          "blur": "none",
+          "illumination": "normal",
+          "annotation_confidence": "medium",
+          "ignore_difficult": false,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "clip_id": "multi_subject",
+      "clip_file": "multi_subject.mp4",
+      "frame_index": 20,
+      "timestamp_ms": 2000,
+      "image_width": 640,
+      "image_height": 480,
+      "derived_image_path": "reports/ps04cctv-audit/annotations/frames/multi_subject__frame_000020.png",
+      "derived_image_sha256": "d340133837f623cb2cf3ebe5539ecc088ea90e906301d0daecbef6a82a52305c",
+      "source_video_path": "data/datasets/synthetic/cv/multi_subject.mp4",
+      "annotation_status": "annotated",
+      "no_face": false,
+      "needs_review": false,
+      "frame_notes": "",
+      "faces": [
+        {
+          "annotation_id": "ann_bng87um6_mwt9t6cv",
+          "bbox": [
+            136.46,
+            133.64,
+            134.89,
+            120.23
+          ],
+          "visibility": "visible",
+          "pose": "unknown",
+          "face_size": "medium",
+          "blur": "none",
+          "illumination": "normal",
+          "annotation_confidence": "medium",
+          "ignore_difficult": false,
+          "notes": ""
+        },
+        {
+          "annotation_id": "ann_hzscthne_mwt9t8ga",
+          "bbox": [
+            384.98,
+            137.31,
+            130.49,
+            115.1
+          ],
+          "visibility": "visible",
+          "pose": "unknown",
+          "face_size": "medium",
+          "blur": "none",
+          "illumination": "normal",
+          "annotation_confidence": "medium",
+          "ignore_difficult": false,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "clip_id": "multi_subject",
+      "clip_file": "multi_subject.mp4",
+      "frame_index": 25,
+      "timestamp_ms": 2500,
+      "image_width": 640,
+      "image_height": 480,
+      "derived_image_path": "reports/ps04cctv-audit/annotations/frames/multi_subject__frame_000025.png",
+      "derived_image_sha256": "c03b60841e290901197fb122a4b56aea6095bae92d8002f4dd80ff5d13a83426",
+      "source_video_path": "data/datasets/synthetic/cv/multi_subject.mp4",
+      "annotation_status": "annotated",
+      "no_face": false,
+      "needs_review": false,
+      "frame_notes": "",
+      "faces": [
+        {
+          "annotation_id": "ann_osnhf7mc_mwt9usl1",
+          "bbox": [
+            140.12,
+            131.44,
+            128.29,
+            122.43
+          ],
+          "visibility": "visible",
+          "pose": "unknown",
+          "face_size": "medium",
+          "blur": "none",
+          "illumination": "normal",
+          "annotation_confidence": "medium",
+          "ignore_difficult": false,
+          "notes": ""
+        },
+        {
+          "annotation_id": "ann_eifdmmhr_mwt9uuoy",
+          "bbox": [
+            387.18,
+            136.58,
+            126.09,
+            118.03
+          ],
+          "visibility": "visible",
+          "pose": "unknown",
+          "face_size": "medium",
+          "blur": "none",
+          "illumination": "normal",
+          "annotation_confidence": "medium",
+          "ignore_difficult": false,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "clip_id": "multi_subject",
+      "clip_file": "multi_subject.mp4",
+      "frame_index": 34,
+      "timestamp_ms": 3400,
+      "image_width": 640,
+      "image_height": 480,
+      "derived_image_path": "reports/ps04cctv-audit/annotations/frames/multi_subject__frame_000034.png",
+      "derived_image_sha256": "6dc903b10f938a0d11018c715cfc35a85b6ef3be0db10254d44ce8f98a8897cc",
+      "source_video_path": "data/datasets/synthetic/cv/multi_subject.mp4",
+      "annotation_status": "annotated",
+      "no_face": false,
+      "needs_review": false,
+      "frame_notes": "",
+      "faces": [
+        {
+          "annotation_id": "ann_wqrlw85n_mwt9uy30",
+          "bbox": [
+            142.32,
+            132.91,
+            128.29,
+            118.76
+          ],
+          "visibility": "visible",
+          "pose": "unknown",
+          "face_size": "medium",
+          "blur": "none",
+          "illumination": "normal",
+          "annotation_confidence": "medium",
+          "ignore_difficult": false,
+          "notes": ""
+        },
+        {
+          "annotation_id": "ann_jv7fkth4_mwt9uzt1",
+          "bbox": [
+            386.44,
+            135.84,
+            122.43,
+            109.97
+          ],
+          "visibility": "visible",
+          "pose": "unknown",
+          "face_size": "medium",
+          "blur": "none",
+          "illumination": "normal",
+          "annotation_confidence": "medium",
+          "ignore_difficult": false,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "clip_id": "challenges",
+      "clip_file": "challenges.mp4",
+      "frame_index": 0,
+      "timestamp_ms": 0,
+      "image_width": 640,
+      "image_height": 480,
+      "derived_image_path": "reports/ps04cctv-audit/annotations/frames/challenges__frame_000000.png",
+      "derived_image_sha256": "f86d40e838e224edaf784cef06b09f71876387c4b71c8871c8982d11c238cd5b",
+      "source_video_path": "data/datasets/synthetic/cv/challenges.mp4",
+      "annotation_status": "annotated",
+      "no_face": false,
+      "needs_review": false,
+      "frame_notes": "",
+      "faces": [
+        {
+          "annotation_id": "ann_7wi8y88o_mwt9v2q4",
+          "bbox": [
+            250.82,
+            130.71,
+            137.09,
+            128.29
+          ],
+          "visibility": "visible",
+          "pose": "unknown",
+          "face_size": "medium",
+          "blur": "none",
+          "illumination": "normal",
+          "annotation_confidence": "medium",
+          "ignore_difficult": false,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "clip_id": "challenges",
+      "clip_file": "challenges.mp4",
+      "frame_index": 5,
+      "timestamp_ms": 500,
+      "image_width": 640,
+      "image_height": 480,
+      "derived_image_path": "reports/ps04cctv-audit/annotations/frames/challenges__frame_000005.png",
+      "derived_image_sha256": "753c015d565c01e1a29f89d0e3b5fb637ddfc2170fe6839c6f2f2fbc0ea33339",
+      "source_video_path": "data/datasets/synthetic/cv/challenges.mp4",
+      "annotation_status": "annotated",
+      "no_face": false,
+      "needs_review": false,
+      "frame_notes": "",
+      "faces": [
+        {
+          "annotation_id": "ann_iuio76lh_mwt9v5w0",
+          "bbox": [
+            250.82,
+            132.91,
+            137.82,
+            123.89
+          ],
+          "visibility": "visible",
+          "pose": "unknown",
+          "face_size": "medium",
+          "blur": "none",
+          "illumination": "normal",
+          "annotation_confidence": "medium",
+          "ignore_difficult": false,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "clip_id": "challenges",
+      "clip_file": "challenges.mp4",
+      "frame_index": 10,
+      "timestamp_ms": 1000,
+      "image_width": 640,
+      "image_height": 480,
+      "derived_image_path": "reports/ps04cctv-audit/annotations/frames/challenges__frame_000010.png",
+      "derived_image_sha256": "fd973f1f660cc9acac55540a208df9186a15cc7d862a5509a58aa865d25ec296",
+      "source_video_path": "data/datasets/synthetic/cv/challenges.mp4",
+      "annotation_status": "annotated",
+      "no_face": false,
+      "needs_review": false,
+      "frame_notes": "",
+      "faces": [
+        {
+          "annotation_id": "ann_vmy9yev7_mwt9vae2",
+          "bbox": [
+            270.61,
+            145.37,
+            98.97,
+            85.04
+          ],
+          "visibility": "visible",
+          "pose": "unknown",
+          "face_size": "medium",
+          "blur": "none",
+          "illumination": "normal",
+          "annotation_confidence": "medium",
+          "ignore_difficult": false,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "clip_id": "challenges",
+      "clip_file": "challenges.mp4",
+      "frame_index": 15,
+      "timestamp_ms": 1500,
+      "image_width": 640,
+      "image_height": 480,
+      "derived_image_path": "reports/ps04cctv-audit/annotations/frames/challenges__frame_000015.png",
+      "derived_image_sha256": "525f1af570e4dfad06f46d0b872ad3ba7166991803e24607fd931c922aa0c1cc",
+      "source_video_path": "data/datasets/synthetic/cv/challenges.mp4",
+      "annotation_status": "annotated",
+      "no_face": false,
+      "needs_review": false,
+      "frame_notes": "",
+      "faces": [
+        {
+          "annotation_id": "ann_o4tbl48z_mwt9vdyt",
+          "bbox": [
+            271.35,
+            147.57,
+            94.57,
+            86.51
+          ],
+          "visibility": "visible",
+          "pose": "unknown",
+          "face_size": "medium",
+          "blur": "none",
+          "illumination": "normal",
+          "annotation_confidence": "medium",
+          "ignore_difficult": false,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "clip_id": "challenges",
+      "clip_file": "challenges.mp4",
+      "frame_index": 20,
+      "timestamp_ms": 2000,
+      "image_width": 640,
+      "image_height": 480,
+      "derived_image_path": "reports/ps04cctv-audit/annotations/frames/challenges__frame_000020.png",
+      "derived_image_sha256": "8926887ec2a61c7cf6ff623981e1a01fd226f2704ea599bd3937475c5dcc729b",
+      "source_video_path": "data/datasets/synthetic/cv/challenges.mp4",
+      "annotation_status": "annotated",
+      "no_face": false,
+      "needs_review": false,
+      "frame_notes": "",
+      "faces": [
+        {
+          "annotation_id": "ann_dcwl2cj6_mwt9vgr8",
+          "bbox": [
+            250.09,
+            134.38,
+            142.22,
+            120.23
+          ],
+          "visibility": "visible",
+          "pose": "unknown",
+          "face_size": "medium",
+          "blur": "none",
+          "illumination": "normal",
+          "annotation_confidence": "medium",
+          "ignore_difficult": false,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "clip_id": "challenges",
+      "clip_file": "challenges.mp4",
+      "frame_index": 25,
+      "timestamp_ms": 2500,
+      "image_width": 640,
+      "image_height": 480,
+      "derived_image_path": "reports/ps04cctv-audit/annotations/frames/challenges__frame_000025.png",
+      "derived_image_sha256": "0931b6c306fb7b0ea9b17f6ac567df31ec3685f0e52c4c1a8be89bf8b33895a9",
+      "source_video_path": "data/datasets/synthetic/cv/challenges.mp4",
+      "annotation_status": "annotated",
+      "no_face": false,
+      "needs_review": false,
+      "frame_notes": "",
+      "faces": [
+        {
+          "annotation_id": "ann_mhly6psm_mwt9vlcy",
+          "bbox": [
+            253.75,
+            134.38,
+            132.69,
+            123.89
+          ],
+          "visibility": "visible",
+          "pose": "unknown",
+          "face_size": "medium",
+          "blur": "none",
+          "illumination": "normal",
+          "annotation_confidence": "medium",
+          "ignore_difficult": false,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "clip_id": "challenges",
+      "clip_file": "challenges.mp4",
+      "frame_index": 29,
+      "timestamp_ms": 2900,
+      "image_width": 640,
+      "image_height": 480,
+      "derived_image_path": "reports/ps04cctv-audit/annotations/frames/challenges__frame_000029.png",
+      "derived_image_sha256": "536690bb5c0bae3cf34da02e1d8a9c4a883da39805139b32968dd672fa24a05c",
+      "source_video_path": "data/datasets/synthetic/cv/challenges.mp4",
+      "annotation_status": "annotated",
+      "no_face": false,
+      "needs_review": false,
+      "frame_notes": "",
+      "faces": [
+        {
+          "annotation_id": "ann_orshfb92_mwt9vood",
+          "bbox": [
+            257.42,
+            133.64,
+            127.56,
+            120.23
+          ],
+          "visibility": "visible",
+          "pose": "unknown",
+          "face_size": "medium",
+          "blur": "none",
+          "illumination": "normal",
+          "annotation_confidence": "medium",
+          "ignore_difficult": false,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "clip_id": "challenges",
+      "clip_file": "challenges.mp4",
+      "frame_index": 30,
+      "timestamp_ms": 3000,
+      "image_width": 640,
+      "image_height": 480,
+      "derived_image_path": "reports/ps04cctv-audit/annotations/frames/challenges__frame_000030.png",
+      "derived_image_sha256": "0ed3453f7990f149f406c0d32514265672e891a4117792c9455bfef6cff4b0cf",
+      "source_video_path": "data/datasets/synthetic/cv/challenges.mp4",
+      "annotation_status": "annotated",
+      "no_face": false,
+      "needs_review": false,
+      "frame_notes": "",
+      "faces": [
+        {
+          "annotation_id": "ann_s0ocizmp_mwt9vv20",
+          "bbox": [
+            252.29,
+            129.25,
+            134.16,
+            58.65
+          ],
+          "visibility": "visible",
+          "pose": "unknown",
+          "face_size": "medium",
+          "blur": "none",
+          "illumination": "normal",
+          "annotation_confidence": "medium",
+          "ignore_difficult": false,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "clip_id": "challenges",
+      "clip_file": "challenges.mp4",
+      "frame_index": 35,
+      "timestamp_ms": 3500,
+      "image_width": 640,
+      "image_height": 480,
+      "derived_image_path": "reports/ps04cctv-audit/annotations/frames/challenges__frame_000035.png",
+      "derived_image_sha256": "aadfe5e6737f6db6dca1e94ba3b009b04049078b5a66d6c01170482f5f7468a3",
+      "source_video_path": "data/datasets/synthetic/cv/challenges.mp4",
+      "annotation_status": "annotated",
+      "no_face": false,
+      "needs_review": false,
+      "frame_notes": "",
+      "faces": [
+        {
+          "annotation_id": "ann_xbowp7fk_mwt9vya8",
+          "bbox": [
+            254.48,
+            129.98,
+            131.23,
+            60.85
+          ],
+          "visibility": "visible",
+          "pose": "unknown",
+          "face_size": "medium",
+          "blur": "none",
+          "illumination": "normal",
+          "annotation_confidence": "medium",
+          "ignore_difficult": false,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "clip_id": "challenges",
+      "clip_file": "challenges.mp4",
+      "frame_index": 39,
+      "timestamp_ms": 3900,
+      "image_width": 640,
+      "image_height": 480,
+      "derived_image_path": "reports/ps04cctv-audit/annotations/frames/challenges__frame_000039.png",
+      "derived_image_sha256": "0b72fbd4b4c3b168c2ee3bcff592aaeae1d29fc28624a07a336a72cb986899a4",
+      "source_video_path": "data/datasets/synthetic/cv/challenges.mp4",
+      "annotation_status": "annotated",
+      "no_face": false,
+      "needs_review": false,
+      "frame_notes": "",
+      "faces": [
+        {
+          "annotation_id": "ann_ff4v99en_mwt9w1l7",
+          "bbox": [
+            250.82,
+            130.71,
+            137.09,
+            57.92
+          ],
+          "visibility": "visible",
+          "pose": "unknown",
+          "face_size": "medium",
+          "blur": "none",
+          "illumination": "normal",
+          "annotation_confidence": "medium",
+          "ignore_difficult": false,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "clip_id": "challenges",
+      "clip_file": "challenges.mp4",
+      "frame_index": 40,
+      "timestamp_ms": 4000,
+      "image_width": 640,
+      "image_height": 480,
+      "derived_image_path": "reports/ps04cctv-audit/annotations/frames/challenges__frame_000040.png",
+      "derived_image_sha256": "9724a80b4690c817470c6ad4452170ec5f8413bf27cb7382f330f10485bdfd23",
+      "source_video_path": "data/datasets/synthetic/cv/challenges.mp4",
+      "annotation_status": "not_annotated",
+      "no_face": true,
+      "needs_review": false,
+      "frame_notes": "",
+      "faces": []
+    },
+    {
+      "clip_id": "challenges",
+      "clip_file": "challenges.mp4",
+      "frame_index": 45,
+      "timestamp_ms": 4500,
+      "image_width": 640,
+      "image_height": 480,
+      "derived_image_path": "reports/ps04cctv-audit/annotations/frames/challenges__frame_000045.png",
+      "derived_image_sha256": "5ab5b81212addb96b339ee0a1b2bd50a3b708a3642c5e13cabf1c4868dd6514e",
+      "source_video_path": "data/datasets/synthetic/cv/challenges.mp4",
+      "annotation_status": "not_annotated",
+      "no_face": true,
+      "needs_review": false,
+      "frame_notes": "",
+      "faces": []
+    },
+    {
+      "clip_id": "challenges",
+      "clip_file": "challenges.mp4",
+      "frame_index": 50,
+      "timestamp_ms": 5000,
+      "image_width": 640,
+      "image_height": 480,
+      "derived_image_path": "reports/ps04cctv-audit/annotations/frames/challenges__frame_000050.png",
+      "derived_image_sha256": "1a9a031a544bed24878c32b12994375e114d436addfecb434029331f8edb89c7",
+      "source_video_path": "data/datasets/synthetic/cv/challenges.mp4",
+      "annotation_status": "not_annotated",
+      "no_face": true,
+      "needs_review": false,
+      "frame_notes": "",
+      "faces": []
+    },
+    {
+      "clip_id": "challenges",
+      "clip_file": "challenges.mp4",
+      "frame_index": 54,
+      "timestamp_ms": 5400,
+      "image_width": 640,
+      "image_height": 480,
+      "derived_image_path": "reports/ps04cctv-audit/annotations/frames/challenges__frame_000054.png",
+      "derived_image_sha256": "16480b4567adb3496c22dc91192ebca9ff39401d3c7c1fe25c39cf7b412a9246",
+      "source_video_path": "data/datasets/synthetic/cv/challenges.mp4",
+      "annotation_status": "not_annotated",
+      "no_face": true,
+      "needs_review": false,
+      "frame_notes": "",
+      "faces": []
+    },
+    {
+      "clip_id": "no_face",
+      "clip_file": "no_face.mp4",
+      "frame_index": 0,
+      "timestamp_ms": 0,
+      "image_width": 640,
+      "image_height": 480,
+      "derived_image_path": "reports/ps04cctv-audit/annotations/frames/no_face__frame_000000.png",
+      "derived_image_sha256": "291cf43afa3fe5f9ab2bcefa5165c6c89b37597f828743a66eabd9a02bde0cdf",
+      "source_video_path": "data/datasets/synthetic/cv/no_face.mp4",
+      "annotation_status": "not_annotated",
+      "no_face": true,
+      "needs_review": false,
+      "frame_notes": "",
+      "faces": []
+    },
+    {
+      "clip_id": "no_face",
+      "clip_file": "no_face.mp4",
+      "frame_index": 5,
+      "timestamp_ms": 500,
+      "image_width": 640,
+      "image_height": 480,
+      "derived_image_path": "reports/ps04cctv-audit/annotations/frames/no_face__frame_000005.png",
+      "derived_image_sha256": "a4a03913cdeea150c0bf92eb423f8691517af797215b3adc7454168b576a5499",
+      "source_video_path": "data/datasets/synthetic/cv/no_face.mp4",
+      "annotation_status": "not_annotated",
+      "no_face": true,
+      "needs_review": false,
+      "frame_notes": "",
+      "faces": []
+    },
+    {
+      "clip_id": "no_face",
+      "clip_file": "no_face.mp4",
+      "frame_index": 10,
+      "timestamp_ms": 1000,
+      "image_width": 640,
+      "image_height": 480,
+      "derived_image_path": "reports/ps04cctv-audit/annotations/frames/no_face__frame_000010.png",
+      "derived_image_sha256": "8eda5724b47b1ba4858e113ece048d6394c490de7d3a331c154e517af603f9f8",
+      "source_video_path": "data/datasets/synthetic/cv/no_face.mp4",
+      "annotation_status": "not_annotated",
+      "no_face": true,
+      "needs_review": false,
+      "frame_notes": "",
+      "faces": []
+    },
+    {
+      "clip_id": "no_face",
+      "clip_file": "no_face.mp4",
+      "frame_index": 15,
+      "timestamp_ms": 1500,
+      "image_width": 640,
+      "image_height": 480,
+      "derived_image_path": "reports/ps04cctv-audit/annotations/frames/no_face__frame_000015.png",
+      "derived_image_sha256": "61a2292f1fe08a3361ab4c39d4e331cb840ebc0f4de6328663a4f014722a1e16",
+      "source_video_path": "data/datasets/synthetic/cv/no_face.mp4",
+      "annotation_status": "not_annotated",
+      "no_face": true,
+      "needs_review": false,
+      "frame_notes": "",
+      "faces": []
+    },
+    {
+      "clip_id": "no_face",
+      "clip_file": "no_face.mp4",
+      "frame_index": 19,
+      "timestamp_ms": 1900,
+      "image_width": 640,
+      "image_height": 480,
+      "derived_image_path": "reports/ps04cctv-audit/annotations/frames/no_face__frame_000019.png",
+      "derived_image_sha256": "294ad826406e7a0758b039f093f564769fccf63e35691bf64918b1938a8e912d",
+      "source_video_path": "data/datasets/synthetic/cv/no_face.mp4",
+      "annotation_status": "not_annotated",
+      "no_face": true,
+      "needs_review": false,
+      "frame_notes": "",
+      "faces": []
+    }
+  ]
+}

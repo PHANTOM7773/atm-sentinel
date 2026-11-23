@@ -1,0 +1,95 @@
+{
+  "task": "TASK 19 - ATM Sentinel End-to-End Workflow Verification",
+  "generated_at": "2026-11-23T15:18:33Z",
+  "scope": {
+    "workspace": "/Users/yps/Dev/web/atm",
+    "mode": "isolated pytest/TestClient API workflow plus frontend API-contract/static tests",
+    "assets": "existing synthetic pytest fixtures only; no prohibited generator scripts",
+    "services": "not restarted, stopped, or reconfigured",
+    "protected_data": "not written by TASK 19"
+  },
+  "status": "MEASURED_API_WORKFLOW",
+  "end_to_end_workflow": {
+    "result": "PASSED",
+    "path": [
+      "case and transaction creation",
+      "video upload",
+      "video verify",
+      "video normalize",
+      "transaction-aligned CV run with normalized-video provenance",
+      "person detection and ATM-zone association persistence",
+      "face observation persistence and crop retrieval",
+      "transaction-person association and association review",
+      "best-face selection",
+      "TASK 15 derived enhancement preview and image retrieval",
+      "cross-video SFace candidate search through local embedding store",
+      "face-observation and candidate human review",
+      "manual evidence-frame capture",
+      "PDF report and JSON manifest export with explicit CV references",
+      "audit event verification"
+    ],
+    "asserted_details": {
+      "alignment": "transaction_video_seconds=3.0; window 2.0s to 4.0s",
+      "provenance": "source and normalized video ids/hashes preserved in CV run and export",
+      "crop": "crop retrieval state changed from expired to retrievable after a real derived crop file was written in isolated test storage",
+      "association": "person_track_id=7; review state confirmed; heuristic copy retained as review-only",
+      "best_face": "selected observation matched linked face; eligible=true; score is heuristic quality ranking, not identity",
+      "enhancement": "derived SHA-256 differs from original; derived label and no-matching notice present; original crop bytes unchanged",
+      "candidate_search": "one cross-video candidate_only result with bounded similarity and provenance",
+      "export": "cv_selection_count=2; cv_observation_count=1; cv_candidate_count=1; report_hash matched manifest; PDF header present",
+      "audit": "video_normalized and report_exported events present"
+    }
+  },
+  "failure_and_boundary_checks": {
+    "cross_case_run_lookup": 404,
+    "wrong_crop_id": 404,
+    "cross_case_candidate_search": 404,
+    "cross_case_export": 422,
+    "stale_review_export": 422,
+    "busy_cv_slot": "covered by existing test_cv_integration test (503 with Retry-After)"
+  },
+  "data_consistency": {
+    "no_embedding_or_crop_path_columns_in_cv_observations": "covered by existing integration tests",
+    "human_review_required_for_candidate_export": true,
+    "unverified_client_selection_context_flagged_in_manifest": true,
+    "identity_overclaim_language_absent_from_export": true,
+    "browser_console": "NOT_ASSESSED - browser automation dependency unavailable and installing packages was not approved"
+  },
+  "integration_bugs_found": [],
+  "production_changes": [],
+  "test_changes": [
+    "backend/tests/test_task19_workflow.py",
+    "frontend/src/lib/task19WorkflowApi.test.ts"
+  ],
+  "verification_commands": [
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest backend/tests/test_task19_workflow.py -q --tb=short",
+      "result": "1 passed, 1 warning in 0.96s"
+    },
+    {
+      "command": "cd frontend && npm test -- --run src/lib/task19WorkflowApi.test.ts",
+      "result": "3 passed, 1 file passed"
+    },
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest -q --tb=no -k 'not test_synthetic_generator_writes_labelled_clips'",
+      "result": "331 passed, 1 deselected, 1 warning in 47.87s"
+    },
+    {
+      "command": "cd frontend && npm test -- --run && npm run typecheck && npm run build",
+      "result": "10 test files passed, 77 tests passed; typecheck passed; build passed"
+    }
+  ],
+  "protected_data_snapshot": {
+    "at_report_generation": "19 files; sha256 d0056e39f65ddaefa9bedceb20cbfbd86eb043e891fff73fd9c62701d742d110",
+    "note": "Three uploads under data/uploads have mtimes 16:02, 16:52 and 16:53 local on 2026-11-23, predating this TASK 19 execution (20:45+ local). TASK 19 added, modified and deleted no protected data files."
+  },
+  "git": {
+    "operations": "read-only status only; no add, commit, push, pull, fetch, sync, remote, reset, rebase, tag or branch operations",
+    "status_line_count_at_report_generation": 88
+  },
+  "warnings": [
+    "StarletteDeprecationWarning for httpx/starlette.testclient is pre-existing and unrelated.",
+    "This is API/TestClient workflow verification with synthetic deterministic fixtures, not browser-level automation and not real-CCTV validation.",
+    "No CV algorithm, detection threshold, matching threshold, model, DB schema or production source behavior was changed."
+  ]
+}

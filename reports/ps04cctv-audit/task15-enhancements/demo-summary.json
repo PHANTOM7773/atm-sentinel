@@ -1,0 +1,272 @@
+[
+  {
+    "sample": "dark",
+    "input": "data/cv/crops/0053076b6d0e4b9b83f7c5558223b2a5/1e43e347ee90427188319dd1b4b09811/frame_000004/1e43e347ee90427188319dd1b4b09811-f000004-t001.jpg",
+    "sharpness": 108.12688159668332,
+    "brightness": 108.7951929297738,
+    "preset": "general_enhancement",
+    "output": "reports/ps04cctv-audit/task15-enhancements/demo/dark/general_enhancement/1e43e347ee90427188319dd1b4b09811-f000004-t001_general_enhancement_enhanced.jpg",
+    "meta": "reports/ps04cctv-audit/task15-enhancements/demo/dark/general_enhancement/1e43e347ee90427188319dd1b4b09811-f000004-t001_general_enhancement_enhanced.json",
+    "orig_sha": "01dc836304e4d4db8953ecddb4993f75267c62bd3376aab85fb0aaf4d43d95de",
+    "enh_sha": "8554f35e24740cd0ed5955bbf2e96623c8298a6ad9aff182f60934b943da51b9",
+    "orig_dims": [
+      249,
+      329
+    ],
+    "enh_dims": [
+      374,
+      494
+    ],
+    "processing_ms": 162.527,
+    "warnings": [
+      "output_dimensions_changed_by_upscale"
+    ]
+  },
+  {
+    "sample": "dark",
+    "input": "data/cv/crops/0053076b6d0e4b9b83f7c5558223b2a5/1e43e347ee90427188319dd1b4b09811/frame_000004/1e43e347ee90427188319dd1b4b09811-f000004-t001.jpg",
+    "sharpness": 108.12688159668332,
+    "brightness": 108.7951929297738,
+    "preset": "low_light_correction",
+    "output": "reports/ps04cctv-audit/task15-enhancements/demo/dark/low_light_correction/1e43e347ee90427188319dd1b4b09811-f000004-t001_low_light_correction_enhanced.jpg",
+    "meta": "reports/ps04cctv-audit/task15-enhancements/demo/dark/low_light_correction/1e43e347ee90427188319dd1b4b09811-f000004-t001_low_light_correction_enhanced.json",
+    "orig_sha": "01dc836304e4d4db8953ecddb4993f75267c62bd3376aab85fb0aaf4d43d95de",
+    "enh_sha": "590d9b126cec2fa6570651bc0ee03d8f51f27ac2bfeace4a4fe821130829c6c3",
+    "orig_dims": [
+      249,
+      329
+    ],
+    "enh_dims": [
+      374,
+      494
+    ],
+    "processing_ms": 140.708,
+    "warnings": [
+      "output_dimensions_changed_by_upscale"
+    ]
+  },
+  {
+    "sample": "dark",
+    "input": "data/cv/crops/0053076b6d0e4b9b83f7c5558223b2a5/1e43e347ee90427188319dd1b4b09811/frame_000004/1e43e347ee90427188319dd1b4b09811-f000004-t001.jpg",
+    "sharpness": 108.12688159668332,
+    "brightness": 108.7951929297738,
+    "preset": "low_contrast_correction",
+    "output": "reports/ps04cctv-audit/task15-enhancements/demo/dark/low_contrast_correction/1e43e347ee90427188319dd1b4b09811-f000004-t001_low_contrast_correction_enhanced.jpg",
+    "meta": "reports/ps04cctv-audit/task15-enhancements/demo/dark/low_contrast_correction/1e43e347ee90427188319dd1b4b09811-f000004-t001_low_contrast_correction_enhanced.json",
+    "orig_sha": "01dc836304e4d4db8953ecddb4993f75267c62bd3376aab85fb0aaf4d43d95de",
+    "enh_sha": "c4be3a0faf19e8fbd7980ecac73c6b24ca9ac04a1eec8f921686373c61426e9e",
+    "orig_dims": [
+      249,
+      329
+    ],
+    "enh_dims": [
+      374,
+      494
+    ],
+    "processing_ms": 143.33,
+    "warnings": [
+      "output_dimensions_changed_by_upscale"
+    ]
+  },
+  {
+    "sample": "dark",
+    "input": "data/cv/crops/0053076b6d0e4b9b83f7c5558223b2a5/1e43e347ee90427188319dd1b4b09811/frame_000004/1e43e347ee90427188319dd1b4b09811-f000004-t001.jpg",
+    "sharpness": 108.12688159668332,
+    "brightness": 108.7951929297738,
+    "preset": "noise_reduction",
+    "output": "reports/ps04cctv-audit/task15-enhancements/demo/dark/noise_reduction/1e43e347ee90427188319dd1b4b09811-f000004-t001_noise_reduction_enhanced.jpg",
+    "meta": "reports/ps04cctv-audit/task15-enhancements/demo/dark/noise_reduction/1e43e347ee90427188319dd1b4b09811-f000004-t001_noise_reduction_enhanced.json",
+    "orig_sha": "01dc836304e4d4db8953ecddb4993f75267c62bd3376aab85fb0aaf4d43d95de",
+    "enh_sha": "e6894c27c0281bb32f0c84bd6c6b092ff84b7eb5b5f2ea79ac06f48c1fa59b20",
+    "orig_dims": [
+      249,
+      329
+    ],
+    "enh_dims": [
+      249,
+      329
+    ],
+    "processing_ms": 136.261,
+    "warnings": []
+  },
+  {
+    "sample": "blurred",
+    "input": "data/cv/crops/0053076b6d0e4b9b83f7c5558223b2a5/1e43e347ee90427188319dd1b4b09811/frame_000004/1e43e347ee90427188319dd1b4b09811-f000004-t001.jpg",
+    "sharpness": 108.12688159668332,
+    "brightness": 108.7951929297738,
+    "preset": "general_enhancement",
+    "output": "reports/ps04cctv-audit/task15-enhancements/demo/blurred/general_enhancement/1e43e347ee90427188319dd1b4b09811-f000004-t001_general_enhancement_enhanced.jpg",
+    "meta": "reports/ps04cctv-audit/task15-enhancements/demo/blurred/general_enhancement/1e43e347ee90427188319dd1b4b09811-f000004-t001_general_enhancement_enhanced.json",
+    "orig_sha": "01dc836304e4d4db8953ecddb4993f75267c62bd3376aab85fb0aaf4d43d95de",
+    "enh_sha": "8554f35e24740cd0ed5955bbf2e96623c8298a6ad9aff182f60934b943da51b9",
+    "orig_dims": [
+      249,
+      329
+    ],
+    "enh_dims": [
+      374,
+      494
+    ],
+    "processing_ms": 136.154,
+    "warnings": [
+      "output_dimensions_changed_by_upscale"
+    ]
+  },
+  {
+    "sample": "blurred",
+    "input": "data/cv/crops/0053076b6d0e4b9b83f7c5558223b2a5/1e43e347ee90427188319dd1b4b09811/frame_000004/1e43e347ee90427188319dd1b4b09811-f000004-t001.jpg",
+    "sharpness": 108.12688159668332,
+    "brightness": 108.7951929297738,
+    "preset": "low_light_correction",
+    "output": "reports/ps04cctv-audit/task15-enhancements/demo/blurred/low_light_correction/1e43e347ee90427188319dd1b4b09811-f000004-t001_low_light_correction_enhanced.jpg",
+    "meta": "reports/ps04cctv-audit/task15-enhancements/demo/blurred/low_light_correction/1e43e347ee90427188319dd1b4b09811-f000004-t001_low_light_correction_enhanced.json",
+    "orig_sha": "01dc836304e4d4db8953ecddb4993f75267c62bd3376aab85fb0aaf4d43d95de",
+    "enh_sha": "590d9b126cec2fa6570651bc0ee03d8f51f27ac2bfeace4a4fe821130829c6c3",
+    "orig_dims": [
+      249,
+      329
+    ],
+    "enh_dims": [
+      374,
+      494
+    ],
+    "processing_ms": 143.788,
+    "warnings": [
+      "output_dimensions_changed_by_upscale"
+    ]
+  },
+  {
+    "sample": "blurred",
+    "input": "data/cv/crops/0053076b6d0e4b9b83f7c5558223b2a5/1e43e347ee90427188319dd1b4b09811/frame_000004/1e43e347ee90427188319dd1b4b09811-f000004-t001.jpg",
+    "sharpness": 108.12688159668332,
+    "brightness": 108.7951929297738,
+    "preset": "low_contrast_correction",
+    "output": "reports/ps04cctv-audit/task15-enhancements/demo/blurred/low_contrast_correction/1e43e347ee90427188319dd1b4b09811-f000004-t001_low_contrast_correction_enhanced.jpg",
+    "meta": "reports/ps04cctv-audit/task15-enhancements/demo/blurred/low_contrast_correction/1e43e347ee90427188319dd1b4b09811-f000004-t001_low_contrast_correction_enhanced.json",
+    "orig_sha": "01dc836304e4d4db8953ecddb4993f75267c62bd3376aab85fb0aaf4d43d95de",
+    "enh_sha": "c4be3a0faf19e8fbd7980ecac73c6b24ca9ac04a1eec8f921686373c61426e9e",
+    "orig_dims": [
+      249,
+      329
+    ],
+    "enh_dims": [
+      374,
+      494
+    ],
+    "processing_ms": 138.526,
+    "warnings": [
+      "output_dimensions_changed_by_upscale"
+    ]
+  },
+  {
+    "sample": "blurred",
+    "input": "data/cv/crops/0053076b6d0e4b9b83f7c5558223b2a5/1e43e347ee90427188319dd1b4b09811/frame_000004/1e43e347ee90427188319dd1b4b09811-f000004-t001.jpg",
+    "sharpness": 108.12688159668332,
+    "brightness": 108.7951929297738,
+    "preset": "noise_reduction",
+    "output": "reports/ps04cctv-audit/task15-enhancements/demo/blurred/noise_reduction/1e43e347ee90427188319dd1b4b09811-f000004-t001_noise_reduction_enhanced.jpg",
+    "meta": "reports/ps04cctv-audit/task15-enhancements/demo/blurred/noise_reduction/1e43e347ee90427188319dd1b4b09811-f000004-t001_noise_reduction_enhanced.json",
+    "orig_sha": "01dc836304e4d4db8953ecddb4993f75267c62bd3376aab85fb0aaf4d43d95de",
+    "enh_sha": "e6894c27c0281bb32f0c84bd6c6b092ff84b7eb5b5f2ea79ac06f48c1fa59b20",
+    "orig_dims": [
+      249,
+      329
+    ],
+    "enh_dims": [
+      249,
+      329
+    ],
+    "processing_ms": 135.47,
+    "warnings": []
+  },
+  {
+    "sample": "normal",
+    "input": "data/cv/crops/0053076b6d0e4b9b83f7c5558223b2a5/1e43e347ee90427188319dd1b4b09811/frame_000007/1e43e347ee90427188319dd1b4b09811-f000007-t001.jpg",
+    "sharpness": 117.55292917096983,
+    "brightness": 113.58729422399848,
+    "preset": "general_enhancement",
+    "output": "reports/ps04cctv-audit/task15-enhancements/demo/normal/general_enhancement/1e43e347ee90427188319dd1b4b09811-f000007-t001_general_enhancement_enhanced.jpg",
+    "meta": "reports/ps04cctv-audit/task15-enhancements/demo/normal/general_enhancement/1e43e347ee90427188319dd1b4b09811-f000007-t001_general_enhancement_enhanced.json",
+    "orig_sha": "a97e98442b63bb5f72b3829c67ab3670770680f2f1ba48b33640e22926b31364",
+    "enh_sha": "dd33d10001ed42b3e0c2ed3216947ca53d18835301da97b5bb25a5dc00da71a4",
+    "orig_dims": [
+      248,
+      339
+    ],
+    "enh_dims": [
+      372,
+      508
+    ],
+    "processing_ms": 138.332,
+    "warnings": [
+      "output_dimensions_changed_by_upscale"
+    ]
+  },
+  {
+    "sample": "normal",
+    "input": "data/cv/crops/0053076b6d0e4b9b83f7c5558223b2a5/1e43e347ee90427188319dd1b4b09811/frame_000007/1e43e347ee90427188319dd1b4b09811-f000007-t001.jpg",
+    "sharpness": 117.55292917096983,
+    "brightness": 113.58729422399848,
+    "preset": "low_light_correction",
+    "output": "reports/ps04cctv-audit/task15-enhancements/demo/normal/low_light_correction/1e43e347ee90427188319dd1b4b09811-f000007-t001_low_light_correction_enhanced.jpg",
+    "meta": "reports/ps04cctv-audit/task15-enhancements/demo/normal/low_light_correction/1e43e347ee90427188319dd1b4b09811-f000007-t001_low_light_correction_enhanced.json",
+    "orig_sha": "a97e98442b63bb5f72b3829c67ab3670770680f2f1ba48b33640e22926b31364",
+    "enh_sha": "3b6c2d4e4290f13412600c24143ebaf6b5e227438ad82458ad6f0aec0b86ce67",
+    "orig_dims": [
+      248,
+      339
+    ],
+    "enh_dims": [
+      372,
+      508
+    ],
+    "processing_ms": 145.605,
+    "warnings": [
+      "output_dimensions_changed_by_upscale"
+    ]
+  },
+  {
+    "sample": "normal",
+    "input": "data/cv/crops/0053076b6d0e4b9b83f7c5558223b2a5/1e43e347ee90427188319dd1b4b09811/frame_000007/1e43e347ee90427188319dd1b4b09811-f000007-t001.jpg",
+    "sharpness": 117.55292917096983,
+    "brightness": 113.58729422399848,
+    "preset": "low_contrast_correction",
+    "output": "reports/ps04cctv-audit/task15-enhancements/demo/normal/low_contrast_correction/1e43e347ee90427188319dd1b4b09811-f000007-t001_low_contrast_correction_enhanced.jpg",
+    "meta": "reports/ps04cctv-audit/task15-enhancements/demo/normal/low_contrast_correction/1e43e347ee90427188319dd1b4b09811-f000007-t001_low_contrast_correction_enhanced.json",
+    "orig_sha": "a97e98442b63bb5f72b3829c67ab3670770680f2f1ba48b33640e22926b31364",
+    "enh_sha": "84b754ba71873cc60e4c4ed2206bd5bf3a2aa70aadf9c0f48d280081755242b5",
+    "orig_dims": [
+      248,
+      339
+    ],
+    "enh_dims": [
+      372,
+      508
+    ],
+    "processing_ms": 140.825,
+    "warnings": [
+      "output_dimensions_changed_by_upscale"
+    ]
+  },
+  {
+    "sample": "normal",
+    "input": "data/cv/crops/0053076b6d0e4b9b83f7c5558223b2a5/1e43e347ee90427188319dd1b4b09811/frame_000007/1e43e347ee90427188319dd1b4b09811-f000007-t001.jpg",
+    "sharpness": 117.55292917096983,
+    "brightness": 113.58729422399848,
+    "preset": "noise_reduction",
+    "output": "reports/ps04cctv-audit/task15-enhancements/demo/normal/noise_reduction/1e43e347ee90427188319dd1b4b09811-f000007-t001_noise_reduction_enhanced.jpg",
+    "meta": "reports/ps04cctv-audit/task15-enhancements/demo/normal/noise_reduction/1e43e347ee90427188319dd1b4b09811-f000007-t001_noise_reduction_enhanced.json",
+    "orig_sha": "a97e98442b63bb5f72b3829c67ab3670770680f2f1ba48b33640e22926b31364",
+    "enh_sha": "a00ead5f76fd2ca87cbcc1eea81760c4cc98816887be3deb618cc72117156cbe",
+    "orig_dims": [
+      248,
+      339
+    ],
+    "enh_dims": [
+      248,
+      339
+    ],
+    "processing_ms": 138.174,
+    "warnings": []
+  }
+]

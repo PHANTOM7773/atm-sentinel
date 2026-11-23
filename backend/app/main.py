@@ -9,7 +9,7 @@ from fastapi.responses import JSONResponse
 
 from .config import APP_NAME, APP_VERSION, CORS_ORIGINS
 from .db import init_db
-from .routers import cases, cv, exports, frames, jobs, system, videos
+from .routers import cases, cv, cv_enhancement, exports, frames, jobs, system, videos
 from .schemas import AlignmentRequest
 from .services.security import env_passphrase, session_token
 
@@ -80,3 +80,4 @@ app.include_router(jobs.router)
 app.include_router(frames.router)
 app.include_router(exports.router)
 app.include_router(cv.router)
+app.include_router(cv_enhancement.router)

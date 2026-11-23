@@ -1,0 +1,35 @@
+{
+  "total_selected_frames": 48,
+  "annotated_frames": 48,
+  "unannotated_frames": 0,
+  "needs_review_frames": 0,
+  "total_face_boxes": 46,
+  "no_face_frames": 9,
+  "difficult_ignored_faces": 0,
+  "low_confidence_annotations": 0,
+  "condition_coverage": {
+    "visibility": {
+      "visible": 46
+    },
+    "pose": {
+      "unknown": 46
+    },
+    "face_size": {
+      "medium": 46
+    },
+    "blur": {
+      "none": 46
+    },
+    "illumination": {
+      "normal": 46
+    }
+  },
+  "validator_errors": [],
+  "validator_warnings": [],
+  "qa_status": "NOT_REVIEWED",
+  "benchmark_ready": false,
+  "benchmark_ready_reason": "Human annotation/QA not complete; JSON validation alone is insufficient.",
+  "selection_total": 48,
+  "missing_selected_frames": [],
+  "extra_frames": []
+}

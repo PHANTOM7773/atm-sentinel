@@ -173,7 +173,12 @@ export function CasesPage() {
     }
   };
 
-  const handleUpload = async (file: File | undefined) => {
+  const transactionTimestampValid = Boolean(fromLocalInput(txForm.transaction_ts) && fromLocalInput(txForm.cctv_ts)
+    && Number.isFinite(Date.parse(fromLocalInput(txForm.transaction_ts)))
+    && Number.isFinite(Date.parse(fromLocalInput(txForm.cctv_ts))));
+  const transactionFormValid = Boolean(txForm.reference.trim() && transactionTimestampValid);
+
+  const handleUpload = async (file: File | undefined, resetInput: () => void) => {
     if (!file || !selectedId) return;
     setUploading(true);
     setError("");
@@ -186,6 +191,7 @@ export function CasesPage() {
       setError((reason as Error).message);
     } finally {
       setUploading(false);
+      resetInput();
     }
   };
 
@@ -277,8 +283,8 @@ export function CasesPage() {
                     <div key={tx.id} className="px-4 py-3 text-xs">
                       <div className="flex justify-between gap-2"><span className="flex items-center gap-2 font-mono text-accent">{tx.reference}{isDemoTransaction(tx) ? <DemoBadge label="Demo record" /> : null}</span><Badge>{tx.transaction_type}</Badge></div>
                       <p className="mt-1 text-muted">ATM: {tx.atm_id || "—"} · Amount: {tx.amount || "—"}</p>
-                      <p className="mt-1 font-mono text-[11px] text-slate-300">TX {tx.transaction_ts}</p>
-                      <p className="font-mono text-[11px] text-slate-300">CCTV {tx.cctv_ts || "not set"}</p>
+                      <p className="mt-1 font-mono text-[11px] text-slate-300">TX (UTC) {tx.transaction_ts}</p>
+                      <p className="font-mono text-[11px] text-slate-300">CCTV (UTC) {tx.cctv_ts || "not set"}</p>
                     </div>
                   ))}
                   {!transactions.length ? <EmptyState title="No transactions" detail="Add an anonymized transaction reference and timestamps." /> : null}
@@ -310,7 +316,10 @@ export function CasesPage() {
                 </div>
                 <div className="border-t border-line p-4">
                   <Field label="Add video to case" hint="File bytes stay local. Accepted: MP4, AVI, MOV, MKV.">
-                    <Input type="file" accept=".mp4,.avi,.mov,.mkv,video/*" disabled={uploading} onChange={(event) => handleUpload(event.target.files?.[0])} />
+                    <Input type="file" accept=".mp4,.avi,.mov,.mkv" disabled={uploading} onChange={(event) => {
+                      const input = event.currentTarget;
+                      handleUpload(input.files?.[0], () => { input.value = ""; });
+                    }} />
                     <p className="mt-1 text-[11px] text-muted">DVR/NVR exports: use the vendor export/backup function to produce H.264 MP4. WMV, FLV, MPEG and MPG are not accepted; convert and preserve the original clip for evidence.</p>
                   </Field>
                   {uploading ? <p className="mt-2 text-xs text-accent">Validating and hashing video…</p> : null}
@@ -376,15 +385,16 @@ export function CasesPage() {
       </Modal>
 
       <Modal open={showTxForm} onClose={() => setShowTxForm(false)} title="Add transaction">
+        <p className="mb-3 text-[11px] text-muted">Enter wall-clock times as shown by the transaction record and CCTV. Values are stored and displayed as UTC ISO timestamps.</p>
         <div className="grid gap-4 sm:grid-cols-2">
           <Field label="Transaction reference"><Input value={txForm.reference} onChange={(event) => setTxForm({ ...txForm, reference: event.target.value })} placeholder="DEMO-TX-002" /></Field>
           <Field label="ATM identifier"><Input value={txForm.atm_id} onChange={(event) => setTxForm({ ...txForm, atm_id: event.target.value })} placeholder="ATM-DEMO-01" /></Field>
-          <Field label="Transaction timestamp"><Input type="datetime-local" step="1" value={txForm.transaction_ts} onChange={(event) => setTxForm({ ...txForm, transaction_ts: event.target.value })} /></Field>
-          <Field label="CCTV timestamp at same moment"><Input type="datetime-local" step="1" value={txForm.cctv_ts} onChange={(event) => setTxForm({ ...txForm, cctv_ts: event.target.value })} /></Field>
+          <Field label="Transaction timestamp (local input, stored UTC)"><Input type="datetime-local" step="1" value={txForm.transaction_ts} onChange={(event) => setTxForm({ ...txForm, transaction_ts: event.target.value })} /></Field>
+          <Field label="CCTV timestamp at same moment (local input, stored UTC)"><Input type="datetime-local" step="1" value={txForm.cctv_ts} onChange={(event) => setTxForm({ ...txForm, cctv_ts: event.target.value })} /></Field>
           <Field label="Type"><Select value={txForm.transaction_type} onChange={(event) => setTxForm({ ...txForm, transaction_type: event.target.value })}><option value="withdrawal">Withdrawal</option><option value="deposit">Deposit</option><option value="balance_enquiry">Balance enquiry</option><option value="card_retained">Card retained</option><option value="other">Other</option></Select></Field>
           <Field label="Amount (optional demo value)"><Input value={txForm.amount} onChange={(event) => setTxForm({ ...txForm, amount: event.target.value })} /></Field>
           <Field label="Notes" className="sm:col-span-2"><Textarea value={txForm.note} onChange={(event) => setTxForm({ ...txForm, note: event.target.value })} /></Field>
-          <div className="flex justify-end gap-2 sm:col-span-2"><Button onClick={() => setShowTxForm(false)}>Cancel</Button><Button variant="solid" onClick={handleTransaction}>Add transaction</Button></div>
+          <div className="flex justify-end gap-2 sm:col-span-2"><Button onClick={() => setShowTxForm(false)}>Cancel</Button><Button variant="solid" onClick={handleTransaction} disabled={!transactionFormValid}>Add transaction</Button></div>
         </div>
       </Modal>
     </div>

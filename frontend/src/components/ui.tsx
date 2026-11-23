@@ -1,5 +1,5 @@
 import type * as React from "react";
-import { type ButtonHTMLAttributes, type ReactNode } from "react";
+import { type ButtonHTMLAttributes, type ReactNode, useEffect, useId, useRef } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { LoaderCircle, ShieldCheck } from "lucide-react";
 import { cn } from "../lib/cn";
@@ -101,12 +101,25 @@ export function EmptyState({ title, detail, action }: { title: string; detail: s
 }
 
 export function Modal({ open, onClose, title, children, wide }: { open: boolean; onClose: () => void; title: string; children: ReactNode; wide?: boolean }) {
+  const titleId = useId();
+  const panelRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") onClose();
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    panelRef.current?.focus();
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [open, onClose]);
+
   if (!open) return null;
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4" onMouseDown={onClose}>
-      <div className={cn("max-h-[90vh] w-full overflow-auto rounded-lg border border-line bg-ink-850 shadow-2xl", wide ? "max-w-5xl" : "max-w-xl")} onMouseDown={(event) => event.stopPropagation()}>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4" role="dialog" aria-modal="true" aria-labelledby={titleId} onMouseDown={onClose}>
+      <div ref={panelRef} tabIndex={-1} className={cn("max-h-[90vh] w-full overflow-auto rounded-lg border border-line bg-ink-850 shadow-2xl focus:outline-none", wide ? "max-w-5xl" : "max-w-xl")} onMouseDown={(event) => event.stopPropagation()}>
         <div className="flex items-center justify-between border-b border-line px-4 py-3">
-          <h3 className="text-sm font-semibold text-slate-100">{title}</h3>
+          <h3 id={titleId} className="text-sm font-semibold text-slate-100">{title}</h3>
           <Button variant="ghost" size="sm" onClick={onClose}>Close</Button>
         </div>
         <div className="p-4">{children}</div>

@@ -1,0 +1,1259 @@
+{
+  "samples": {
+    "dark_sample": {
+      "input": "data/cv/crops/0053076b6d0e4b9b83f7c5558223b2a5/1e43e347ee90427188319dd1b4b09811/frame_000030/1e43e347ee90427188319dd1b4b09811-f000030-t003.jpg",
+      "variants": {
+        "original": {
+          "old_quality_score": 52.4,
+          "new_overall_score": 72.99,
+          "old_components": {
+            "sharpness_component": 0.981,
+            "illumination_component": 0.706,
+            "contrast_component": 0.483,
+            "size_component": 0.362,
+            "landmark_component": 0.0,
+            "frontal_component": 0.0
+          },
+          "new_dimensions": {
+            "sharpness": 98.07326031582828,
+            "resolution": 33.259375,
+            "exposure": 70.59211504161712,
+            "contrast": 48.339148918036095,
+            "noise": 95.5197238922119,
+            "pose": null,
+            "occlusion_visibility": null
+          },
+          "new_reason_codes": [
+            "sharpness_ok",
+            "tiny_face",
+            "exposure_ok",
+            "moderate_contrast",
+            "noise_ok",
+            "pose_not_assessed",
+            "occlusion_not_assessed"
+          ],
+          "new_missing_dimensions": [
+            "pose",
+            "occlusion_visibility"
+          ]
+        },
+        "blur": {
+          "old_quality_score": 22.7,
+          "new_overall_score": 36.92,
+          "old_components": {
+            "sharpness_component": 0.017,
+            "illumination_component": 0.703,
+            "contrast_component": 0.294,
+            "size_component": 0.362,
+            "landmark_component": 0.0,
+            "frontal_component": 0.0
+          },
+          "new_dimensions": {
+            "sharpness": 1.7150075257426178,
+            "resolution": 33.259375,
+            "exposure": 70.26047859690844,
+            "contrast": 29.36675838804329,
+            "noise": 100.0,
+            "pose": null,
+            "occlusion_visibility": null
+          },
+          "new_reason_codes": [
+            "low_sharpness",
+            "tiny_face",
+            "exposure_ok",
+            "low_contrast",
+            "noise_ok",
+            "pose_not_assessed",
+            "occlusion_not_assessed"
+          ],
+          "new_missing_dimensions": [
+            "pose",
+            "occlusion_visibility"
+          ]
+        },
+        "downscale": {
+          "old_quality_score": 27.2,
+          "new_overall_score": 42.3,
+          "old_components": {
+            "sharpness_component": 0.121,
+            "illumination_component": 0.706,
+            "contrast_component": 0.406,
+            "size_component": 0.362,
+            "landmark_component": 0.0,
+            "frontal_component": 0.0
+          },
+          "new_dimensions": {
+            "sharpness": 12.120299593867045,
+            "resolution": 33.259375,
+            "exposure": 70.56796224732462,
+            "contrast": 40.62225153658828,
+            "noise": 100.0,
+            "pose": null,
+            "occlusion_visibility": null
+          },
+          "new_reason_codes": [
+            "low_sharpness",
+            "tiny_face",
+            "exposure_ok",
+            "moderate_contrast",
+            "noise_ok",
+            "pose_not_assessed",
+            "occlusion_not_assessed"
+          ],
+          "new_missing_dimensions": [
+            "pose",
+            "occlusion_visibility"
+          ]
+        },
+        "low_light": {
+          "old_quality_score": 19.5,
+          "new_overall_score": 35.56,
+          "old_components": {
+            "sharpness_component": 0.355,
+            "illumination_component": 0.1,
+            "contrast_component": 0.167,
+            "size_component": 0.362,
+            "landmark_component": 0.0,
+            "frontal_component": 0.0
+          },
+          "new_dimensions": {
+            "sharpness": 35.50330789042935,
+            "resolution": 33.259375,
+            "exposure": 10.048026902497032,
+            "contrast": 16.72901497877729,
+            "noise": 100.0,
+            "pose": null,
+            "occlusion_visibility": null
+          },
+          "new_reason_codes": [
+            "moderate_sharpness",
+            "tiny_face",
+            "underexposed",
+            "low_contrast",
+            "noise_ok",
+            "pose_not_assessed",
+            "occlusion_not_assessed"
+          ],
+          "new_missing_dimensions": [
+            "pose",
+            "occlusion_visibility"
+          ]
+        },
+        "low_contrast": {
+          "old_quality_score": 38.3,
+          "new_overall_score": 56.32,
+          "old_components": {
+            "sharpness_component": 0.559,
+            "illumination_component": 0.786,
+            "contrast_component": 0.218,
+            "size_component": 0.362,
+            "landmark_component": 0.0,
+            "frontal_component": 0.0
+          },
+          "new_dimensions": {
+            "sharpness": 55.92057037564926,
+            "resolution": 33.259375,
+            "exposure": 78.6192033293698,
+            "contrast": 21.792463841925542,
+            "noise": 100.0,
+            "pose": null,
+            "occlusion_visibility": null
+          },
+          "new_reason_codes": [
+            "moderate_sharpness",
+            "tiny_face",
+            "exposure_ok",
+            "low_contrast",
+            "noise_ok",
+            "pose_not_assessed",
+            "occlusion_not_assessed"
+          ],
+          "new_missing_dimensions": [
+            "pose",
+            "occlusion_visibility"
+          ]
+        },
+        "noise": {
+          "old_quality_score": 53.8,
+          "new_overall_score": 62.82,
+          "old_components": {
+            "sharpness_component": 1.0,
+            "illumination_component": 0.7,
+            "contrast_component": 0.556,
+            "size_component": 0.362,
+            "landmark_component": 0.0,
+            "frontal_component": 0.0
+          },
+          "new_dimensions": {
+            "sharpness": 100.0,
+            "resolution": 33.259375,
+            "exposure": 70.00919664090368,
+            "contrast": 55.57511117439291,
+            "noise": 0.9548687934875498,
+            "pose": null,
+            "occlusion_visibility": null
+          },
+          "new_reason_codes": [
+            "sharpness_ok",
+            "tiny_face",
+            "exposure_ok",
+            "moderate_contrast",
+            "high_noise",
+            "pose_not_assessed",
+            "occlusion_not_assessed"
+          ],
+          "new_missing_dimensions": [
+            "pose",
+            "occlusion_visibility"
+          ]
+        }
+      }
+    },
+    "blurred_sample": {
+      "input": "data/cv/crops/0053076b6d0e4b9b83f7c5558223b2a5/1e43e347ee90427188319dd1b4b09811/frame_000004/1e43e347ee90427188319dd1b4b09811-f000004-t001.jpg",
+      "variants": {
+        "original": {
+          "old_quality_score": 59.9,
+          "new_overall_score": 81.82,
+          "old_components": {
+            "sharpness_component": 0.594,
+            "illumination_component": 0.85,
+            "contrast_component": 0.923,
+            "size_component": 1.0,
+            "landmark_component": 0.0,
+            "frontal_component": 0.0
+          },
+          "new_dimensions": {
+            "sharpness": 59.385999813397426,
+            "resolution": 100.0,
+            "exposure": 84.99624447638578,
+            "contrast": 92.31253264091941,
+            "noise": 100.0,
+            "pose": null,
+            "occlusion_visibility": null
+          },
+          "new_reason_codes": [
+            "moderate_sharpness",
+            "resolution_ok",
+            "exposure_ok",
+            "contrast_ok",
+            "noise_ok",
+            "pose_not_assessed",
+            "occlusion_not_assessed"
+          ],
+          "new_missing_dimensions": [
+            "pose",
+            "occlusion_visibility"
+          ]
+        },
+        "blur": {
+          "old_quality_score": 43.2,
+          "new_overall_score": 61.09,
+          "old_components": {
+            "sharpness_component": 0.015,
+            "illumination_component": 0.85,
+            "contrast_component": 0.892,
+            "size_component": 1.0,
+            "landmark_component": 0.0,
+            "frontal_component": 0.0
+          },
+          "new_dimensions": {
+            "sharpness": 1.5085573110176553,
+            "resolution": 100.0,
+            "exposure": 84.9823877577178,
+            "contrast": 89.20905020495798,
+            "noise": 100.0,
+            "pose": null,
+            "occlusion_visibility": null
+          },
+          "new_reason_codes": [
+            "low_sharpness",
+            "resolution_ok",
+            "exposure_ok",
+            "contrast_ok",
+            "noise_ok",
+            "pose_not_assessed",
+            "occlusion_not_assessed"
+          ],
+          "new_missing_dimensions": [
+            "pose",
+            "occlusion_visibility"
+          ]
+        },
+        "downscale": {
+          "old_quality_score": 44.2,
+          "new_overall_score": 62.32,
+          "old_components": {
+            "sharpness_component": 0.042,
+            "illumination_component": 0.85,
+            "contrast_component": 0.912,
+            "size_component": 1.0,
+            "landmark_component": 0.0,
+            "frontal_component": 0.0
+          },
+          "new_dimensions": {
+            "sharpness": 4.163107007180078,
+            "resolution": 100.0,
+            "exposure": 84.99001705911793,
+            "contrast": 91.18067836734274,
+            "noise": 100.0,
+            "pose": null,
+            "occlusion_visibility": null
+          },
+          "new_reason_codes": [
+            "low_sharpness",
+            "resolution_ok",
+            "exposure_ok",
+            "contrast_ok",
+            "noise_ok",
+            "pose_not_assessed",
+            "occlusion_not_assessed"
+          ],
+          "new_missing_dimensions": [
+            "pose",
+            "occlusion_visibility"
+          ]
+        },
+        "low_light": {
+          "old_quality_score": 24.3,
+          "new_overall_score": 41.66,
+          "old_components": {
+            "sharpness_component": 0.1,
+            "illumination_component": 0.183,
+            "contrast_component": 0.231,
+            "size_component": 1.0,
+            "landmark_component": 0.0,
+            "frontal_component": 0.0
+          },
+          "new_dimensions": {
+            "sharpness": 10.031967001257858,
+            "resolution": 100.0,
+            "exposure": 18.349347236972203,
+            "contrast": 23.08841414872861,
+            "noise": 100.0,
+            "pose": null,
+            "occlusion_visibility": null
+          },
+          "new_reason_codes": [
+            "low_sharpness",
+            "resolution_ok",
+            "underexposed",
+            "low_contrast",
+            "noise_ok",
+            "pose_not_assessed",
+            "occlusion_not_assessed"
+          ],
+          "new_missing_dimensions": [
+            "pose",
+            "occlusion_visibility"
+          ]
+        },
+        "low_contrast": {
+          "old_quality_score": 41.1,
+          "new_overall_score": 59.7,
+          "old_components": {
+            "sharpness_component": 0.179,
+            "illumination_component": 0.851,
+            "contrast_component": 0.416,
+            "size_component": 1.0,
+            "landmark_component": 0.0,
+            "frontal_component": 0.0
+          },
+          "new_dimensions": {
+            "sharpness": 17.86853425689553,
+            "resolution": 100.0,
+            "exposure": 85.11688280477533,
+            "contrast": 41.59667125695925,
+            "noise": 100.0,
+            "pose": null,
+            "occlusion_visibility": null
+          },
+          "new_reason_codes": [
+            "low_sharpness",
+            "resolution_ok",
+            "exposure_ok",
+            "moderate_contrast",
+            "noise_ok",
+            "pose_not_assessed",
+            "occlusion_not_assessed"
+          ],
+          "new_missing_dimensions": [
+            "pose",
+            "occlusion_visibility"
+          ]
+        },
+        "noise": {
+          "old_quality_score": 71.6,
+          "new_overall_score": 84.34,
+          "old_components": {
+            "sharpness_component": 1.0,
+            "illumination_component": 0.854,
+            "contrast_component": 0.948,
+            "size_component": 1.0,
+            "landmark_component": 0.0,
+            "frontal_component": 0.0
+          },
+          "new_dimensions": {
+            "sharpness": 100.0,
+            "resolution": 100.0,
+            "exposure": 85.3894491339217,
+            "contrast": 94.8192696999522,
+            "noise": 2.8711915016174303,
+            "pose": null,
+            "occlusion_visibility": null
+          },
+          "new_reason_codes": [
+            "sharpness_ok",
+            "resolution_ok",
+            "exposure_ok",
+            "contrast_ok",
+            "high_noise",
+            "pose_not_assessed",
+            "occlusion_not_assessed"
+          ],
+          "new_missing_dimensions": [
+            "pose",
+            "occlusion_visibility"
+          ]
+        }
+      }
+    },
+    "normal_sample": {
+      "input": "data/cv/crops/0053076b6d0e4b9b83f7c5558223b2a5/1e43e347ee90427188319dd1b4b09811/frame_000092/1e43e347ee90427188319dd1b4b09811-f000092-t001.jpg",
+      "variants": {
+        "original": {
+          "old_quality_score": 61.4,
+          "new_overall_score": 83.68,
+          "old_components": {
+            "sharpness_component": 0.641,
+            "illumination_component": 0.912,
+            "contrast_component": 0.859,
+            "size_component": 1.0,
+            "landmark_component": 0.0,
+            "frontal_component": 0.0
+          },
+          "new_dimensions": {
+            "sharpness": 64.14771189645676,
+            "resolution": 100.0,
+            "exposure": 91.17189286011181,
+            "contrast": 85.90529945665484,
+            "noise": 100.0,
+            "pose": null,
+            "occlusion_visibility": null
+          },
+          "new_reason_codes": [
+            "sharpness_ok",
+            "resolution_ok",
+            "exposure_ok",
+            "contrast_ok",
+            "noise_ok",
+            "pose_not_assessed",
+            "occlusion_not_assessed"
+          ],
+          "new_missing_dimensions": [
+            "pose",
+            "occlusion_visibility"
+          ]
+        },
+        "blur": {
+          "old_quality_score": 43.2,
+          "new_overall_score": 61.02,
+          "old_components": {
+            "sharpness_component": 0.016,
+            "illumination_component": 0.912,
+            "contrast_component": 0.808,
+            "size_component": 1.0,
+            "landmark_component": 0.0,
+            "frontal_component": 0.0
+          },
+          "new_dimensions": {
+            "sharpness": 1.5823386780676296,
+            "resolution": 100.0,
+            "exposure": 91.1514511503211,
+            "contrast": 80.84278905415853,
+            "noise": 100.0,
+            "pose": null,
+            "occlusion_visibility": null
+          },
+          "new_reason_codes": [
+            "low_sharpness",
+            "resolution_ok",
+            "exposure_ok",
+            "contrast_ok",
+            "noise_ok",
+            "pose_not_assessed",
+            "occlusion_not_assessed"
+          ],
+          "new_missing_dimensions": [
+            "pose",
+            "occlusion_visibility"
+          ]
+        },
+        "downscale": {
+          "old_quality_score": 44.6,
+          "new_overall_score": 62.77,
+          "old_components": {
+            "sharpness_component": 0.051,
+            "illumination_component": 0.912,
+            "contrast_component": 0.842,
+            "size_component": 1.0,
+            "landmark_component": 0.0,
+            "frontal_component": 0.0
+          },
+          "new_dimensions": {
+            "sharpness": 5.1128243254729195,
+            "resolution": 100.0,
+            "exposure": 91.1761386957832,
+            "contrast": 84.24141339560235,
+            "noise": 100.0,
+            "pose": null,
+            "occlusion_visibility": null
+          },
+          "new_reason_codes": [
+            "low_sharpness",
+            "resolution_ok",
+            "exposure_ok",
+            "contrast_ok",
+            "noise_ok",
+            "pose_not_assessed",
+            "occlusion_not_assessed"
+          ],
+          "new_missing_dimensions": [
+            "pose",
+            "occlusion_visibility"
+          ]
+        },
+        "low_light": {
+          "old_quality_score": 25.1,
+          "new_overall_score": 42.55,
+          "old_components": {
+            "sharpness_component": 0.122,
+            "illumination_component": 0.193,
+            "contrast_component": 0.227,
+            "size_component": 1.0,
+            "landmark_component": 0.0,
+            "frontal_component": 0.0
+          },
+          "new_dimensions": {
+            "sharpness": 12.223391792413342,
+            "resolution": 100.0,
+            "exposure": 19.282986327597317,
+            "contrast": 22.717936560777645,
+            "noise": 100.0,
+            "pose": null,
+            "occlusion_visibility": null
+          },
+          "new_reason_codes": [
+            "low_sharpness",
+            "resolution_ok",
+            "underexposed",
+            "low_contrast",
+            "noise_ok",
+            "pose_not_assessed",
+            "occlusion_not_assessed"
+          ],
+          "new_missing_dimensions": [
+            "pose",
+            "occlusion_visibility"
+          ]
+        },
+        "low_contrast": {
+          "old_quality_score": 41.8,
+          "new_overall_score": 60.5,
+          "old_components": {
+            "sharpness_component": 0.199,
+            "illumination_component": 0.879,
+            "contrast_component": 0.387,
+            "size_component": 1.0,
+            "landmark_component": 0.0,
+            "frontal_component": 0.0
+          },
+          "new_dimensions": {
+            "sharpness": 19.911185537610976,
+            "resolution": 100.0,
+            "exposure": 87.89200509954902,
+            "contrast": 38.654730272839124,
+            "noise": 100.0,
+            "pose": null,
+            "occlusion_visibility": null
+          },
+          "new_reason_codes": [
+            "low_sharpness",
+            "resolution_ok",
+            "exposure_ok",
+            "low_contrast",
+            "noise_ok",
+            "pose_not_assessed",
+            "occlusion_not_assessed"
+          ],
+          "new_missing_dimensions": [
+            "pose",
+            "occlusion_visibility"
+          ]
+        },
+        "noise": {
+          "old_quality_score": 71.9,
+          "new_overall_score": 84.56,
+          "old_components": {
+            "sharpness_component": 1.0,
+            "illumination_component": 0.913,
+            "contrast_component": 0.89,
+            "size_component": 1.0,
+            "landmark_component": 0.0,
+            "frontal_component": 0.0
+          },
+          "new_dimensions": {
+            "sharpness": 100.0,
+            "resolution": 100.0,
+            "exposure": 91.3483994741983,
+            "contrast": 89.01379584927929,
+            "noise": 2.6204991340637216,
+            "pose": null,
+            "occlusion_visibility": null
+          },
+          "new_reason_codes": [
+            "sharpness_ok",
+            "resolution_ok",
+            "exposure_ok",
+            "contrast_ok",
+            "high_noise",
+            "pose_not_assessed",
+            "occlusion_not_assessed"
+          ],
+          "new_missing_dimensions": [
+            "pose",
+            "occlusion_visibility"
+          ]
+        }
+      }
+    },
+    "task15_dark": {
+      "input": "data/cv/crops/0053076b6d0e4b9b83f7c5558223b2a5/1e43e347ee90427188319dd1b4b09811/frame_000004/1e43e347ee90427188319dd1b4b09811-f000004-t001.jpg",
+      "variants": {
+        "original": {
+          "old_quality_score": 59.9,
+          "new_overall_score": 81.82,
+          "old_components": {
+            "sharpness_component": 0.594,
+            "illumination_component": 0.85,
+            "contrast_component": 0.923,
+            "size_component": 1.0,
+            "landmark_component": 0.0,
+            "frontal_component": 0.0
+          },
+          "new_dimensions": {
+            "sharpness": 59.385999813397426,
+            "resolution": 100.0,
+            "exposure": 84.99624447638578,
+            "contrast": 92.31253264091941,
+            "noise": 100.0,
+            "pose": null,
+            "occlusion_visibility": null
+          },
+          "new_reason_codes": [
+            "moderate_sharpness",
+            "resolution_ok",
+            "exposure_ok",
+            "contrast_ok",
+            "noise_ok",
+            "pose_not_assessed",
+            "occlusion_not_assessed"
+          ],
+          "new_missing_dimensions": [
+            "pose",
+            "occlusion_visibility"
+          ]
+        },
+        "blur": {
+          "old_quality_score": 43.2,
+          "new_overall_score": 61.09,
+          "old_components": {
+            "sharpness_component": 0.015,
+            "illumination_component": 0.85,
+            "contrast_component": 0.892,
+            "size_component": 1.0,
+            "landmark_component": 0.0,
+            "frontal_component": 0.0
+          },
+          "new_dimensions": {
+            "sharpness": 1.5085573110176553,
+            "resolution": 100.0,
+            "exposure": 84.9823877577178,
+            "contrast": 89.20905020495798,
+            "noise": 100.0,
+            "pose": null,
+            "occlusion_visibility": null
+          },
+          "new_reason_codes": [
+            "low_sharpness",
+            "resolution_ok",
+            "exposure_ok",
+            "contrast_ok",
+            "noise_ok",
+            "pose_not_assessed",
+            "occlusion_not_assessed"
+          ],
+          "new_missing_dimensions": [
+            "pose",
+            "occlusion_visibility"
+          ]
+        },
+        "downscale": {
+          "old_quality_score": 44.2,
+          "new_overall_score": 62.32,
+          "old_components": {
+            "sharpness_component": 0.042,
+            "illumination_component": 0.85,
+            "contrast_component": 0.912,
+            "size_component": 1.0,
+            "landmark_component": 0.0,
+            "frontal_component": 0.0
+          },
+          "new_dimensions": {
+            "sharpness": 4.163107007180078,
+            "resolution": 100.0,
+            "exposure": 84.99001705911793,
+            "contrast": 91.18067836734274,
+            "noise": 100.0,
+            "pose": null,
+            "occlusion_visibility": null
+          },
+          "new_reason_codes": [
+            "low_sharpness",
+            "resolution_ok",
+            "exposure_ok",
+            "contrast_ok",
+            "noise_ok",
+            "pose_not_assessed",
+            "occlusion_not_assessed"
+          ],
+          "new_missing_dimensions": [
+            "pose",
+            "occlusion_visibility"
+          ]
+        },
+        "low_light": {
+          "old_quality_score": 24.3,
+          "new_overall_score": 41.66,
+          "old_components": {
+            "sharpness_component": 0.1,
+            "illumination_component": 0.183,
+            "contrast_component": 0.231,
+            "size_component": 1.0,
+            "landmark_component": 0.0,
+            "frontal_component": 0.0
+          },
+          "new_dimensions": {
+            "sharpness": 10.031967001257858,
+            "resolution": 100.0,
+            "exposure": 18.349347236972203,
+            "contrast": 23.08841414872861,
+            "noise": 100.0,
+            "pose": null,
+            "occlusion_visibility": null
+          },
+          "new_reason_codes": [
+            "low_sharpness",
+            "resolution_ok",
+            "underexposed",
+            "low_contrast",
+            "noise_ok",
+            "pose_not_assessed",
+            "occlusion_not_assessed"
+          ],
+          "new_missing_dimensions": [
+            "pose",
+            "occlusion_visibility"
+          ]
+        },
+        "low_contrast": {
+          "old_quality_score": 41.1,
+          "new_overall_score": 59.7,
+          "old_components": {
+            "sharpness_component": 0.179,
+            "illumination_component": 0.851,
+            "contrast_component": 0.416,
+            "size_component": 1.0,
+            "landmark_component": 0.0,
+            "frontal_component": 0.0
+          },
+          "new_dimensions": {
+            "sharpness": 17.86853425689553,
+            "resolution": 100.0,
+            "exposure": 85.11688280477533,
+            "contrast": 41.59667125695925,
+            "noise": 100.0,
+            "pose": null,
+            "occlusion_visibility": null
+          },
+          "new_reason_codes": [
+            "low_sharpness",
+            "resolution_ok",
+            "exposure_ok",
+            "moderate_contrast",
+            "noise_ok",
+            "pose_not_assessed",
+            "occlusion_not_assessed"
+          ],
+          "new_missing_dimensions": [
+            "pose",
+            "occlusion_visibility"
+          ]
+        },
+        "noise": {
+          "old_quality_score": 71.6,
+          "new_overall_score": 84.34,
+          "old_components": {
+            "sharpness_component": 1.0,
+            "illumination_component": 0.854,
+            "contrast_component": 0.948,
+            "size_component": 1.0,
+            "landmark_component": 0.0,
+            "frontal_component": 0.0
+          },
+          "new_dimensions": {
+            "sharpness": 100.0,
+            "resolution": 100.0,
+            "exposure": 85.3894491339217,
+            "contrast": 94.8192696999522,
+            "noise": 2.8711915016174303,
+            "pose": null,
+            "occlusion_visibility": null
+          },
+          "new_reason_codes": [
+            "sharpness_ok",
+            "resolution_ok",
+            "exposure_ok",
+            "contrast_ok",
+            "high_noise",
+            "pose_not_assessed",
+            "occlusion_not_assessed"
+          ],
+          "new_missing_dimensions": [
+            "pose",
+            "occlusion_visibility"
+          ]
+        }
+      }
+    },
+    "task15_blurred": {
+      "input": "data/cv/crops/0053076b6d0e4b9b83f7c5558223b2a5/1e43e347ee90427188319dd1b4b09811/frame_000004/1e43e347ee90427188319dd1b4b09811-f000004-t001.jpg",
+      "variants": {
+        "original": {
+          "old_quality_score": 59.9,
+          "new_overall_score": 81.82,
+          "old_components": {
+            "sharpness_component": 0.594,
+            "illumination_component": 0.85,
+            "contrast_component": 0.923,
+            "size_component": 1.0,
+            "landmark_component": 0.0,
+            "frontal_component": 0.0
+          },
+          "new_dimensions": {
+            "sharpness": 59.385999813397426,
+            "resolution": 100.0,
+            "exposure": 84.99624447638578,
+            "contrast": 92.31253264091941,
+            "noise": 100.0,
+            "pose": null,
+            "occlusion_visibility": null
+          },
+          "new_reason_codes": [
+            "moderate_sharpness",
+            "resolution_ok",
+            "exposure_ok",
+            "contrast_ok",
+            "noise_ok",
+            "pose_not_assessed",
+            "occlusion_not_assessed"
+          ],
+          "new_missing_dimensions": [
+            "pose",
+            "occlusion_visibility"
+          ]
+        },
+        "blur": {
+          "old_quality_score": 43.2,
+          "new_overall_score": 61.09,
+          "old_components": {
+            "sharpness_component": 0.015,
+            "illumination_component": 0.85,
+            "contrast_component": 0.892,
+            "size_component": 1.0,
+            "landmark_component": 0.0,
+            "frontal_component": 0.0
+          },
+          "new_dimensions": {
+            "sharpness": 1.5085573110176553,
+            "resolution": 100.0,
+            "exposure": 84.9823877577178,
+            "contrast": 89.20905020495798,
+            "noise": 100.0,
+            "pose": null,
+            "occlusion_visibility": null
+          },
+          "new_reason_codes": [
+            "low_sharpness",
+            "resolution_ok",
+            "exposure_ok",
+            "contrast_ok",
+            "noise_ok",
+            "pose_not_assessed",
+            "occlusion_not_assessed"
+          ],
+          "new_missing_dimensions": [
+            "pose",
+            "occlusion_visibility"
+          ]
+        },
+        "downscale": {
+          "old_quality_score": 44.2,
+          "new_overall_score": 62.32,
+          "old_components": {
+            "sharpness_component": 0.042,
+            "illumination_component": 0.85,
+            "contrast_component": 0.912,
+            "size_component": 1.0,
+            "landmark_component": 0.0,
+            "frontal_component": 0.0
+          },
+          "new_dimensions": {
+            "sharpness": 4.163107007180078,
+            "resolution": 100.0,
+            "exposure": 84.99001705911793,
+            "contrast": 91.18067836734274,
+            "noise": 100.0,
+            "pose": null,
+            "occlusion_visibility": null
+          },
+          "new_reason_codes": [
+            "low_sharpness",
+            "resolution_ok",
+            "exposure_ok",
+            "contrast_ok",
+            "noise_ok",
+            "pose_not_assessed",
+            "occlusion_not_assessed"
+          ],
+          "new_missing_dimensions": [
+            "pose",
+            "occlusion_visibility"
+          ]
+        },
+        "low_light": {
+          "old_quality_score": 24.3,
+          "new_overall_score": 41.66,
+          "old_components": {
+            "sharpness_component": 0.1,
+            "illumination_component": 0.183,
+            "contrast_component": 0.231,
+            "size_component": 1.0,
+            "landmark_component": 0.0,
+            "frontal_component": 0.0
+          },
+          "new_dimensions": {
+            "sharpness": 10.031967001257858,
+            "resolution": 100.0,
+            "exposure": 18.349347236972203,
+            "contrast": 23.08841414872861,
+            "noise": 100.0,
+            "pose": null,
+            "occlusion_visibility": null
+          },
+          "new_reason_codes": [
+            "low_sharpness",
+            "resolution_ok",
+            "underexposed",
+            "low_contrast",
+            "noise_ok",
+            "pose_not_assessed",
+            "occlusion_not_assessed"
+          ],
+          "new_missing_dimensions": [
+            "pose",
+            "occlusion_visibility"
+          ]
+        },
+        "low_contrast": {
+          "old_quality_score": 41.1,
+          "new_overall_score": 59.7,
+          "old_components": {
+            "sharpness_component": 0.179,
+            "illumination_component": 0.851,
+            "contrast_component": 0.416,
+            "size_component": 1.0,
+            "landmark_component": 0.0,
+            "frontal_component": 0.0
+          },
+          "new_dimensions": {
+            "sharpness": 17.86853425689553,
+            "resolution": 100.0,
+            "exposure": 85.11688280477533,
+            "contrast": 41.59667125695925,
+            "noise": 100.0,
+            "pose": null,
+            "occlusion_visibility": null
+          },
+          "new_reason_codes": [
+            "low_sharpness",
+            "resolution_ok",
+            "exposure_ok",
+            "moderate_contrast",
+            "noise_ok",
+            "pose_not_assessed",
+            "occlusion_not_assessed"
+          ],
+          "new_missing_dimensions": [
+            "pose",
+            "occlusion_visibility"
+          ]
+        },
+        "noise": {
+          "old_quality_score": 71.6,
+          "new_overall_score": 84.34,
+          "old_components": {
+            "sharpness_component": 1.0,
+            "illumination_component": 0.854,
+            "contrast_component": 0.948,
+            "size_component": 1.0,
+            "landmark_component": 0.0,
+            "frontal_component": 0.0
+          },
+          "new_dimensions": {
+            "sharpness": 100.0,
+            "resolution": 100.0,
+            "exposure": 85.3894491339217,
+            "contrast": 94.8192696999522,
+            "noise": 2.8711915016174303,
+            "pose": null,
+            "occlusion_visibility": null
+          },
+          "new_reason_codes": [
+            "sharpness_ok",
+            "resolution_ok",
+            "exposure_ok",
+            "contrast_ok",
+            "high_noise",
+            "pose_not_assessed",
+            "occlusion_not_assessed"
+          ],
+          "new_missing_dimensions": [
+            "pose",
+            "occlusion_visibility"
+          ]
+        }
+      }
+    },
+    "task15_normal": {
+      "input": "data/cv/crops/0053076b6d0e4b9b83f7c5558223b2a5/1e43e347ee90427188319dd1b4b09811/frame_000007/1e43e347ee90427188319dd1b4b09811-f000007-t001.jpg",
+      "variants": {
+        "original": {
+          "old_quality_score": 60.8,
+          "new_overall_score": 82.99,
+          "old_components": {
+            "sharpness_component": 0.625,
+            "illumination_component": 0.887,
+            "contrast_component": 0.883,
+            "size_component": 1.0,
+            "landmark_component": 0.0,
+            "frontal_component": 0.0
+          },
+          "new_dimensions": {
+            "sharpness": 62.45416538997202,
+            "resolution": 100.0,
+            "exposure": 88.74007361249882,
+            "contrast": 88.29595372086496,
+            "noise": 100.0,
+            "pose": null,
+            "occlusion_visibility": null
+          },
+          "new_reason_codes": [
+            "moderate_sharpness",
+            "resolution_ok",
+            "exposure_ok",
+            "contrast_ok",
+            "noise_ok",
+            "pose_not_assessed",
+            "occlusion_not_assessed"
+          ],
+          "new_missing_dimensions": [
+            "pose",
+            "occlusion_visibility"
+          ]
+        },
+        "blur": {
+          "old_quality_score": 43.3,
+          "new_overall_score": 61.18,
+          "old_components": {
+            "sharpness_component": 0.015,
+            "illumination_component": 0.887,
+            "contrast_component": 0.85,
+            "size_component": 1.0,
+            "landmark_component": 0.0,
+            "frontal_component": 0.0
+          },
+          "new_dimensions": {
+            "sharpness": 1.5341654695091966,
+            "resolution": 100.0,
+            "exposure": 88.72842994695024,
+            "contrast": 85.01833311881435,
+            "noise": 100.0,
+            "pose": null,
+            "occlusion_visibility": null
+          },
+          "new_reason_codes": [
+            "low_sharpness",
+            "resolution_ok",
+            "exposure_ok",
+            "contrast_ok",
+            "noise_ok",
+            "pose_not_assessed",
+            "occlusion_not_assessed"
+          ],
+          "new_missing_dimensions": [
+            "pose",
+            "occlusion_visibility"
+          ]
+        },
+        "downscale": {
+          "old_quality_score": 44.2,
+          "new_overall_score": 62.29,
+          "old_components": {
+            "sharpness_component": 0.038,
+            "illumination_component": 0.888,
+            "contrast_component": 0.872,
+            "size_component": 1.0,
+            "landmark_component": 0.0,
+            "frontal_component": 0.0
+          },
+          "new_dimensions": {
+            "sharpness": 3.762210441324121,
+            "resolution": 100.0,
+            "exposure": 88.77843358966125,
+            "contrast": 87.15156540124698,
+            "noise": 100.0,
+            "pose": null,
+            "occlusion_visibility": null
+          },
+          "new_reason_codes": [
+            "low_sharpness",
+            "resolution_ok",
+            "exposure_ok",
+            "contrast_ok",
+            "noise_ok",
+            "pose_not_assessed",
+            "occlusion_not_assessed"
+          ],
+          "new_missing_dimensions": [
+            "pose",
+            "occlusion_visibility"
+          ]
+        },
+        "low_light": {
+          "old_quality_score": 24.4,
+          "new_overall_score": 41.77,
+          "old_components": {
+            "sharpness_component": 0.102,
+            "illumination_component": 0.19,
+            "contrast_component": 0.225,
+            "size_component": 1.0,
+            "landmark_component": 0.0,
+            "frontal_component": 0.0
+          },
+          "new_dimensions": {
+            "sharpness": 10.249409616391459,
+            "resolution": 100.0,
+            "exposure": 18.9602550492435,
+            "contrast": 22.52431472553984,
+            "noise": 100.0,
+            "pose": null,
+            "occlusion_visibility": null
+          },
+          "new_reason_codes": [
+            "low_sharpness",
+            "resolution_ok",
+            "underexposed",
+            "low_contrast",
+            "noise_ok",
+            "pose_not_assessed",
+            "occlusion_not_assessed"
+          ],
+          "new_missing_dimensions": [
+            "pose",
+            "occlusion_visibility"
+          ]
+        },
+        "low_contrast": {
+          "old_quality_score": 41.6,
+          "new_overall_score": 60.21,
+          "old_components": {
+            "sharpness_component": 0.192,
+            "illumination_component": 0.868,
+            "contrast_component": 0.398,
+            "size_component": 1.0,
+            "landmark_component": 0.0,
+            "frontal_component": 0.0
+          },
+          "new_dimensions": {
+            "sharpness": 19.20285374468884,
+            "resolution": 100.0,
+            "exposure": 86.79351850199829,
+            "contrast": 39.78274873977522,
+            "noise": 100.0,
+            "pose": null,
+            "occlusion_visibility": null
+          },
+          "new_reason_codes": [
+            "low_sharpness",
+            "resolution_ok",
+            "exposure_ok",
+            "moderate_contrast",
+            "noise_ok",
+            "pose_not_assessed",
+            "occlusion_not_assessed"
+          ],
+          "new_missing_dimensions": [
+            "pose",
+            "occlusion_visibility"
+          ]
+        },
+        "noise": {
+          "old_quality_score": 71.8,
+          "new_overall_score": 84.46,
+          "old_components": {
+            "sharpness_component": 1.0,
+            "illumination_component": 0.891,
+            "contrast_component": 0.911,
+            "size_component": 1.0,
+            "landmark_component": 0.0,
+            "frontal_component": 0.0
+          },
+          "new_dimensions": {
+            "sharpness": 100.0,
+            "resolution": 100.0,
+            "exposure": 89.07676418724427,
+            "contrast": 91.08385701869871,
+            "noise": 2.7483963966369616,
+            "pose": null,
+            "occlusion_visibility": null
+          },
+          "new_reason_codes": [
+            "sharpness_ok",
+            "resolution_ok",
+            "exposure_ok",
+            "contrast_ok",
+            "high_noise",
+            "pose_not_assessed",
+            "occlusion_not_assessed"
+          ],
+          "new_missing_dimensions": [
+            "pose",
+            "occlusion_visibility"
+          ]
+        }
+      }
+    }
+  },
+  "inconsistencies": []
+}

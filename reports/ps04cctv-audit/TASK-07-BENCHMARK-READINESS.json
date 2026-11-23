@@ -1,0 +1,51 @@
+{
+  "task": "TASK-07",
+  "generated_at": "2026-11-23T12:35:00Z",
+  "status": "partially_ready_isolated_experimental_only",
+  "existing_assets": {
+    "synthetic_manifest": "data/datasets/synthetic/cv/manifest.json",
+    "clips": [
+      "subject_a_front.mp4",
+      "subject_a_side.mp4",
+      "subject_b_front.mp4",
+      "multi_subject.mp4",
+      "challenges.mp4",
+      "no_face.mp4"
+    ],
+    "label_types_available": ["frame_presence_face", "subject_identity_labels_synthetic_limited"],
+    "existing_runners": [
+      "scripts/run_cv_baseline_benchmark.py",
+      "scripts/run_yunet_recall_experiment.py",
+      "scripts/run_yunet_fallback_experiment.py",
+      "scripts/run_yunet_person_gate_experiment.py",
+      "scripts/run_yolox_threshold_experiment.py"
+    ]
+  },
+  "metrics_readiness": {
+    "frame_presence_precision_recall_f1": "ready_where_labels_exist",
+    "no_face_false_positives": "ready",
+    "confidence_analysis": "ready",
+    "latency_measurement": "ready_limited_cpu_wall_clock",
+    "memory_measurement": "partial_needs_explicit_rss_capture",
+    "bbox_iou_map_localization": "NOT_ASSESSABLE_no_bbox_gt",
+    "person_detection_accuracy": "NOT_ASSESSABLE_no_person_bbox_gt",
+    "track_id_switches_fragmentation": "NOT_ASSESSABLE_no_track_gt",
+    "real_world_cctv_generalization": "NOT_ASSESSABLE_no_real_data"
+  },
+  "benchmark_requirements_for_new_detector": [
+    "Legally approved weight with source+revision+SHA256",
+    "Do not download/install without explicit approval",
+    "Adapter must return original-frame bboxes/confidence/timestamps/model identity/latency/errors",
+    "No production default/pipeline/config changes",
+    "Per-condition breakdowns: normal/side/blur/dark/occluded/small-face where labels exist",
+    "Report unsupported metrics as NOT_ASSESSABLE",
+    "No fake GT; adjacent frames not independent subjects"
+  ],
+  "blocking_gaps": [
+    "No bbox ground truth",
+    "No person/track ground truth",
+    "No per-frame occlusion/pose/illumination annotation",
+    "No approved alternative detector weights locally",
+    "ONNXRuntime/torch not installed for non-OpenCV runtimes"
+  ]
+}

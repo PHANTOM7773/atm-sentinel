@@ -78,7 +78,15 @@ export const api = {
   },
   url: (path: string) => `${BASE_URL}${path}`,
   download: (path: string) => {
-    window.open(`${BASE_URL}${path}`, "_blank", "noopener");
+    const anchor = document.createElement("a");
+    anchor.href = `${BASE_URL}${path}`;
+    anchor.download = "";
+    document.body.appendChild(anchor);
+    try {
+      anchor.click();
+    } finally {
+      anchor.remove();
+    }
   },
 };
 
@@ -166,6 +174,11 @@ export const cvApi = {
     ),
   cropUrl: (caseId: string, runId: string, observationId: string, cropId: string) =>
     `${BASE_URL}/api/cv/runs/${encodeURIComponent(runId)}/observations/${encodeURIComponent(observationId)}/crop${qs({ case_id: caseId, crop_id: cropId })}`,
+  enhancementPresets: () => api.get<{ items: import("./types").CvEnhancementPreset[]; derived_label: string }>("/api/cv/enhancement/presets"),
+  enhanceCrop: (payload: { case_id: string; cv_run_id: string; observation_id: string; crop_id: string; preset: string }) =>
+    api.post<import("./types").CvEnhancedCropResult>("/api/cv/enhancement/face-crop", payload),
+  enhancedCropUrl: (caseId: string, runId: string, observationId: string, cropId: string, preset: string) =>
+    `${BASE_URL}/api/cv/enhancement/face-crop/image${qs({ case_id: caseId, cv_run_id: runId, observation_id: observationId, crop_id: cropId, preset })}`,
   searchCandidates: (payload: CvCandidateSearchRequest) =>
     api.post<CvCandidateSearchResponse>("/api/cv/candidates/search", payload),
 };

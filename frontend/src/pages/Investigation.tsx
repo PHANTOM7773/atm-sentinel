@@ -2,13 +2,53 @@ import { useCallback, useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { ArrowLeft, ArrowRight, Check, CircleDot, FileVideo, Play, ShieldCheck } from "lucide-react";
 import { api, qs } from "../lib/api";
-import { formatBytes, formatSeconds, fromLocalInput, toLocalInput } from "../lib/format";
+import { formatBytes, formatSeconds, fromLocalInput } from "../lib/format";
 import { demoOptionLabel, isDemoCase, isDemoTransaction, isDemoVideo } from "../lib/demo";
-import { CV_ASSOCIATION_LIMITATION } from "../lib/types";
+import { CV_ASSOCIATION_LIMITATION, CV_MAX_FRAMES } from "../lib/types";
 import type { AlignmentResult, CaseRecord, JobRecord, TransactionRecord, VideoRecord } from "../lib/types";
 import { Alert, Badge, Button, Card, CardHeader, DemoDataBanner, Field, Input, KeyValue, ProgressBar, Select, Textarea } from "../components/ui";
 
 const STEPS = ["Case", "Transaction", "Upload video", "Metadata", "Clock offset", "Analysis window", "Process"];
+const ALLOWED_VIDEO_EXTENSIONS = ["mp4", "avi", "mov", "mkv"];
+const MAX_UPLOAD_BYTES = 500 * 1024 * 1024;
+
+export interface InvestigationFormValues {
+  video_start_ts: string;
+  cctv_reference_video_time: string;
+  clock_offset_minutes: string;
+  window_before_seconds: string;
+  window_after_seconds: string;
+  coarse_interval_seconds: string;
+  fine_interval_seconds: string;
+  fine_radius_seconds: string;
+  max_frames: string;
+}
+
+export function videoFileError(file: File | undefined): string {
+  if (!file) return "Choose a video file first.";
+  const extension = file.name.includes(".") ? file.name.split(".").pop()?.toLowerCase() ?? "" : "";
+  if (!ALLOWED_VIDEO_EXTENSIONS.includes(extension)) return "Unsupported format. Use MP4, AVI, MOV or MKV.";
+  if (file.size > MAX_UPLOAD_BYTES) return "The video exceeds the 500 MB local upload limit.";
+  return "";
+}
+
+export function investigationSettingsValid(form: InvestigationFormValues): boolean {
+  const numbers = [
+    Number(form.cctv_reference_video_time),
+    Number(form.window_before_seconds),
+    Number(form.window_after_seconds),
+    Number(form.coarse_interval_seconds),
+    Number(form.fine_interval_seconds),
+    Number(form.fine_radius_seconds),
+  ];
+  const maxFrames = Number(form.max_frames);
+  return numbers.every((value) => Number.isFinite(value) && value >= 0)
+    && Number(form.coarse_interval_seconds) > 0
+    && Number(form.fine_interval_seconds) > 0
+    && Number.isInteger(maxFrames)
+    && maxFrames >= 1
+    && maxFrames <= CV_MAX_FRAMES;
+}
 
 export function InvestigationPage() {
   const [params, setParams] = useSearchParams();
@@ -24,7 +64,7 @@ export function InvestigationPage() {
   const [busy, setBusy] = useState(false);
   const [job, setJob] = useState<JobRecord | null>(null);
   const [alignment, setAlignment] = useState<AlignmentResult | null>(null);
-  const [form, setForm] = useState({
+  const [form, setForm] = useState<InvestigationFormValues>({
     video_start_ts: "",
     cctv_reference_video_time: "0",
     clock_offset_minutes: "",
@@ -46,10 +86,11 @@ export function InvestigationPage() {
 
   useEffect(() => {
     setCaseId(caseParam);
-    if (!caseParam) {
-      setTxId("");
-      setVideoId("");
-    }
+    setTxId("");
+    setVideoId("");
+    setAlignment(null);
+    setJob(null);
+    setError("");
   }, [caseParam]);
 
   const selectCase = (nextCase: string) => {
@@ -73,6 +114,11 @@ export function InvestigationPage() {
   }, [caseId, txId, videoId]);
 
   useEffect(() => {
+    setAlignment(null);
+    setJob(null);
+  }, [caseId, txId, videoId]);
+
+  useEffect(() => {
     if (!job || ["completed", "failed", "cancelled"].includes(job.status)) return;
     const timer = window.setInterval(() => {
       api.get<JobRecord>(`/api/jobs/${job.id}`).then(setJob).catch(() => undefined);
@@ -84,14 +130,15 @@ export function InvestigationPage() {
   const video = videos.find((item) => item.id === videoId);
   const caseKnown = cases.some((item) => item.id === caseId);
   const selectedCase = cases.find((item) => item.id === caseId);
-
-  useEffect(() => {
-    if (tx?.cctv_ts) setForm((current) => current.video_start_ts ? current : { ...current, video_start_ts: toLocalInput(tx.cctv_ts) });
-  }, [tx]);
+  const maxReachableStep = !caseId ? 0 : !txId ? 1 : !videoId ? 2 : alignment || job ? 6 : 5;
 
   const verify = async () => {
     if (!tx || !video) {
       setError("Select a transaction and a video first");
+      return;
+    }
+    if (!investigationSettingsValid(form)) {
+      setError("Check the clock reference and analysis settings. Frame limits and intervals must be within local bounds.");
       return;
     }
     setBusy(true);
@@ -117,7 +164,7 @@ export function InvestigationPage() {
   };
 
   const start = async () => {
-    if (!alignment) {
+    if (!alignment || !investigationSettingsValid(form)) {
       await verify();
       return;
     }
@@ -147,9 +194,16 @@ export function InvestigationPage() {
     }
   };
 
-  const handleUpload = async (file: File | undefined) => {
+  const handleUpload = async (file: File | undefined, resetInput: () => void) => {
     if (!file || !caseId) return;
+    const validationError = videoFileError(file);
+    if (validationError) {
+      setError(validationError);
+      resetInput();
+      return;
+    }
     setBusy(true);
+    setError("");
     try {
       const created = await api.upload<VideoRecord>(`/api/videos/upload${qs({ case_id: caseId })}`, file);
       setVideoId(created.id);
@@ -160,6 +214,7 @@ export function InvestigationPage() {
       setError((reason as Error).message);
     } finally {
       setBusy(false);
+      resetInput();
     }
   };
 
@@ -171,8 +226,8 @@ export function InvestigationPage() {
       <Card>
         <div className="flex flex-wrap items-center gap-2 border-b border-line p-3">
           {STEPS.map((label, index) => (
-            <button key={label} onClick={() => setStep(index)} className={`flex items-center gap-2 rounded-md border px-2.5 py-1.5 text-[11px] ${index === step ? "border-accent/50 bg-accent/10 text-accent" : index < step ? "border-ok/30 bg-ok/5 text-ok" : "border-line text-muted"}`}>
-              {index < step ? <Check className="h-3 w-3" /> : <CircleDot className="h-3 w-3" />}
+            <button key={label} onClick={() => setStep(index)} disabled={index > maxReachableStep} className={`flex items-center gap-2 rounded-md border px-2.5 py-1.5 text-[11px] disabled:opacity-45 ${index === step ? "border-accent/50 bg-accent/10 text-accent" : index < step && index <= maxReachableStep ? "border-ok/30 bg-ok/5 text-ok" : "border-line text-muted"}`}>
+              {index < step && index <= maxReachableStep ? <Check className="h-3 w-3" /> : <CircleDot className="h-3 w-3" />}
               <span>{index + 1}. {label}</span>
             </button>
           ))}
@@ -212,7 +267,10 @@ export function InvestigationPage() {
             <div className="space-y-4">
               <h3 className="text-sm font-semibold text-slate-100">3. Upload video</h3>
               <Field label="Video file" hint="MP4, AVI, MOV, MKV. The original file is copied into the local data directory and never modified.">
-                <Input type="file" accept=".mp4,.avi,.mov,.mkv,video/*" onChange={(event) => handleUpload(event.target.files?.[0])} />
+                <Input type="file" accept=".mp4,.avi,.mov,.mkv" onChange={(event) => {
+                  const input = event.currentTarget;
+                  handleUpload(input.files?.[0], () => { input.value = ""; });
+                }} />
                 <p className="mt-1 text-[11px] text-muted">For DVR/NVR clips, export H.264 MP4 from the vendor software. WMV, FLV, MPEG and MPG are unsupported; convert a copy and retain the original export.</p>
               </Field>
               {videos.length ? <div className="space-y-2">{videos.map((item) => <button key={item.id} onClick={() => setVideoId(item.id)} className={`flex w-full items-center gap-3 rounded-md border p-3 text-left text-xs ${item.id === videoId ? "border-accent/50 bg-accent/10" : "border-line bg-ink-900"}`}><FileVideo className="h-4 w-4 text-accent" /><span className="flex-1 truncate">{demoOptionLabel(item.original_filename, isDemoVideo(item))}</span>
@@ -260,7 +318,7 @@ export function InvestigationPage() {
               <div className="grid gap-4 md:grid-cols-3">
                 <Field label="Seconds before transaction"><Input type="number" min="0" step="0.5" value={form.window_before_seconds} onChange={(event) => setForm({ ...form, window_before_seconds: event.target.value })} /></Field>
                 <Field label="Seconds after transaction"><Input type="number" min="0" step="0.5" value={form.window_after_seconds} onChange={(event) => setForm({ ...form, window_after_seconds: event.target.value })} /></Field>
-                <Field label="Maximum frames"><Input type="number" min="1" max="2000" value={form.max_frames} onChange={(event) => setForm({ ...form, max_frames: event.target.value })} /></Field>
+                <Field label="Maximum frames" hint={`Local extraction cap: ${CV_MAX_FRAMES} frames.`}><Input type="number" min="1" max={CV_MAX_FRAMES} value={form.max_frames} onChange={(event) => setForm({ ...form, max_frames: event.target.value })} /></Field>
                 <Field label="Coarse interval (s)"><Input type="number" min="0.1" step="0.1" value={form.coarse_interval_seconds} onChange={(event) => setForm({ ...form, coarse_interval_seconds: event.target.value })} /></Field>
                 <Field label="Fine interval (s)"><Input type="number" min="0.05" step="0.05" value={form.fine_interval_seconds} onChange={(event) => setForm({ ...form, fine_interval_seconds: event.target.value })} /></Field>
                 <Field label="Fine radius around transaction (s)"><Input type="number" min="0" step="0.5" value={form.fine_radius_seconds} onChange={(event) => setForm({ ...form, fine_radius_seconds: event.target.value })} /></Field>
@@ -303,9 +361,9 @@ export function InvestigationPage() {
           <div className="mt-7 flex items-center justify-between border-t border-line pt-4">
             <Button onClick={() => setStep(Math.max(0, step - 1))} disabled={step === 0}><ArrowLeft className="h-3.5 w-3.5" /> Back</Button>
             <div className="flex gap-2">
-              {step < 6 ? <Button variant="primary" onClick={() => setStep(step + 1)} disabled={(step === 0 && !caseId) || (step === 1 && !txId) || (step === 2 && !videoId)}>Next <ArrowRight className="h-3.5 w-3.5" /></Button> : null}
-              {step >= 4 ? <Button onClick={verify} loading={busy}>Verify alignment <ShieldCheck className="h-3.5 w-3.5" /></Button> : null}
-              {step === 6 ? <Button variant="solid" onClick={start} loading={busy} disabled={!alignment}><Play className="h-3.5 w-3.5" /> Start processing</Button> : null}
+              {step < 6 ? <Button variant="primary" onClick={() => setStep(step + 1)} disabled={step >= maxReachableStep}>Next <ArrowRight className="h-3.5 w-3.5" /></Button> : null}
+              {step >= 4 ? <Button onClick={verify} loading={busy} disabled={!investigationSettingsValid(form)}>Verify alignment <ShieldCheck className="h-3.5 w-3.5" /></Button> : null}
+              {step === 6 ? <Button variant="solid" onClick={start} loading={busy} disabled={!alignment || !investigationSettingsValid(form)}><Play className="h-3.5 w-3.5" /> Start processing</Button> : null}
             </div>
           </div>
         </div>

@@ -138,6 +138,7 @@ export interface ExportRecord {
 
 export const CV_EXPORT_SELECTION_KEY = "atm:cv-export-selection" as const;
 export const CV_EXPORT_MAX_ITEMS = 25;
+export const CV_MAX_FRAMES = 300;
 export const CV_EXPORT_ITEM_KINDS = ["observation", "candidate"] as const;
 export type CvExportItemKind = (typeof CV_EXPORT_ITEM_KINDS)[number];
 export interface CvExportSelectionContext {
@@ -423,6 +424,38 @@ export interface CvCropSummary {
   available: boolean;
   status: CvCropStatus;
   retrieval_state: CvCropRetrievalState;
+}
+
+export interface CvEnhancementPreset {
+  name: string;
+  label: string;
+  description: string;
+  params: Record<string, unknown>;
+}
+
+export interface CvEnhancedCropResult {
+  original_path: string;
+  original_sha256: string;
+  enhanced_path: string;
+  enhanced_sha256: string;
+  preset: string;
+  preset_label: string;
+  params: Record<string, unknown>;
+  method: string;
+  method_version: string;
+  derived_label: string;
+  original_width: number;
+  original_height: number;
+  enhanced_width: number;
+  enhanced_height: number;
+  processing_ms: number;
+  metadata_path: string;
+  warnings: string[];
+  case_id: string;
+  cv_run_id: string;
+  observation_id: string;
+  crop_id: string;
+  forensic_notice?: string;
 }
 
 export interface CvQualitySummary {

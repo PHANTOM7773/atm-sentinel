@@ -1,0 +1,201 @@
+{
+  "task": "TASK-20",
+  "generated_at_utc": "2026-11-23T15:46:46.341440+00:00",
+  "environment": {
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "python": "3.12.16",
+    "opencv": "5.1.0",
+    "node": "v26.12.1",
+    "cpu_count": 8,
+    "synthetic_video": {
+      "frames": 60,
+      "fps": 10,
+      "resolution": "320x240",
+      "bytes": 35644
+    },
+    "data_dir": "isolated temporary directory; protected data untouched"
+  },
+  "methodology": "FastAPI TestClient against an isolated temporary data directory, one synthetic 60-frame MP4 generated with OpenCV; timings are wall-clock milliseconds and include request/response serialization.",
+  "api_timings_ms": [
+    {
+      "step": "GET /api/system/status",
+      "status_code": 200,
+      "duration_ms": 58.995,
+      "response_bytes": 762
+    },
+    {
+      "step": "POST /api/cases",
+      "status_code": 201,
+      "duration_ms": 7.548,
+      "response_bytes": 236
+    },
+    {
+      "step": "POST /api/cases/{id}/transactions",
+      "status_code": 201,
+      "duration_ms": 2.891,
+      "response_bytes": 339
+    },
+    {
+      "step": "POST /api/videos/upload",
+      "status_code": 201,
+      "duration_ms": 66.225,
+      "response_bytes": 968
+    },
+    {
+      "step": "POST /api/videos/{id}/verify",
+      "status_code": 200,
+      "duration_ms": 34.916,
+      "response_bytes": 78
+    },
+    {
+      "step": "POST /api/videos/{id}/normalize",
+      "status_code": 201,
+      "duration_ms": 71.826,
+      "response_bytes": 1030
+    },
+    {
+      "step": "POST /api/alignment/preview",
+      "status_code": 200,
+      "duration_ms": 2.942,
+      "response_bytes": 721
+    },
+    {
+      "step": "POST /api/jobs",
+      "status_code": 201,
+      "duration_ms": 3.435,
+      "response_bytes": 1440
+    },
+    {
+      "step": "GET /api/jobs/{id} polling",
+      "status_code": 200,
+      "duration_ms": 5.923,
+      "response_bytes": 0,
+      "polls": 2,
+      "median_poll_ms": 2.962
+    },
+    {
+      "step": "GET /api/frames",
+      "status_code": 200,
+      "duration_ms": 4.906,
+      "response_bytes": 9662
+    },
+    {
+      "step": "PATCH /api/frames/{id}",
+      "status_code": 200,
+      "duration_ms": 2.871,
+      "response_bytes": 1652
+    },
+    {
+      "step": "POST /api/exports",
+      "status_code": 201,
+      "duration_ms": 31.602,
+      "response_bytes": 424
+    },
+    {
+      "step": "GET /api/exports/{id}/pdf",
+      "status_code": 200,
+      "duration_ms": 4.556,
+      "response_bytes": 13732
+    },
+    {
+      "step": "GET /api/exports/frames/archive",
+      "status_code": 200,
+      "duration_ms": 3.512,
+      "response_bytes": 3260
+    },
+    {
+      "step": "GET /api/cv/status",
+      "status_code": 200,
+      "duration_ms": 6.196,
+      "response_bytes": 6682
+    },
+    {
+      "step": "GET /api/cv/runs",
+      "status_code": 200,
+      "duration_ms": 2.082,
+      "response_bytes": 44
+    }
+  ],
+  "warm_reads_ms": {
+    "GET /api/frames": {
+      "samples_ms": [
+        2.16,
+        2.235,
+        3.249,
+        2.705,
+        2.348
+      ],
+      "median_ms": 2.348
+    },
+    "GET /api/exports": {
+      "samples_ms": [
+        1.849,
+        1.87,
+        1.789,
+        1.833,
+        1.942
+      ],
+      "median_ms": 1.849
+    },
+    "GET /api/videos": {
+      "samples_ms": [
+        2.906,
+        2.455,
+        1.991,
+        1.746,
+        1.736
+      ],
+      "median_ms": 1.991
+    }
+  },
+  "frontend_bundle": {
+    "asset_count": 3,
+    "raw_bytes": 490002,
+    "gzip_bytes": 138220,
+    "largest_assets": [
+      {
+        "path": "assets/index-BThjZBXu.js",
+        "raw_bytes": 455339,
+        "gzip_bytes": 131161
+      },
+      {
+        "path": "assets/index-Kr6VhIUw.css",
+        "raw_bytes": 33833,
+        "gzip_bytes": 6614
+      },
+      {
+        "path": "index.html",
+        "raw_bytes": 830,
+        "gzip_bytes": 445
+      }
+    ]
+  },
+  "browser_smoke": {
+    "status": "PASS",
+    "browser": "Google Chrome 157.0.8103.79 headless via CDP",
+    "api_mode": "all /api requests fulfilled by CDP fixtures; backend data untouched",
+    "route": "/investigation",
+    "checks": [
+      "Investigation page rendered",
+      "Case selected",
+      "Transaction selected",
+      "Video selected",
+      "Wizard reached analysis window",
+      "Alignment preview completed",
+      "/cv?case=case-browser rendered",
+      "/evidence?case=case-browser rendered",
+      "/export?case=case-browser rendered"
+    ],
+    "console_errors": [],
+    "network_failures": [],
+    "http_errors": [],
+    "body_contains_alignment": true,
+    "body_contains_error_banner": false
+  },
+  "protected_data_modified": false,
+  "limitations": [
+    "No real user traffic or production workload; local TestClient only.",
+    "CV run timings are not included because real CV model inference was out of scope and models are not installed.",
+    "Browser smoke used CDP fixtures for /api requests; it verifies UI behavior, not backend persistence."
+  ]
+}

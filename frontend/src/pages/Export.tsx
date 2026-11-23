@@ -138,6 +138,7 @@ export function ExportPage() {
   const [error, setError] = useState("");
   const [notice, setNotice] = useState("");
   const [latest, setLatest] = useState<ExportRecord | null>(null);
+  const [generatedFrameIds, setGeneratedFrameIds] = useState<string[]>([]);
   const [cvRuns, setCvRuns] = useState<CvRunSummary[]>([]);
   const [cvRunId, setCvRunId] = useState("");
   const [cvObservations, setCvObservations] = useState<CvFaceObservationSummary[]>([]);
@@ -154,21 +155,26 @@ export function ExportPage() {
 
   useEffect(() => {
     setCaseId(caseParam);
-    if (!caseParam) {
-      setFrames([]);
-      setExports([]);
-      setLatest(null);
-      setCvRuns([]);
-      setCvRunId("");
-      setCvObservations([]);
-      setDraftCvItems([]);
-      setSelectedObservationIds([]);
-      setCvError("");
-    }
+    setFrames([]);
+    setExports([]);
+    setLatest(null);
+    setGeneratedFrameIds([]);
+    setNotice("");
+    setError("");
+    setCvRuns([]);
+    setCvRunId("");
+    setCvObservations([]);
+    setDraftCvItems([]);
+    setSelectedObservationIds([]);
+    setCvError("");
   }, [caseParam]);
 
   const selectCase = (nextCase: string) => {
     setCaseId(nextCase);
+    setLatest(null);
+    setGeneratedFrameIds([]);
+    setNotice("");
+    setError("");
     setParams(nextCase ? { case: nextCase } : {});
   };
 
@@ -233,6 +239,7 @@ export function ExportPage() {
         buildExportPayload(caseId, selected.map((frame) => frame.id), cvItems),
       );
       setLatest(result);
+      setGeneratedFrameIds(selected.map((frame) => frame.id));
       setNotice(cvItems.length ? `PDF report and JSON manifest generated with ${cvItems.length} CV reference(s)` : "PDF report and JSON manifest generated");
       if (typeof window !== "undefined") window.sessionStorage.removeItem(cvExportDraftKey(caseId));
       setDraftCvItems([]);
@@ -329,10 +336,11 @@ export function ExportPage() {
             <div className="grid gap-3 rounded-md border border-accent/30 bg-accent/5 p-4 md:grid-cols-2">
               <div><p className="text-[10px] uppercase tracking-wider text-muted">Report data SHA-256</p><p className="break-all font-mono text-[11px] text-accent">{latest.report_hash}</p></div>
               <div><p className="text-[10px] uppercase tracking-wider text-muted">PDF SHA-256</p><p className="break-all font-mono text-[11px] text-accent">{latest.pdf_sha256}</p></div>
-              <div className="flex gap-2 md:col-span-2">
+              <div className="flex flex-wrap gap-2 md:col-span-2">
                 <Button size="sm" onClick={() => api.download(`/api/exports/${latest.id}/pdf`)}><Download className="h-3.5 w-3.5" /> Download PDF</Button>
                 <Button size="sm" onClick={() => api.download(`/api/exports/${latest.id}/manifest`)}><FileJson className="h-3.5 w-3.5" /> Download manifest</Button>
-                <Button size="sm" onClick={() => api.download(`/api/exports/frames/archive${qs({ case_id: caseId, frame_ids: selected.map((frame) => frame.id).join(",") })}`)}><FileArchive className="h-3.5 w-3.5" /> Download frames ZIP</Button>
+                <Button size="sm" onClick={() => api.download(`/api/exports/frames/archive${qs({ case_id: caseId, frame_ids: generatedFrameIds.join(",") })}`)}><FileArchive className="h-3.5 w-3.5" /> Download frames ZIP</Button>
+                <p className="w-full text-[10px] text-muted">The frames ZIP uses the {generatedFrameIds.length} frame(s) included in the generated report, even if the Evidence Gallery selection changes afterwards.</p>
               </div>
             </div>
           ) : null}

@@ -13,6 +13,7 @@ import {
   CV_CANDIDATE_SEARCH_SCOPES,
   CV_CANDIDATE_VERIFICATION_STATUS,
   CV_EXPORT_MAX_ITEMS,
+  CV_MAX_FRAMES,
   CV_REVIEW_DECISIONS,
   CV_UNSUPPORTED_ATTRIBUTE_STATUS,
   CV_WINDOW_MODES,
@@ -24,6 +25,7 @@ import type {
   CvCandidateSearchScope,
   CvCandidateSummary,
   CvAssociationReviewState,
+  CvBestFaceSelectionResponse,
   CvCropSummary,
   CvExportItem,
   CvFaceObservationSummary,
@@ -38,7 +40,8 @@ import type {
   TransactionPersonAssociationRecord,
   VideoRecord,
 } from "../lib/types";
-import { Alert, Badge, Button, Card, CardHeader, DemoDataBanner, EmptyState, Field, Input, KeyValue, Select, Textarea } from "../components/ui";
+import { Alert, Badge, Button, Card, CardHeader, DemoDataBanner, EmptyState, Field, Input, KeyValue, Modal, Select, Textarea } from "../components/ui";
+import { CvCropEnhancementPanel } from "../components/CvCropEnhancementPanel";
 import { candidateToCvExportItem, cvExportDraftKey, observationToCvExportItem, parseDraftCvItems } from "./Export";
 
 const HISTORY_LIMIT = 25;
@@ -84,6 +87,20 @@ function atmZoneFieldsValid(form: CvRunFormValues): boolean {
       && zone.x + zone.width <= 1
       && zone.y + zone.height <= 1,
   );
+}
+
+export function cvRunFieldsValid(form: CvRunFormValues): boolean {
+  const maxFrames = Number(form.maxFrames);
+  const frameStride = Number(form.frameStride);
+  if (!Number.isInteger(maxFrames) || maxFrames < 1 || maxFrames > CV_MAX_FRAMES) return false;
+  if (!Number.isInteger(frameStride) || frameStride < 1 || frameStride > 20) return false;
+  if (form.windowMode !== "transaction_aligned") return true;
+  const reference = Number(form.cctvReferenceVideoTime);
+  const before = Number(form.beforeSeconds);
+  const after = Number(form.afterSeconds);
+  return Number.isFinite(reference) && reference >= 0
+    && Number.isFinite(before) && before >= 0
+    && Number.isFinite(after) && after >= 0;
 }
 
 export function reviewErrorMessage(error: unknown): string {
@@ -151,6 +168,7 @@ export interface CvRunFormValues {
   transactionId: string;
   windowMode: CvWindowMode;
   videoStartTs: string;
+  cctvReferenceVideoTime: string;
   beforeSeconds: string;
   afterSeconds: string;
   maxFrames: string;
@@ -170,6 +188,7 @@ export const initialCvRunFormValues: CvRunFormValues = {
   transactionId: "",
   windowMode: "full_video",
   videoStartTs: "",
+  cctvReferenceVideoTime: "0",
   beforeSeconds: "20",
   afterSeconds: "20",
   maxFrames: "240",
@@ -208,7 +227,7 @@ export function buildCvRunPayload(
     payload.before_seconds = Number(form.beforeSeconds);
     payload.after_seconds = Number(form.afterSeconds);
     payload.video_start_ts = form.videoStartTs ? fromLocalInput(form.videoStartTs) : null;
-    payload.cctv_reference_video_time = 0;
+    payload.cctv_reference_video_time = Number(form.cctvReferenceVideoTime);
     payload.atm_zone = buildAtmZone(form);
   }
   return payload;
@@ -327,7 +346,7 @@ export function CvRunCreateForm({
   const selectedVideo = videos.find((item) => item.id === form.videoId);
   const videoSelected = Boolean(selectedVideo);
   const transactionSelected = transactions.some((item) => item.id === form.transactionId);
-  const canCreate = caseKnown && videoSelected && (form.windowMode === "full_video" || transactionSelected) && atmZoneFieldsValid(form) && !busy;
+  const canCreate = caseKnown && videoSelected && (form.windowMode === "full_video" || transactionSelected) && atmZoneFieldsValid(form) && cvRunFieldsValid(form) && !busy;
   return (
     <Card>
       <CardHeader title="Start CV candidate analysis" subtitle="Bounded local detection and similarity ranking — results are candidates, never identity confirmation" />
@@ -355,11 +374,11 @@ export function CvRunCreateForm({
               {CV_WINDOW_MODES.map((mode) => <option key={mode} value={mode}>{mode.replace("_", " ")}</option>)}
             </Select>
           </Field>
-          <Field label="Maximum frames"><Input type="number" min="1" max="2000" value={form.maxFrames} onChange={(event) => onFormChange({ maxFrames: event.target.value })} /></Field>
+          <Field label="Maximum frames" hint={`Local analysis cap: ${CV_MAX_FRAMES} frames.`}><Input type="number" min="1" max={CV_MAX_FRAMES} value={form.maxFrames} onChange={(event) => onFormChange({ maxFrames: event.target.value })} /></Field>
           <Field label="Frame stride"><Input type="number" min="1" max="20" value={form.frameStride} onChange={(event) => onFormChange({ frameStride: event.target.value })} /></Field>
         </div>
         {form.windowMode === "transaction_aligned" ? (
-          <div className="grid gap-4 rounded-md border border-line bg-ink-900 p-4 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-4 rounded-md border border-line bg-ink-900 p-4 md:grid-cols-2 lg:grid-cols-5">
             <Field label="Transaction">
               <Select value={form.transactionId} onChange={(event) => onFormChange({ transactionId: event.target.value })}>
                 <option value="">Select transaction…</option>
@@ -368,6 +387,9 @@ export function CvRunCreateForm({
             </Field>
             <Field label="CCTV time at video start" hint="Optional; leave blank to derive from the transaction.">
               <Input type="datetime-local" step="1" value={form.videoStartTs} onChange={(event) => onFormChange({ videoStartTs: event.target.value })} />
+            </Field>
+            <Field label="CCTV reference point in video (s)" hint="Video time of the CCTV timestamp above.">
+              <Input type="number" min="0" step="0.1" value={form.cctvReferenceVideoTime} onChange={(event) => onFormChange({ cctvReferenceVideoTime: event.target.value })} />
             </Field>
             <Field label="Seconds before transaction"><Input type="number" min="0" step="0.5" value={form.beforeSeconds} onChange={(event) => onFormChange({ beforeSeconds: event.target.value })} /></Field>
             <Field label="Seconds after transaction"><Input type="number" min="0" step="0.5" value={form.afterSeconds} onChange={(event) => onFormChange({ afterSeconds: event.target.value })} /></Field>
@@ -471,6 +493,90 @@ export function CvReviewForm({
   );
 }
 
+export function CvBestFaceInspector({ caseId, runId, associationId }: { caseId: string; runId: string; associationId: string }) {
+  const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [detail, setDetail] = useState<CvBestFaceSelectionResponse | null>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    let active = true;
+    setLoading(true);
+    setError("");
+    cvApi.getBestFace(caseId, runId, associationId)
+      .then((response) => { if (active) setDetail(response); })
+      .catch((reason: Error) => { if (active) setError(cvActionErrorMessage(reason, "Best-face ranking")); })
+      .finally(() => { if (active) setLoading(false); });
+    return () => { active = false; };
+  }, [open, caseId, runId, associationId]);
+
+  const renderFrame = (frame: CvBestFaceSelectionResponse["ranked_frames"][number], key: string) => (
+    <div key={key} className="rounded-md border border-line bg-ink-900 p-3">
+      <div className="flex flex-wrap items-center justify-between gap-2">
+        <p className="font-mono text-[11px] text-accent">{frame.observation.observation_id}</p>
+        <div className="flex flex-wrap gap-2">
+          {frame.rank !== null ? <Badge>rank {frame.rank}</Badge> : null}
+          <Badge>{frame.eligible ? "eligible" : "not eligible"}</Badge>
+          <Badge>{frame.selection_score.toFixed(4)}</Badge>
+          {frame.reliability ? <Badge>reliability: {frame.reliability.status.replaceAll("_", " ")}</Badge> : null}
+        </div>
+      </div>
+      <p className="mt-2 text-[11px] text-slate-300">Frame {frame.observation.original_frame_number} · video time {formatSeconds(frame.observation.original_video_timestamp_seconds)}</p>
+      {frame.rationale.length ? <p className="mt-1 text-[11px] text-muted">{frame.rationale.join(" · ")}</p> : null}
+      {frame.reason_codes.length ? <p className="mt-1 font-mono text-[10px] text-muted">{frame.reason_codes.join(", ")}</p> : null}
+      {frame.reliability ? <p className="mt-1 text-[11px] text-slate-300">{frame.reliability.summary} {frame.reliability.limitation}</p> : null}
+      {frame.link ? <p className="mt-1 text-[11px] text-muted">Link: person track {frame.link.person_track_id}, containment {frame.link.bbox_containment_ratio.toFixed(2)} · {frame.link.limitations.join(" · ")}</p> : null}
+      {Object.keys(frame.quality_indicators).length ? (
+        <p className="mt-1 font-mono text-[10px] text-muted">
+          {Object.entries(frame.quality_indicators).map(([name, value]) => `${name}: ${typeof value === "number" ? value.toFixed(2) : value}`).join(" · ")}
+        </p>
+      ) : null}
+    </div>
+  );
+
+  return (
+    <>
+      <Button size="sm" onClick={() => setOpen(true)}>Inspect ranking</Button>
+      <Modal open={open} onClose={() => setOpen(false)} title="Best-face ranking detail" wide>
+        <div className="space-y-4">
+          <p className="text-[11px] leading-relaxed text-muted">{detail?.score_meaning ?? "Quality ranking only. This is not identity evidence."}</p>
+          {error ? <Alert kind="error">{error}</Alert> : null}
+          {loading ? <p className="text-xs text-muted">Loading ranking detail…</p> : null}
+          {detail ? (
+            <>
+              <Alert>{detail.limitation}</Alert>
+              {detail.selected ? (
+                <div>
+                  <p className="mb-2 text-[11px] font-semibold uppercase tracking-wider text-muted">Selected</p>
+                  {renderFrame(detail.selected, "selected")}
+                </div>
+              ) : <Alert kind="warn">{detail.no_selection_reason ?? "No usable face frame was selected."}</Alert>}
+              <div>
+                <p className="mb-2 text-[11px] font-semibold uppercase tracking-wider text-muted">Ranked frames ({detail.ranked_frames.length})</p>
+                <div className="space-y-2">{detail.ranked_frames.map((frame, index) => renderFrame(frame, `ranked-${index}`))}</div>
+              </div>
+              {detail.rejected_frames.length ? (
+                <div>
+                  <p className="mb-2 text-[11px] font-semibold uppercase tracking-wider text-muted">Rejected frames ({detail.rejected_frames.length})</p>
+                  <div className="space-y-2">{detail.rejected_frames.map((frame, index) => renderFrame(frame, `rejected-${index}`))}</div>
+                </div>
+              ) : null}
+              {detail.other_person_frames.length ? (
+                <div>
+                  <p className="mb-2 text-[11px] font-semibold uppercase tracking-wider text-muted">Other-person frames ({detail.other_person_frames.length})</p>
+                  <div className="space-y-2">{detail.other_person_frames.map((frame, index) => renderFrame(frame, `other-${index}`))}</div>
+                </div>
+              ) : null}
+              <p className="text-[11px] text-muted">Reliability is a human-review aid, not identity, biometric match, or suspect-identification evidence.</p>
+            </>
+          ) : null}
+        </div>
+      </Modal>
+    </>
+  );
+}
+
 export interface CvAssociationCardProps {
   caseId: string;
   runId: string;
@@ -519,11 +625,12 @@ export function CvAssociationCard({
         <div className="mt-3 rounded-md border border-line p-3">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <p className="text-sm font-medium text-slate-100">Best face frame (quality ranking only)</p>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap items-center gap-2">
               <Badge>{association.best_face.status}</Badge>
               {association.best_face.selected_reliability_status ? (
                 <Badge>reliability: {association.best_face.selected_reliability_status.replaceAll("_", " ")}</Badge>
               ) : null}
+              <CvBestFaceInspector caseId={caseId} runId={runId} associationId={association.association_id} />
             </div>
           </div>
           {association.best_face.selected_observation_id ? (
@@ -688,6 +795,14 @@ export function CvObservationCard({
             </div>
           )}
           <p className="mt-1.5 text-[10px] text-muted">Opaque crop reference only — no file path is shown.</p>
+          {showCrop && cropId ? (
+            <CvCropEnhancementPanel
+              caseId={caseId}
+              runId={runId}
+              observationId={observation.observation_id}
+              cropId={cropId}
+            />
+          ) : null}
         </div>
         <div className="grid gap-x-6 sm:grid-cols-2">
           <div>
@@ -1028,6 +1143,7 @@ export interface CvRunDetailViewProps {
   observations: CvFaceObservationSummary[];
   reviews: CvHumanReviewDecision[];
   associations?: CvPersonAssociationPage | null;
+  associationOffset?: number;
   totalObservations: number;
   offset: number;
   limit?: number;
@@ -1041,6 +1157,8 @@ export interface CvRunDetailViewProps {
   associationSavingId?: string | null;
   associationReviewError?: string | null;
   associationReviewNotice?: string | null;
+  onAssociationPrevious?: () => void;
+  onAssociationNext?: () => void;
   onSaveReview?: (observationId: string, decision: CvReviewDecision, note: string) => void | Promise<void>;
   onReviewAssociation?: (associationId: string, decision: Extract<CvAssociationReviewState, "confirmed" | "rejected">, note: string) => void | Promise<void>;
   queryObservation?: CvFaceObservationSummary | null;
@@ -1070,6 +1188,7 @@ export function CvRunDetailView({
   observations,
   reviews,
   associations = null,
+  associationOffset = 0,
   totalObservations,
   offset,
   limit = OBSERVATION_LIMIT,
@@ -1083,6 +1202,8 @@ export function CvRunDetailView({
   associationSavingId = null,
   associationReviewError = null,
   associationReviewNotice = null,
+  onAssociationPrevious,
+  onAssociationNext,
   onSaveReview,
   onReviewAssociation,
   queryObservation = null,
@@ -1110,6 +1231,8 @@ export function CvRunDetailView({
   }
   const first = observations.length ? offset + 1 : 0;
   const last = offset + observations.length;
+  const associationFirst = associations?.items.length ? associationOffset + 1 : 0;
+  const associationLast = associationOffset + (associations?.items.length ?? 0);
   const querySelectable = run?.status === "completed" || run?.status === "completed_with_warnings";
   const querySourceVideoId = run?.video_provenance.source_video_id ?? queryObservation?.video_provenance.source_video_id ?? "";
 
@@ -1183,7 +1306,7 @@ export function CvRunDetailView({
                 <KeyValue label="CCTV clock UTC" value={run.timestamp_provenance.cctv_clock_utc ?? "—"} />
                 <KeyValue label="Offset (s)" value={run.timestamp_provenance.applied_alignment_offset_seconds ?? "—"} />
                 <KeyValue label="Alignment source" value={run.timestamp_provenance.alignment_source ?? "—"} />
-                <KeyValue label="Transaction video time" value={formatSeconds(run.timestamp_provenance.transaction_video_seconds ?? 0)} />
+                <KeyValue label="Transaction video time" value={run.timestamp_provenance.transaction_video_seconds === null || run.timestamp_provenance.transaction_video_seconds === undefined ? "—" : formatSeconds(run.timestamp_provenance.transaction_video_seconds)} />
                 <KeyValue label="Window start" value={formatSeconds(run.timestamp_provenance.window_start_seconds)} />
                 <KeyValue label="Window end" value={formatSeconds(run.timestamp_provenance.window_end_seconds)} />
               </div>
@@ -1256,7 +1379,7 @@ export function CvRunDetailView({
           <div className="space-y-4">
             {associations?.items.map((association) => (
               <CvAssociationCard
-                key={association.association_id}
+                key={`${association.association_id}:${association.review_state}:${association.reviewed_at ?? ""}`}
                 caseId={caseId}
                 runId={runId}
                 association={association}
@@ -1265,6 +1388,13 @@ export function CvRunDetailView({
                 onReview={onReviewAssociation}
               />
             ))}
+          </div>
+          <div className="flex flex-wrap items-center justify-between gap-3 border-t border-line pt-3">
+            <span className="text-[11px] text-muted">Showing {associationFirst}–{associationLast} of {associations?.total ?? 0} associations</span>
+            <div className="flex gap-2">
+              <Button size="sm" onClick={onAssociationPrevious} disabled={!associationOffset}>Previous</Button>
+              <Button size="sm" onClick={onAssociationNext} disabled={associationLast >= (associations?.total ?? 0)}>Next</Button>
+            </div>
           </div>
         </div>
       </Card>
@@ -1320,6 +1450,7 @@ export function CvRunsPage() {
   const [savingId, setSavingId] = useState<string | null>(null);
   const [reviewError, setReviewError] = useState("");
   const [reviewNotice, setReviewNotice] = useState("");
+  const [associationOffset, setAssociationOffset] = useState(0);
   const [associationSavingId, setAssociationSavingId] = useState<string | null>(null);
   const [associationReviewError, setAssociationReviewError] = useState("");
   const [associationReviewNotice, setAssociationReviewNotice] = useState("");
@@ -1370,7 +1501,7 @@ export function CvRunsPage() {
   }, [videos]);
 
   useEffect(() => { setHistoryOffset(0); }, [caseId]);
-  useEffect(() => { setObservationOffset(0); }, [caseId, runId]);
+  useEffect(() => { setObservationOffset(0); setAssociationOffset(0); }, [caseId, runId]);
 
   useEffect(() => {
     if (runId || !caseId) {
@@ -1412,7 +1543,7 @@ export function CvRunsPage() {
       cvApi.getRun(caseId, runId),
       cvApi.getObservations(caseId, runId, { limit: OBSERVATION_LIMIT, offset: observationOffset }),
       cvApi.listReviews(caseId, runId, { limit: REVIEW_LIMIT, offset: 0 }),
-      cvApi.listPersonAssociations(caseId, runId, { limit: ASSOCIATION_LIMIT, offset: 0 }),
+      cvApi.listPersonAssociations(caseId, runId, { limit: ASSOCIATION_LIMIT, offset: associationOffset }),
     ])
       .then(([detail, observationPage, reviewPage, associationPage]) => {
         if (!active) return;
@@ -1428,7 +1559,7 @@ export function CvRunsPage() {
           items: associationPage.items ?? [],
           total: associationPage.total ?? 0,
           limit: associationPage.limit ?? ASSOCIATION_LIMIT,
-          offset: associationPage.offset ?? 0,
+          offset: associationPage.offset ?? associationOffset,
           status: associationPage.status ?? "insufficient_evidence",
           disclaimer: associationPage.disclaimer ?? CV_ASSOCIATION_LIMITATION,
         });
@@ -1436,7 +1567,7 @@ export function CvRunsPage() {
       .catch((reason: Error) => { if (active) setDetailError(reason.message); })
       .finally(() => { if (active) setDetailLoading(false); });
     return () => { active = false; };
-  }, [caseId, runId, observationOffset]);
+  }, [caseId, runId, observationOffset, associationOffset]);
 
   const changeCase = (nextCase: string) => {
     setHistoryError("");
@@ -1531,10 +1662,27 @@ export function CvRunsPage() {
     setCandidateNotice("");
   };
 
+  const invalidateCandidateResults = () => {
+    setCandidateResult(null);
+    setCandidateError("");
+    setCandidateNotice("");
+  };
+
+  const changeCandidateScope = (scope: CvCandidateSearchScope) => {
+    setCandidateScope(scope);
+    invalidateCandidateResults();
+  };
+
   const toggleSourceVideo = (videoId: string) => {
     setCandidateSourceVideoIds((previous) => previous.includes(videoId)
       ? previous.filter((item) => item !== videoId)
       : [...previous, videoId]);
+    invalidateCandidateResults();
+  };
+
+  const changeCandidateTopK = (value: string) => {
+    setCandidateTopK(value);
+    invalidateCandidateResults();
   };
 
   const searchCandidates = async () => {
@@ -1630,9 +1778,12 @@ export function CvRunsPage() {
           reviewError={reviewError}
           reviewNotice={reviewNotice}
           associations={associations}
+          associationOffset={associationOffset}
           associationSavingId={associationSavingId}
           associationReviewError={associationReviewError}
           associationReviewNotice={associationReviewNotice}
+          onAssociationPrevious={() => setAssociationOffset(Math.max(0, associationOffset - ASSOCIATION_LIMIT))}
+          onAssociationNext={() => setAssociationOffset(associationOffset + ASSOCIATION_LIMIT)}
           onSaveReview={saveReview}
           onReviewAssociation={reviewAssociation}
           queryObservation={queryObservation}
@@ -1648,9 +1799,9 @@ export function CvRunsPage() {
           candidateSavingId={candidateSavingId}
           candidateReviewNotes={candidateReviewNotes}
           candidateReviewError={candidateReviewError}
-          onCandidateScopeChange={setCandidateScope}
+          onCandidateScopeChange={changeCandidateScope}
           onCandidateSourceVideoToggle={toggleSourceVideo}
-          onCandidateTopKChange={setCandidateTopK}
+          onCandidateTopKChange={changeCandidateTopK}
           onSearchCandidates={searchCandidates}
           onReviewCandidate={reviewCandidate}
         />

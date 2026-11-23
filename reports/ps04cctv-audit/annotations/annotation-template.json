@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0-pilot",
+  "annotation_type": "face_bbox_ground_truth_pilot",
+  "dataset_id": "synthetic-cv",
+  "source_manifest": "data/datasets/synthetic/cv/manifest.json",
+  "selection_manifest": "reports/ps04cctv-audit/annotations/selected-frames-manifest.json",
+  "bbox_format": "xywh_pixels_top_left",
+  "coordinate_space": "original_frame_pixels",
+  "created_at": "",
+  "annotator": "",
+  "annotation_tool": "task09-offline-annotator/1.0",
+  "notes": "HUMAN ANNOTATION REQUIRED. Do not auto-generate ground truth. Do not mark benchmark-ready without QA.",
+  "frames": []
+}

@@ -125,7 +125,7 @@ export function ComparePage() {
                 <p className="text-muted">Cases ({results.cases.length})</p>
                 {results.cases.map((item) => <Link key={item.id} to={`/cases${qs({ case: item.id })}`} className="block rounded border border-line p-2 hover:border-accent/50"><span className="font-mono text-accent">{demoOptionLabel(item.case_number, isDemoCase(item))}</span><p className="text-slate-300">{item.title}</p></Link>)}
                 <p className="pt-2 text-muted">Clips ({results.videos.length})</p>
-                {results.videos.map((item) => <p key={item.id} className="rounded border border-line p-2 text-slate-300">{demoOptionLabel(item.original_filename, isDemoVideo(item))} <Badge>{item.codec}</Badge></p>)}
+                {results.videos.map((item) => <Link key={item.id} to={`/cases${qs({ case: item.case_id })}`} className="block rounded border border-line p-2 hover:border-accent/50"><span className="text-slate-300">{demoOptionLabel(item.original_filename, isDemoVideo(item))}</span> <Badge>{item.codec}</Badge><span className="block font-mono text-[10px] text-muted">Case {item.case_id}</span></Link>)}
               </div>
             ) : null}
           </div>
