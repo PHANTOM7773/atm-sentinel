@@ -1,0 +1,698 @@
+{
+  "report": {
+    "generated_at": "2026-11-23T03:51:55+00:00",
+    "overall_status": "PASS",
+    "runner_version": "1.0.0",
+    "scope": "local synthetic acceptance; no real CCTV/R4C validation"
+  },
+  "environment": {
+    "ffmpeg_path": "/opt/homebrew/bin/ffmpeg",
+    "ffprobe_path": "/opt/homebrew/bin/ffprobe",
+    "python_dependencies": {
+      "fastapi": true,
+      "uvicorn": true,
+      "pydantic": true,
+      "python-multipart": true,
+      "numpy": true,
+      "opencv-python-headless": true,
+      "reportlab": true,
+      "pytest": true,
+      "httpx": true
+    },
+    "frontend_bins": {
+      "vitest": true,
+      "vite": true,
+      "tsc": true
+    },
+    "models": {
+      "sface": {
+        "filename": "face_recognition_sface_2021dec.onnx",
+        "exists": true,
+        "sha256_matches": true
+      },
+      "yolox": {
+        "filename": "object_detection_yolox_2022nov.onnx",
+        "exists": true,
+        "sha256_matches": true
+      },
+      "yunet": {
+        "filename": "face_detection_yunet_2026may.onnx",
+        "exists": true,
+        "sha256_matches": true
+      }
+    },
+    "numeric_limit_overrides_present": [],
+    "passphrase_set_in_runner_environment": false,
+    "prohibited_scripts_invoked": [],
+    "service_control_commands_invoked": [],
+    "node_version": "v26.12.1",
+    "npm_version": "11.20.0",
+    "app": {
+      "app_name": "ATM Sentinel",
+      "app_version": "0.1.0",
+      "schema_version": 4,
+      "python_version": "3.12.16",
+      "platform": "macOS-26.6.2-arm64-arm-64bit"
+    },
+    "acceptance_subprocess_environment": {
+      "ATM_SENTINEL_*": "removed",
+      "TMPDIR": "<ACCEPTANCE_TMP>/tmp"
+    }
+  },
+  "limits": {
+    "max_analysis_frames": 300,
+    "max_frame_stride": 20,
+    "max_decoded_frames": 3000,
+    "max_clip_duration_seconds": 300.0,
+    "max_crops_per_analysis": 100,
+    "max_retained_crop_files": 2000,
+    "max_top_k": 25,
+    "max_face_observations_per_frame": 8,
+    "max_person_observations_per_frame": 12,
+    "max_face_observations_per_analysis": 120,
+    "max_person_observations_per_analysis": 200,
+    "max_face_detections_per_frame": 64,
+    "max_person_detections_per_frame": 128,
+    "max_face_detections_per_analysis": 6000,
+    "max_person_detections_per_analysis": 12000,
+    "max_ranked_candidates": 100,
+    "max_response_bytes": 750000,
+    "concurrent_analyses": 1,
+    "synchronous": true,
+    "max_upload_bytes": 524288000
+  },
+  "requirements": [
+    {
+      "id": "A",
+      "area": "Environment, local models, configured limits",
+      "status": "PASS",
+      "evidence": "Python package checks, ffmpeg/ffprobe paths, model SHA-256 verification, /api/cv/status limit source",
+      "notes": "Configured limits are reported; boundary stress at 500 MB, 300 s, 3000 decoded frames, 300 analysis frames, 100 crops, and 2000 retained crops was not executed.",
+      "commands": []
+    },
+    {
+      "id": "B",
+      "area": "Multi-format input and normalization",
+      "status": "PASS",
+      "evidence": "backend tests: security, video, pipeline; isolated 12-clip synthetic scenario",
+      "notes": "Local MP4/AVI/MOV/MKV acceptance passed; real DVR/NVR exports and vendor formats remain NOT ASSESSED. App normalization is video-only.",
+      "commands": [
+        "pytest_backend_full_suite",
+        "twelve_clip_synthetic_scenario"
+      ]
+    },
+    {
+      "id": "C",
+      "area": "Transaction timestamp and aligned windows",
+      "status": "PASS",
+      "evidence": "backend tests: timestamps and CV alignment",
+      "notes": "Investigator-entered timestamps only; no OCR or automatic clock extraction.",
+      "commands": [
+        "pytest_backend_full_suite"
+      ]
+    },
+    {
+      "id": "D",
+      "area": "Quality scores and best-frame support",
+      "status": "PASS",
+      "evidence": "backend tests: quality, CV engine, CV accuracy evidence; synthetic scenario",
+      "notes": "Explainable synthetic metrics verified; real-world robustness is NOT ASSESSED. Mask/helmet/cap remain not_assessed.",
+      "commands": [
+        "pytest_backend_full_suite",
+        "twelve_clip_synthetic_scenario"
+      ]
+    },
+    {
+      "id": "E",
+      "area": "Face/person detection and clip-local tracking",
+      "status": "PASS",
+      "evidence": "backend tests: CV engine and CV accuracy evidence",
+      "notes": "Synthetic mechanics verified; person detector remains experimental_unvalidated and real-world accuracy is NOT ASSESSED.",
+      "commands": [
+        "pytest_backend_full_suite"
+      ]
+    },
+    {
+      "id": "F",
+      "area": "Cross-video candidate search and source exclusion",
+      "status": "PASS",
+      "evidence": "12-clip scenario plus backend CV candidate search suite",
+      "notes": "Exact top-5 ordering, query-source exclusion, case-scope isolation, selected scope, and top-K limits asserted; CV inference was stubbed with deterministic synthetic observations.",
+      "commands": [
+        "twelve_clip_synthetic_scenario",
+        "pytest_backend_full_suite"
+      ]
+    },
+    {
+      "id": "G",
+      "area": "Investigator review and candidate integrity",
+      "status": "PASS",
+      "evidence": "12-clip scenario plus backend CV review suite",
+      "notes": "Reference and top-candidate reviews exercised; reviewer notes absent from search payloads.",
+      "commands": [
+        "twelve_clip_synthetic_scenario",
+        "pytest_backend_full_suite"
+      ]
+    },
+    {
+      "id": "H",
+      "area": "Explicit CV-reference export and provenance",
+      "status": "PASS",
+      "evidence": "12-clip scenario plus backend export/CV export tests",
+      "notes": "Observation and candidate CV selections exported with source/model provenance and limitation copy; no raw vectors or local paths.",
+      "commands": [
+        "twelve_clip_synthetic_scenario",
+        "pytest_backend_full_suite"
+      ]
+    },
+    {
+      "id": "I1",
+      "area": "Audit recording",
+      "status": "PASS",
+      "evidence": "backend pipeline, CV review, and CV candidate search tests; scenario audit assertion",
+      "notes": "Append-only event recording verified for local flows.",
+      "commands": [
+        "pytest_backend_full_suite",
+        "twelve_clip_synthetic_scenario"
+      ]
+    },
+    {
+      "id": "I2",
+      "area": "Role-based access control",
+      "status": "NOT IMPLEMENTED",
+      "evidence": "No per-user or per-case authorization layer exists",
+      "notes": "Only one global optional local passphrase session is implemented.",
+      "commands": []
+    },
+    {
+      "id": "I3",
+      "area": "Tamper-proof/WORM audit and certified chain of custody",
+      "status": "NOT IMPLEMENTED",
+      "evidence": "No tamper-evident storage, WORM backend, or custody certification exists",
+      "notes": "Audit events are append-only in SQLite, not tamper-proof.",
+      "commands": []
+    },
+    {
+      "id": "I4",
+      "area": "Protected-route and browser smoke checks",
+      "status": "NOT ASSESSED",
+      "evidence": "Frontend unit tests and typecheck/build executed",
+      "notes": "No browser automation was run; live session behavior was confirmed separately before this run.",
+      "commands": []
+    },
+    {
+      "id": "J",
+      "area": "Frontend regression, typecheck, production build",
+      "status": "PASS",
+      "evidence": "vitest, tsc --noEmit, vite build",
+      "notes": "Unit tests passed; build artifacts may be regenerated.",
+      "commands": [
+        "frontend_vitest",
+        "frontend_typecheck",
+        "frontend_build"
+      ]
+    },
+    {
+      "id": "K",
+      "area": "Data and service isolation",
+      "status": "PASS",
+      "evidence": "listener snapshots and production data snapshot before/after",
+      "notes": "No service control commands, Git operations, downloads, network calls, or prohibited scripts were invoked.",
+      "commands": []
+    },
+    {
+      "id": "L",
+      "area": "R4C validation",
+      "status": "NOT ASSESSED",
+      "evidence": "No approved R4C dataset or protocol is present",
+      "notes": "R4C remains pending; no real-world accuracy or identity claims are made.",
+      "commands": []
+    }
+  ],
+  "commands": [
+    {
+      "id": "configured_cv_limits",
+      "label": "Configured CV limits",
+      "command": [
+        "/Users/yps/Dev/web/atm/.venv/bin/python",
+        "-c",
+        "import json,sys; sys.path.insert(0,'backend'); from app.config import cv_limits, MAX_UPLOAD_BYTES; print(json.dumps({**cv_limits(), 'max_upload_bytes': MAX_UPLOAD_BYTES}))"
+      ],
+      "cwd": "/Users/yps/Dev/web/atm",
+      "returncode": 0,
+      "timed_out": false,
+      "duration_seconds": 0.033,
+      "status": "PASS",
+      "stdout_tail": "{\"max_analysis_frames\": 300, \"max_frame_stride\": 20, \"max_decoded_frames\": 3000, \"max_clip_duration_seconds\": 300.0, \"max_crops_per_analysis\": 100, \"max_retained_crop_files\": 2000, \"max_top_k\": 25, \"max_face_observations_per_frame\": 8, \"max_person_observations_per_frame\": 12, \"max_face_observations_per_analysis\": 120, \"max_person_observations_per_analysis\": 200, \"max_face_detections_per_frame\": 64, \"max_person_detections_per_frame\": 128, \"max_face_detections_per_analysis\": 6000, \"max_person_detections_per_analysis\": 12000, \"max_ranked_candidates\": 100, \"max_response_bytes\": 750000, \"concurrent_analyses\": 1, \"synchronous\": true, \"max_upload_bytes\": 524288000}\n",
+      "stderr_tail": ""
+    },
+    {
+      "id": "node_version",
+      "label": "Node version",
+      "command": [
+        "node",
+        "--version"
+      ],
+      "cwd": "/Users/yps/Dev/web/atm",
+      "returncode": 0,
+      "timed_out": false,
+      "duration_seconds": 0.119,
+      "status": "PASS",
+      "stdout_tail": "v26.12.1\n",
+      "stderr_tail": ""
+    },
+    {
+      "id": "npm_version",
+      "label": "npm version",
+      "command": [
+        "npm",
+        "--version"
+      ],
+      "cwd": "/Users/yps/Dev/web/atm",
+      "returncode": 0,
+      "timed_out": false,
+      "duration_seconds": 0.216,
+      "status": "PASS",
+      "stdout_tail": "11.20.0\n",
+      "stderr_tail": ""
+    },
+    {
+      "id": "backend_pytest_full_suite",
+      "label": "Backend pytest full suite",
+      "command": [
+        "/Users/yps/Dev/web/atm/.venv/bin/python",
+        "-m",
+        "pytest",
+        "backend/tests",
+        "-q",
+        "--deselect=backend/tests/test_cv_engine.py::test_synthetic_generator_writes_labelled_clips"
+      ],
+      "cwd": "/Users/yps/Dev/web/atm",
+      "returncode": 0,
+      "timed_out": false,
+      "duration_seconds": 29.096,
+      "status": "PASS",
+      "stdout_tail": "........................................................................ [ 33%]\n........................................................................ [ 66%]\n.......................................................................  [100%]\n=============================== warnings summary ===============================\nbackend/tests/test_cv_alignment.py::test_aligned_run_analyzes_only_window_and_preserves_source_timeline\n  /Users/yps/Dev/web/atm/.venv/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.\n    from starlette.testclient import TestClient as TestClient  # noqa\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n215 passed, 1 deselected, 1 warning in 28.69s\n",
+      "stderr_tail": ""
+    },
+    {
+      "id": "frontend_vitest",
+      "label": "Frontend vitest",
+      "command": [
+        "npm",
+        "run",
+        "test",
+        "--",
+        "--run"
+      ],
+      "cwd": "/Users/yps/Dev/web/atm/frontend",
+      "returncode": 0,
+      "timed_out": false,
+      "duration_seconds": 1.822,
+      "status": "PASS",
+      "stdout_tail": "\n> atm-sentinel-frontend@0.1.0 test\n> vitest --run\n\n\n RUN  v2.1.9 /Users/yps/Dev/web/atm/frontend\n\n \u2713 src/lib/cvReviewApi.test.ts (11 tests) 9ms\n \u2713 src/lib/sessionApi.test.ts (5 tests) 14ms\n \u2713 src/lib/cvContract.test.ts (5 tests) 9ms\n \u2713 src/pages/Export.test.ts (6 tests) 6ms\n \u2713 src/pages/TrustCopy.test.ts (3 tests) 31ms\n \u2713 src/components/AppShell.test.ts (8 tests) 103ms\n \u2713 src/pages/CvRunsView.test.ts (20 tests) 125ms\n \u2713 src/lib/format.test.ts (4 tests) 2ms\n \u2713 src/lib/demo.test.ts (3 tests) 9ms\n\n Test Files  9 passed (9)\n      Tests  65 passed (65)\n   Start at  09:22:25\n   Duration  1.34s (transform 489ms, setup 0ms, collect 1.50s, tests 307ms, environment 3.45s, prepare 549ms)\n\n",
+      "stderr_tail": "(node:92151) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+    },
+    {
+      "id": "frontend_typecheck",
+      "label": "Frontend typecheck",
+      "command": [
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "cwd": "/Users/yps/Dev/web/atm/frontend",
+      "returncode": 0,
+      "timed_out": false,
+      "duration_seconds": 1.891,
+      "status": "PASS",
+      "stdout_tail": "\n> atm-sentinel-frontend@0.1.0 typecheck\n> tsc --noEmit --pretty false\n\n",
+      "stderr_tail": ""
+    },
+    {
+      "id": "frontend_production_build",
+      "label": "Frontend production build",
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "cwd": "/Users/yps/Dev/web/atm/frontend",
+      "returncode": 0,
+      "timed_out": false,
+      "duration_seconds": 3.096,
+      "status": "PASS",
+      "stdout_tail": "\n> atm-sentinel-frontend@0.1.0 build\n> tsc --noEmit && vite build\n\nvite v6.4.6 building for production...\ntransforming...\n\u2713 1609 modules transformed.\nrendering chunks...\ncomputing gzip size...\ndist/index.html                   0.83 kB \u2502 gzip:   0.44 kB\ndist/assets/index-Ds4yvo-t.css   33.49 kB \u2502 gzip:   6.61 kB\ndist/assets/index-BGgPwygQ.js   432.26 kB \u2502 gzip: 126.26 kB\n\u2713 built in 1.03s\n",
+      "stderr_tail": ""
+    },
+    {
+      "id": "12_clip_synthetic_cv_scenario",
+      "label": "12-clip synthetic CV scenario",
+      "command": [
+        "/Users/yps/Dev/web/atm/.venv/bin/python",
+        "/Users/yps/Dev/web/atm/scripts/acceptance_runner.py",
+        "--run-scenario",
+        "--scenario-temp",
+        "<ACCEPTANCE_TMP>",
+        "--scenario-output",
+        "<ACCEPTANCE_TMP>/scenario-result.json"
+      ],
+      "cwd": "/Users/yps/Dev/web/atm",
+      "returncode": 0,
+      "timed_out": false,
+      "duration_seconds": 3.435,
+      "status": "PASS",
+      "stdout_tail": "",
+      "stderr_tail": "/Users/yps/Dev/web/atm/.venv/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.\n  from starlette.testclient import TestClient as TestClient  # noqa\n"
+    }
+  ],
+  "test_counts": {
+    "backend_pytest": {
+      "passed": 215,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "deselected": 1,
+      "xfailed": 0,
+      "xpassed": 0,
+      "warnings": 0,
+      "duration_seconds": 28.69
+    },
+    "frontend_vitest": {
+      "tests_passed": 65,
+      "tests_total": 65,
+      "files_passed": 9,
+      "files_total": 9
+    }
+  },
+  "multiclip_scenario": {
+    "status": "PASS",
+    "data_classification": {
+      "synthetic_clips": true,
+      "synthetic_observations_and_embeddings": true,
+      "cv_model_inference_stubbed": true,
+      "real_cctv": false,
+      "real_people": false
+    },
+    "counts": {
+      "clips_total": 12,
+      "target_case_clips": 10,
+      "control_case_clips": 2,
+      "runs_total": 12,
+      "no_face_clips": 1,
+      "face_observations_published": 12
+    },
+    "runs": [
+      {
+        "label": "Q",
+        "case": "target",
+        "status": "completed",
+        "observation_count": 2,
+        "processing_seconds": 0.1728,
+        "source_video_id": "546f62461e834fc1b4a661f15b3a5965",
+        "source_sha256_matches": true,
+        "model_sha256_matches": true
+      },
+      {
+        "label": "C01",
+        "case": "target",
+        "status": "completed",
+        "observation_count": 1,
+        "processing_seconds": 0.1591,
+        "source_video_id": "132e0bbb502d4ca1b0b3e57d78915401",
+        "source_sha256_matches": true,
+        "model_sha256_matches": true
+      },
+      {
+        "label": "C02",
+        "case": "target",
+        "status": "completed",
+        "observation_count": 1,
+        "processing_seconds": 0.1591,
+        "source_video_id": "58ed1a38a81843528690dff08d328b5b",
+        "source_sha256_matches": true,
+        "model_sha256_matches": true
+      },
+      {
+        "label": "C03",
+        "case": "target",
+        "status": "completed",
+        "observation_count": 1,
+        "processing_seconds": 0.1637,
+        "source_video_id": "d0beb46c62bb42e7a88365c0262b6154",
+        "source_sha256_matches": true,
+        "model_sha256_matches": true
+      },
+      {
+        "label": "C04",
+        "case": "target",
+        "status": "completed",
+        "observation_count": 1,
+        "processing_seconds": 0.1611,
+        "source_video_id": "90863577df854fbe99b4051e8262afce",
+        "source_sha256_matches": true,
+        "model_sha256_matches": true
+      },
+      {
+        "label": "C05",
+        "case": "target",
+        "status": "completed",
+        "observation_count": 1,
+        "processing_seconds": 0.1607,
+        "source_video_id": "3ca5c0ecfae54e4282122e03017b042a",
+        "source_sha256_matches": true,
+        "model_sha256_matches": true
+      },
+      {
+        "label": "C06",
+        "case": "target",
+        "status": "completed",
+        "observation_count": 1,
+        "processing_seconds": 0.1619,
+        "source_video_id": "d3ec678ba9f04864b7c24fe7a1e17fdb",
+        "source_sha256_matches": true,
+        "model_sha256_matches": true
+      },
+      {
+        "label": "C07",
+        "case": "target",
+        "status": "completed",
+        "observation_count": 1,
+        "processing_seconds": 0.1616,
+        "source_video_id": "d18e4a1174e84bf6acea56dbead0bab3",
+        "source_sha256_matches": true,
+        "model_sha256_matches": true
+      },
+      {
+        "label": "C08",
+        "case": "target",
+        "status": "completed",
+        "observation_count": 1,
+        "processing_seconds": 0.1614,
+        "source_video_id": "80ef04ace09244779d97f1668f5ae868",
+        "source_sha256_matches": true,
+        "model_sha256_matches": true
+      },
+      {
+        "label": "N01",
+        "case": "target",
+        "status": "completed",
+        "observation_count": 0,
+        "processing_seconds": 0.1583,
+        "source_video_id": "42d825457b4743d5856e46e8c7c6e6a4",
+        "source_sha256_matches": true,
+        "model_sha256_matches": true
+      },
+      {
+        "label": "X01",
+        "case": "control",
+        "status": "completed",
+        "observation_count": 1,
+        "processing_seconds": 0.1618,
+        "source_video_id": "3f388a66325a4d86b273a833c1efa502",
+        "source_sha256_matches": true,
+        "model_sha256_matches": true
+      },
+      {
+        "label": "X02",
+        "case": "control",
+        "status": "completed",
+        "observation_count": 1,
+        "processing_seconds": 0.1623,
+        "source_video_id": "e8d4968fec4b4f4c9709d50ce76b4ef0",
+        "source_sha256_matches": true,
+        "model_sha256_matches": true
+      }
+    ],
+    "timing": {
+      "total_processing_seconds": 1.9438,
+      "search_seconds": 0.0069,
+      "selected_scope_search_seconds": 0.0052,
+      "peak_process_rss_bytes": 111067136,
+      "memory_note": "Approximate process high-water mark (ru_maxrss), not an isolated container measurement."
+    },
+    "search": {
+      "scope": "case_all_eligible_videos",
+      "top_k": 5,
+      "expected_observation_ids": [
+        "obs-c01",
+        "obs-c02",
+        "obs-c03",
+        "obs-c04",
+        "obs-c05"
+      ],
+      "actual_observation_ids": [
+        "obs-c01",
+        "obs-c02",
+        "obs-c03",
+        "obs-c04",
+        "obs-c05"
+      ],
+      "scores": [
+        0.995037,
+        0.980581,
+        0.957826,
+        0.928477,
+        0.894427
+      ],
+      "source_exclusion_verified": true,
+      "case_scope_isolation_verified": true,
+      "cross_case_selected_rejection_status": 404,
+      "selected_scope_ids": [
+        "obs-c07",
+        "obs-c08"
+      ]
+    },
+    "review": {
+      "reference_decision": "relevant",
+      "top_candidate_decision": "relevant",
+      "reviewer_note_not_exposed_in_search": true
+    },
+    "export": {
+      "cv_selection_count": 2,
+      "cv_observation_count": 1,
+      "cv_candidate_count": 1,
+      "association_limitation_present": true,
+      "pdf_valid": true,
+      "raw_vector_and_path_fields_absent": true
+    },
+    "audit": {
+      "candidate_search_events": 2,
+      "result_count_recorded": 5,
+      "temp_paths_absent": true
+    },
+    "checks": [
+      "12 MP4 clips generated with ftyp magic",
+      "10 target clips and 2 control clips uploaded and analyzed",
+      "no-face clip produced zero observations",
+      "one reference face selected by human review",
+      "case-scoped top-5 ranking matched exact expected order",
+      "query source video and second same-video face excluded",
+      "cross-case video rejected from selected scope",
+      "candidate provenance matched model and source hashes",
+      "search response exposed no raw vectors, metadata, or local paths",
+      "explicit observation and candidate CV export preserved provenance"
+    ]
+  },
+  "safety": {
+    "data_snapshot_unchanged": true,
+    "listener_snapshot_unchanged": true,
+    "listeners_before": {
+      "8000": {
+        "pids": [
+          "90317"
+        ],
+        "returncode": 0
+      },
+      "5173": {
+        "pids": [
+          "90347"
+        ],
+        "returncode": 0
+      },
+      "8001": {
+        "pids": [],
+        "returncode": 1
+      }
+    },
+    "listeners_after": {
+      "8000": {
+        "pids": [
+          "90317"
+        ],
+        "returncode": 0
+      },
+      "5173": {
+        "pids": [
+          "90347"
+        ],
+        "returncode": 0
+      },
+      "8001": {
+        "pids": [],
+        "returncode": 1
+      }
+    },
+    "data_before": {
+      "sentinel.db": {
+        "exists": true,
+        "size_bytes": 221184,
+        "mtime_ns": 1795403809145993093
+      },
+      "uploads": {
+        "exists": true,
+        "file_count": 1
+      },
+      "exports": {
+        "exists": true,
+        "file_count": 3
+      },
+      "demo": {
+        "exists": true,
+        "file_count": 1
+      },
+      "cv/crops": {
+        "exists": true,
+        "file_count": 80
+      }
+    },
+    "data_after": {
+      "sentinel.db": {
+        "exists": true,
+        "size_bytes": 221184,
+        "mtime_ns": 1795403809145993093
+      },
+      "uploads": {
+        "exists": true,
+        "file_count": 1
+      },
+      "exports": {
+        "exists": true,
+        "file_count": 3
+      },
+      "demo": {
+        "exists": true,
+        "file_count": 1
+      },
+      "cv/crops": {
+        "exists": true,
+        "file_count": 80
+      }
+    },
+    "temp_workspace_removed": false
+  },
+  "r4c": {
+    "status": "NOT ASSESSED",
+    "reason": "No approved R4C dataset, protocol, or result was available to this runner."
+  },
+  "remaining_gaps": [
+    "Real DVR/NVR exports and vendor-specific formats were not tested.",
+    "No OCR or automatic CCTV clock extraction is implemented; alignment uses investigator-entered timestamps.",
+    "Per-user/per-case RBAC, tamper-proof/WORM audit storage, and certified chain of custody are not implemented.",
+    "R4C validation and real-world identity/detection accuracy are NOT ASSESSED.",
+    "The 12-clip scenario is one local synthetic run; no broader 10\u201315 clip scalability sweep or configured-limit boundary stress was executed.",
+    "CV inference was stubbed with deterministic synthetic observations; real model detection/embedding behavior in the scenario is NOT ASSESSED.",
+    "Browser-level smoke automation was not run.",
+    "Mask, helmet, cap, and occlusion robustness remain not_assessed or heuristic review signals only."
+  ]
+}

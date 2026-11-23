@@ -1,0 +1,43 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+
+# Node
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# Local evidence and generated files — never commit real footage
+data/*
+!data/models/
+data/models/*
+!data/models/SHA256SUMS.json
+*.db
+*.db-shm
+*.db-wal
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.webm
+
+# OS/editor
+.DS_Store
+*.log
+.env
+.env.*
+
+# Local verification scratch and generated reports artifacts
+reports/ps04cctv-audit/.verification-tmp/
+reports/acceptance/.tmp-*/
+
+# IDE / local
+.idea/
+.vscode/
+
+# Local caches
+.npm-cache/
+.pip-cache/

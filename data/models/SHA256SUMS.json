@@ -1,0 +1,26 @@
+{
+  "generated_by": "scripts/download_cv_models.py",
+  "models": {
+    "sface": {
+      "key": "sface",
+      "filename": "face_recognition_sface_2021dec.onnx",
+      "size_bytes": 38696353,
+      "sha256": "0ba9fbfa01b5270c96627c4ef784da859931e02f04419c829e83484087c34e79",
+      "status": "already_present"
+    },
+    "yolox": {
+      "key": "yolox",
+      "filename": "object_detection_yolox_2022nov.onnx",
+      "size_bytes": 35858002,
+      "sha256": "c5c2d13e59ae883e6af3b45daea64af4833a4951c92d116ec270d9ddbe998063",
+      "status": "already_present"
+    },
+    "yunet": {
+      "key": "yunet",
+      "filename": "face_detection_yunet_2026may.onnx",
+      "size_bytes": 229738,
+      "sha256": "ebafce4e3c118d6554634be5c27ab333b4c047a9a8c3faf1d7cf93101c22f0f0",
+      "status": "already_present"
+    }
+  }
+}
